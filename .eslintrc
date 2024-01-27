@@ -22,7 +22,8 @@
     "plugin:@typescript-eslint/eslint-recommended", // ESLint overrides for TypeScript
     "prettier", // Prettier rules
     "plugin:prettier/recommended", // Prettier plugin integration
-    "plugin:react-hooks/recommended" // Recommended rules for React hooks
+    "plugin:react-hooks/recommended", // Recommended rules for React hooks
+    "plugin:storybook/recommended" // Recommended rules for storybook
   ],
 
   "rules": {
