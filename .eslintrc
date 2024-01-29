@@ -12,7 +12,14 @@
   "parser": "@typescript-eslint/parser", // Leverages TS ESTree to lint TypeScript
 
   // Add additional rules and configuration options
-  "plugins": ["@typescript-eslint"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "prettier",
+    "react-hooks",
+    "storybook",
+    "jest"
+  ],
 
   // Extend various ESLint configurations and plugins
   "extends": [
@@ -23,7 +30,8 @@
     "prettier", // Prettier rules
     "plugin:prettier/recommended", // Prettier plugin integration
     "plugin:react-hooks/recommended", // Recommended rules for React hooks
-    "plugin:storybook/recommended" // Recommended rules for storybook
+    "plugin:storybook/recommended", // Recommended rules for storybook
+    "plugin:jest/recommended" // Recommended rules for testing with jest
   ],
 
   "rules": {

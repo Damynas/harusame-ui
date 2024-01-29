@@ -36,12 +36,5 @@
     /* Completeness */
     "skipLibCheck": true
   },
-  "exclude": [
-    "dist",
-    "node_modules",
-    "**/*.test.ts",
-    "**/*.test.tsx",
-    "**/*.stories.ts",
-    "**/*.stories.tsx"
-  ]
+  "exclude": ["dist", "node_modules", "**/*.stories.ts", "**/*.stories.tsx"]
 }
