@@ -23,9 +23,9 @@ const OutlinedButton = styled(ButtonBase)``;
 const TextButton = styled(ButtonBase)``;
 
 const ButtonComponents = {
-  [resources.buttonVariants.text]: TextButton,
+  [resources.buttonVariants.contained]: ContainedButton,
   [resources.buttonVariants.outlined]: OutlinedButton,
-  [resources.buttonVariants.contained]: ContainedButton
+  [resources.buttonVariants.text]: TextButton
 } as Record<keyof ButtonVariants, ButtonComponent>;
 
 const getButtonComponent = (
