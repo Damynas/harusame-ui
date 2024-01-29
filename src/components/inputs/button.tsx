@@ -8,8 +8,11 @@ import resources from './button.resources.json';
 
 type ButtonProps = {
   label: string;
-  variant?: 'contained' | 'outlined' | 'text';
+  variant?: keyof ButtonVariants;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
+
+type ButtonVariants = typeof resources.buttonVariants;
+type ButtonComponent = typeof ButtonBase;
 
 const ButtonBase = styled.button``;
 
@@ -19,47 +22,37 @@ const OutlinedButton = styled(ButtonBase)``;
 
 const TextButton = styled(ButtonBase)``;
 
-const Button = (
+const ButtonComponents = {
+  [resources.buttonVariants.text]: TextButton,
+  [resources.buttonVariants.outlined]: OutlinedButton,
+  [resources.buttonVariants.contained]: ContainedButton
+} as Record<keyof ButtonVariants, ButtonComponent>;
+
+const getButtonComponent = (
+  variant: keyof ButtonVariants = resources.buttonVariants
+    .contained as keyof ButtonVariants
+) => {
+  return ButtonComponents[variant];
+};
+
+const ButtonInner = (
   buttonProps: ButtonProps,
   forwardedRef: ForwardedRef<HTMLButtonElement>
 ) => {
-  const {
-    label,
-    variant = resources.defaultButtonVariant,
-    ...props
-  } = buttonProps;
-  switch (variant) {
-    case 'contained':
-      return (
-        <ContainedButton
-          {...props}
-          ref={forwardedRef}
-        >
-          {label}
-        </ContainedButton>
-      );
-    case 'outlined':
-      return (
-        <OutlinedButton
-          {...props}
-          ref={forwardedRef}
-        >
-          {label}
-        </OutlinedButton>
-      );
-    case 'text':
-      return (
-        <TextButton
-          {...props}
-          ref={forwardedRef}
-        >
-          {label}
-        </TextButton>
-      );
-    default:
-      throw new Error(`Unsupported button variant: ${variant}`);
-  }
+  const { label, variant, ...props } = buttonProps;
+  const ButtonComponent = getButtonComponent(variant);
+  return (
+    <ButtonComponent
+      aria-label={label}
+      {...props}
+      ref={forwardedRef}
+    >
+      {label}
+    </ButtonComponent>
+  );
 };
 
-export default forwardRef<HTMLButtonElement, ButtonProps>(Button);
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(ButtonInner);
+
+export default Button;
 export type { ButtonProps };
