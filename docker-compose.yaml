@@ -1,0 +1,8 @@
+version: '3'
+services:
+  storybook:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '6006:80' # Map container's port 80 to host's port 6006
