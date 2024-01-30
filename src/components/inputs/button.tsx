@@ -53,6 +53,7 @@ const ButtonInner = (
 };
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(ButtonInner);
+Button.displayName = 'Button';
 
 export default Button;
 export type { ButtonProps };
