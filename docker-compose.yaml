@@ -1,6 +1,8 @@
-version: '3'
+version: '3.8'
 services:
   storybook:
+    container_name: storybook
+    restart: always
     build:
       context: .
       dockerfile: Dockerfile
