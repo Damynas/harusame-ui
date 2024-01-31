@@ -8,10 +8,10 @@ import resources from './button.resources.json';
 
 type ButtonProps = {
   label: string;
-  variant?: keyof ButtonVariants;
+  variant?: ButtonVariants;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-type ButtonVariants = typeof resources.buttonVariants;
+type ButtonVariants = keyof typeof resources.buttonVariants;
 type ButtonComponent = typeof ButtonBase;
 
 const ButtonBase = styled.button``;
@@ -26,11 +26,10 @@ const ButtonComponents = {
   [resources.buttonVariants.contained]: ContainedButton,
   [resources.buttonVariants.outlined]: OutlinedButton,
   [resources.buttonVariants.text]: TextButton
-} as Record<keyof ButtonVariants, ButtonComponent>;
+} as Record<ButtonVariants, ButtonComponent>;
 
 const getButtonComponent = (
-  variant: keyof ButtonVariants = resources.buttonVariants
-    .contained as keyof ButtonVariants
+  variant: ButtonVariants = resources.defaultButtonVariant as ButtonVariants
 ) => {
   return ButtonComponents[variant];
 };
