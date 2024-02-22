@@ -1,10 +1,18 @@
 import { type Ref, createRef } from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
-import Button, { type ButtonProps } from './button';
+import { Button, type ButtonProps } from './button';
+import { ButtonConstants } from './button.constants';
 
 const buttonTestId = 'button-test-id';
 
-const renderButton = (props: ButtonProps, ref?: Ref<HTMLButtonElement>) => {
+const defaultProps: ButtonProps = {
+  label: ButtonConstants.DISPLAY_NAME
+};
+
+const renderButton = (
+  props: ButtonProps = defaultProps,
+  ref?: Ref<HTMLButtonElement>
+) => {
   render(
     <Button
       {...props}
@@ -20,26 +28,48 @@ describe('Button tests', () => {
   });
 
   it('Should render contained button', () => {
-    renderButton({ label: 'Contained Button', variant: 'contained' });
+    const props: ButtonProps = {
+      ...defaultProps,
+      variant: ButtonConstants.BUTTON_VARIANTS.contained
+    };
+    renderButton(props);
     const button = screen.queryByTestId(buttonTestId);
     expect(button).toBeDefined();
+    expect(button).toHaveAttribute('data-variant', props.variant);
   });
 
   it('Should render outlined button', () => {
-    renderButton({ label: 'Outlined Button', variant: 'outlined' });
+    const props: ButtonProps = {
+      ...defaultProps,
+      variant: ButtonConstants.BUTTON_VARIANTS.outlined
+    };
+    renderButton(props);
     const button = screen.queryByTestId(buttonTestId);
     expect(button).toBeDefined();
+    expect(button).toHaveAttribute('data-variant', props.variant);
   });
 
   it('Should render text button', () => {
-    renderButton({ label: 'Text Button', variant: 'text' });
+    const props: ButtonProps = {
+      ...defaultProps,
+      variant: ButtonConstants.BUTTON_VARIANTS.text
+    };
+    renderButton(props);
     const button = screen.queryByTestId(buttonTestId);
     expect(button).toBeDefined();
+    expect(button).toHaveAttribute('data-variant', props.variant);
+  });
+
+  it('Should have given label', () => {
+    renderButton();
+    const button = screen.queryByTestId(buttonTestId);
+    expect(button).toBeDefined();
+    expect(button).toHaveTextContent(ButtonConstants.DISPLAY_NAME);
   });
 
   it('Should forward a ref to the button', () => {
     const buttonRef = createRef<HTMLButtonElement>();
-    renderButton({ label: 'Button' }, buttonRef);
+    renderButton(defaultProps, buttonRef);
     const button = screen.queryByTestId(buttonTestId);
     expect(button).toBeDefined();
     expect(buttonRef.current).not.toBeNull();

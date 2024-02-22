@@ -1,7 +1,6 @@
 import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import json from '@rollup/plugin-json';
 import dts from 'rollup-plugin-dts';
 import packageJson from './package.json' assert { type: 'json' };
 
@@ -23,7 +22,6 @@ export default [
     plugins: [
       resolve(),
       commonjs(),
-      json(),
       typescript({
         tsconfig: './tsconfig.json',
         exclude: [
@@ -37,7 +35,7 @@ export default [
     external: ['react', 'styled-components']
   },
   {
-    input: 'dist/esm/types/index.d.ts',
+    input: 'dist/esm/types/src/index.d.ts',
     output: [{ file: packageJson.types, format: 'esm' }],
     plugins: [dts()]
   }

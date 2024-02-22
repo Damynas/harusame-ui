@@ -1,0 +1,8 @@
+{
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.constants.ts, ${capture}.test.ts",
+    "*.tsx": "${capture}.constants.ts, ${capture}.stories.tsx, ${capture}.test.tsx"
+  },
+  "jest.runMode": "on-demand"
+}

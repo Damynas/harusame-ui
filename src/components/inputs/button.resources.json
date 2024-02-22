@@ -1,8 +1,0 @@
-{
-  "buttonVariants": {
-    "contained": "contained",
-    "outlined": "outlined",
-    "text": "text"
-  },
-  "defaultButtonVariant": "contained"
-}

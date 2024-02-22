@@ -4,14 +4,14 @@ import {
   type ForwardedRef
 } from 'react';
 import styled from 'styled-components';
-import resources from './button.resources.json';
+import { ButtonConstants } from './button.constants';
 
 type ButtonProps = {
   label: string;
-  variant?: ButtonVariants;
+  variant?: ButtonVariant;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-type ButtonVariants = keyof typeof resources.buttonVariants;
+type ButtonVariant = keyof typeof ButtonConstants.BUTTON_VARIANTS;
 type ButtonComponent = typeof ButtonBase;
 
 const ButtonBase = styled.button``;
@@ -22,14 +22,14 @@ const OutlinedButton = styled(ButtonBase)``;
 
 const TextButton = styled(ButtonBase)``;
 
-const ButtonComponents = {
-  [resources.buttonVariants.contained]: ContainedButton,
-  [resources.buttonVariants.outlined]: OutlinedButton,
-  [resources.buttonVariants.text]: TextButton
-} as Record<ButtonVariants, ButtonComponent>;
+const ButtonComponents: Record<ButtonVariant, ButtonComponent> = {
+  [ButtonConstants.BUTTON_VARIANTS.contained]: ContainedButton,
+  [ButtonConstants.BUTTON_VARIANTS.outlined]: OutlinedButton,
+  [ButtonConstants.BUTTON_VARIANTS.text]: TextButton
+};
 
 const getButtonComponent = (
-  variant: ButtonVariants = resources.defaultButtonVariant as ButtonVariants
+  variant: ButtonVariant = ButtonConstants.DEFAULT_BUTTON_VARIANT
 ) => {
   return ButtonComponents[variant];
 };
@@ -45,6 +45,7 @@ const ButtonInner = (
       aria-label={label}
       {...props}
       ref={forwardedRef}
+      data-variant={variant}
     >
       {label}
     </ButtonComponent>
@@ -52,7 +53,6 @@ const ButtonInner = (
 };
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(ButtonInner);
-Button.displayName = 'Button';
+Button.displayName = ButtonConstants.DISPLAY_NAME;
 
-export default Button;
-export type { ButtonProps };
+export { Button, type ButtonProps };
