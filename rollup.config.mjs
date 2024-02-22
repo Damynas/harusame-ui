@@ -32,7 +32,7 @@ export default [
         ]
       })
     ],
-    external: ['react', 'styled-components']
+    external: ['react', 'react-dom']
   },
   {
     input: 'dist/esm/types/src/index.d.ts',
