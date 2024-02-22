@@ -40,8 +40,8 @@ const ButtonBase = styled.button<{
 
 const ContainedButton = styled(ButtonBase)`
   border: 0.06rem solid;
-  border-color: ${(props) => props.theme?.colors?.primary500};
   color: ${(props) => props.theme?.colors?.white};
+  border-color: ${(props) => props.theme?.colors?.primary500};
   background-color: ${(props) => props.theme?.colors?.primary500};
   &:hover {
     border-color: ${(props) => props.theme?.colors?.primary400};
@@ -49,11 +49,12 @@ const ContainedButton = styled(ButtonBase)`
     box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.25);
   }
   &:active {
+    border-color: ${(props) => props.theme?.colors?.primary700};
     background-color: ${(props) => props.theme?.colors?.primary700};
   }
   &:focus {
-    border: 0.125rem solid;
-    border-color: ${(props) => props.theme?.colors?.primary700};
+    outline: 0.125rem solid ${(props) => props.theme?.colors?.primary700};
+    outline-offset: 0.125rem;
   }
 `;
 
@@ -72,8 +73,8 @@ const OutlinedButton = styled(ButtonBase)`
     border-color: ${(props) => props.theme?.colors?.primary700};
   }
   &:focus {
-    border: 0.125rem solid;
-    border-color: ${(props) => props.theme?.colors?.primary700};
+    outline: 0.125rem solid ${(props) => props.theme?.colors?.primary700};
+    outline-offset: 0.125rem;
   }
 `;
 
@@ -88,8 +89,8 @@ const TextButton = styled(ButtonBase)`
     color: ${(props) => props.theme?.colors?.primary700};
   }
   &:focus {
-    border: 0.125rem solid;
-    border-color: ${(props) => props.theme?.colors?.primary700};
+    outline: 0.125rem solid ${(props) => props.theme?.colors?.primary700};
+    outline-offset: 0.125rem;
   }
 `;
 
