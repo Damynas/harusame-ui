@@ -29,6 +29,7 @@
     "@testing-library/react": "^14.2.1",
     "@types/jest": "^29.5.12",
     "@types/react": "^18.2.57",
+    "@types/react-helmet": "^6.1.11",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "eslint": "^8.56.0",
@@ -53,6 +54,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
+    "react-helmet": "^6.1.0",
     "styled-components": "^6.1.8"
   },
   "main": "dist/cjs/index.js",
