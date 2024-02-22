@@ -17,11 +17,17 @@ const meta: Meta<typeof Button> = {
       control: { type: 'select' },
       options: Object.getOwnPropertyNames(ButtonConstants.BUTTON_VARIANTS),
       defaultValue: { summary: ButtonConstants.DEFAULT_BUTTON_VARIANT }
+    },
+    size: {
+      control: { type: 'select' },
+      options: Object.getOwnPropertyNames(ButtonConstants.BUTTON_SIZES),
+      defaultValue: { summary: ButtonConstants.DEFAULT_BUTTON_SIZE }
     }
   },
   args: {
     label: ButtonConstants.DISPLAY_NAME,
-    variant: ButtonConstants.DEFAULT_BUTTON_VARIANT
+    variant: ButtonConstants.DEFAULT_BUTTON_VARIANT,
+    size: ButtonConstants.DEFAULT_BUTTON_SIZE
   }
 };
 

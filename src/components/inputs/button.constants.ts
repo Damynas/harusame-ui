@@ -5,7 +5,13 @@ const ButtonConstants = {
     outlined: 'outlined',
     text: 'text'
   },
-  DEFAULT_BUTTON_VARIANT: 'contained'
+  DEFAULT_BUTTON_VARIANT: 'contained',
+  BUTTON_SIZES: {
+    small: 'small',
+    regular: 'regular',
+    large: 'large'
+  },
+  DEFAULT_BUTTON_SIZE: 'regular'
 } as const;
 
 export { ButtonConstants };

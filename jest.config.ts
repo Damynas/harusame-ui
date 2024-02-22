@@ -11,6 +11,7 @@ const config: JestConfigWithTsJest = {
   ],
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
+  modulePaths: ['<rootDir>/src'],
   setupFilesAfterEnv: ['./jest.setup.ts']
 };
 
