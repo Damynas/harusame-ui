@@ -12,4 +12,5 @@ const ThemeProvider = (props: ThemeProviderProps) => {
   return <ThemeProviderBase theme={theme}>{children}</ThemeProviderBase>;
 };
 
-export { ThemeProvider, type ThemeProviderProps };
+export { ThemeProvider };
+export type { ThemeProviderProps };

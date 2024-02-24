@@ -17,4 +17,5 @@ const Font = (props: FontProps) => {
   );
 };
 
-export { Font, type FontProps };
+export { Font };
+export type { FontProps };

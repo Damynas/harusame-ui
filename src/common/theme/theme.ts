@@ -238,4 +238,5 @@ const Themes: Record<ThemeVariant, Theme> = {
   [ThemeConstants.THEME_VARIANTS.purpleSapphire]: purpleSapphire
 };
 
-export { Themes, type Theme };
+export { Themes };
+export type { Theme };

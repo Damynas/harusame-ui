@@ -1,6 +1,6 @@
 import { type Ref, createRef } from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
-import { Button, type ButtonProps } from './button';
+import { Button, type ButtonElement, type ButtonProps } from './button';
 import { ButtonConstants } from './button.constants';
 import { ThemeProvider, Themes } from 'common/theme';
 
@@ -12,7 +12,7 @@ const defaultProps: ButtonProps = {
 
 const renderButton = (
   props: ButtonProps = defaultProps,
-  ref?: Ref<HTMLButtonElement>
+  ref?: Ref<ButtonElement>
 ) => {
   render(
     <Button
@@ -25,7 +25,7 @@ const renderButton = (
 
 const renderButtonWithTheme = (
   props: ButtonProps = defaultProps,
-  ref?: Ref<HTMLButtonElement>
+  ref?: Ref<ButtonElement>
 ) => {
   const theme = Themes.hunterGreen;
   render(
@@ -85,7 +85,7 @@ describe('Button tests', () => {
   });
 
   it('Should forward a ref to the button', () => {
-    const buttonRef = createRef<HTMLButtonElement>();
+    const buttonRef = createRef<ButtonElement>();
     renderButton(defaultProps, buttonRef);
     const button = screen.queryByTestId(buttonTestId);
     expect(button).toBeDefined();

@@ -20,6 +20,8 @@ type ButtonProps = {
   size?: ButtonSize;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
+type ButtonElement = HTMLButtonElement;
+
 const ButtonSizes: Record<ButtonSize, string> = {
   [ButtonConstants.BUTTON_SIZES.small]: '2rem',
   [ButtonConstants.BUTTON_SIZES.regular]: '2.25rem',
@@ -28,9 +30,7 @@ const ButtonSizes: Record<ButtonSize, string> = {
 
 const getButtonSize = (
   size: ButtonSize = ButtonConstants.DEFAULT_BUTTON_SIZE
-) => {
-  return ButtonSizes[size];
-};
+) => ButtonSizes[size];
 
 const ButtonComponents: Record<ButtonVariant, StyledButton> = {
   [ButtonConstants.BUTTON_VARIANTS.contained]: ContainedButton,
@@ -40,13 +40,11 @@ const ButtonComponents: Record<ButtonVariant, StyledButton> = {
 
 const getButtonComponent = (
   variant: ButtonVariant = ButtonConstants.DEFAULT_BUTTON_VARIANT
-) => {
-  return ButtonComponents[variant];
-};
+) => ButtonComponents[variant];
 
 const ButtonInner = (
   buttonProps: ButtonProps,
-  forwardedRef: ForwardedRef<HTMLButtonElement>
+  forwardedRef: ForwardedRef<ButtonElement>
 ) => {
   const { label, variant, size, ...props } = buttonProps;
   const ButtonComponent = getButtonComponent(variant);
@@ -62,7 +60,8 @@ const ButtonInner = (
   );
 };
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(ButtonInner);
+const Button = forwardRef<ButtonElement, ButtonProps>(ButtonInner);
 Button.displayName = ButtonConstants.DISPLAY_NAME;
 
-export { Button, type ButtonProps };
+export { Button };
+export type { ButtonElement, ButtonProps };

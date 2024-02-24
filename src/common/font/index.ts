@@ -1,1 +1,1 @@
-export { Font, type FontProps } from './font';
+export * from './font';
