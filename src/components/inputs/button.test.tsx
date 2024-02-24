@@ -1,4 +1,4 @@
-import { type Ref, createRef } from 'react';
+import { createRef, type Ref } from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
 import { Button, type ButtonElement, type ButtonProps } from './button';
 import { ButtonConstants } from './button.constants';
