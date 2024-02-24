@@ -3,96 +3,22 @@ import {
   type ButtonHTMLAttributes,
   type ForwardedRef
 } from 'react';
-import styled from 'styled-components';
+import {
+  ContainedButton,
+  OutlinedButton,
+  TextButton,
+  type StyledButton
+} from './button.styles';
 import { ButtonConstants } from './button.constants';
-import type { Theme } from 'common/theme';
+
+type ButtonVariant = keyof typeof ButtonConstants.BUTTON_VARIANTS;
+type ButtonSize = keyof typeof ButtonConstants.BUTTON_SIZES;
 
 type ButtonProps = {
   label: string;
   variant?: ButtonVariant;
   size?: ButtonSize;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
-
-type ButtonVariant = keyof typeof ButtonConstants.BUTTON_VARIANTS;
-type ButtonSize = keyof typeof ButtonConstants.BUTTON_SIZES;
-type ButtonComponent = typeof ButtonBase;
-
-const ButtonBase = styled.button<{
-  size?: ButtonSize;
-  theme?: Theme;
-}>`
-  cursor: pointer;
-  border: none;
-  border-radius: 0.3rem;
-  white-space: nowrap;
-  padding: 0.5rem 1rem;
-  margin: 0.25rem;
-  min-width: 4rem;
-  height: ${(props) => getButtonSize(props.size)};
-  line-height: calc(${(props) => getButtonSize(props.size)} - 1rem);
-  font-size: ${(props) =>
-    props.theme?.typography?.body2.fontSize ?? '0.875rem'};
-  font-family: ${(props) =>
-    props.theme?.typography?.body2.fontFamily ?? 'sans-serif'};
-  font-weight: ${(props) =>
-    props.theme?.typography?.body2.fontWeights.regular ?? 400};
-`;
-
-const ContainedButton = styled(ButtonBase)`
-  border: 0.06rem solid;
-  color: ${(props) => props.theme?.colors?.white};
-  border-color: ${(props) => props.theme?.colors?.primary500};
-  background-color: ${(props) => props.theme?.colors?.primary500};
-  &:hover {
-    border-color: ${(props) => props.theme?.colors?.primary400};
-    background-color: ${(props) => props.theme?.colors?.primary400};
-    box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.25);
-  }
-  &:active {
-    border-color: ${(props) => props.theme?.colors?.primary700};
-    background-color: ${(props) => props.theme?.colors?.primary700};
-  }
-  &:focus {
-    outline: 0.125rem solid ${(props) => props.theme?.colors?.primary700};
-    outline-offset: 0.125rem;
-  }
-`;
-
-const OutlinedButton = styled(ButtonBase)`
-  border: 0.06rem solid;
-  background-color: transparent;
-  color: ${(props) => props.theme?.colors?.primary500};
-  border-color: ${(props) => props.theme?.colors?.primary500};
-  &:hover {
-    color: ${(props) => props.theme?.colors?.primary400};
-    box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.25);
-    border-color: ${(props) => props.theme?.colors?.primary400};
-  }
-  &:active {
-    color: ${(props) => props.theme?.colors?.primary700};
-    border-color: ${(props) => props.theme?.colors?.primary700};
-  }
-  &:focus {
-    outline: 0.125rem solid ${(props) => props.theme?.colors?.primary700};
-    outline-offset: 0.125rem;
-  }
-`;
-
-const TextButton = styled(ButtonBase)`
-  background-color: transparent;
-  color: ${(props) => props.theme?.colors?.primary500};
-  &:hover {
-    color: ${(props) => props.theme?.colors?.primary400};
-    text-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.25);
-  }
-  &:active {
-    color: ${(props) => props.theme?.colors?.primary700};
-  }
-  &:focus {
-    outline: 0.125rem solid ${(props) => props.theme?.colors?.primary700};
-    outline-offset: 0.125rem;
-  }
-`;
 
 const ButtonSizes: Record<ButtonSize, string> = {
   [ButtonConstants.BUTTON_SIZES.small]: '2rem',
@@ -106,7 +32,7 @@ const getButtonSize = (
   return ButtonSizes[size];
 };
 
-const ButtonComponents: Record<ButtonVariant, ButtonComponent> = {
+const ButtonComponents: Record<ButtonVariant, StyledButton> = {
   [ButtonConstants.BUTTON_VARIANTS.contained]: ContainedButton,
   [ButtonConstants.BUTTON_VARIANTS.outlined]: OutlinedButton,
   [ButtonConstants.BUTTON_VARIANTS.text]: TextButton
@@ -122,14 +48,14 @@ const ButtonInner = (
   buttonProps: ButtonProps,
   forwardedRef: ForwardedRef<HTMLButtonElement>
 ) => {
-  const { label, variant, ...props } = buttonProps;
+  const { label, variant, size, ...props } = buttonProps;
   const ButtonComponent = getButtonComponent(variant);
   return (
     <ButtonComponent
-      aria-label={label}
       {...props}
       ref={forwardedRef}
       data-variant={variant}
+      $size={getButtonSize(size)}
     >
       {label}
     </ButtonComponent>

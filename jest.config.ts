@@ -5,6 +5,7 @@ const config: JestConfigWithTsJest = {
   collectCoverageFrom: ['src/**/*.{ts,tsx}'],
   coveragePathIgnorePatterns: [
     '/index\\.ts',
+    '\\.styles\\.tsx',
     '\\.stories\\.tsx',
     '\\.constants\\.ts',
     '\\.test\\.(ts|tsx)'
