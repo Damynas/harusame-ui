@@ -23,6 +23,7 @@ type BoxLayoutProps = {
   verticalAlignment?: VerticalAlignment;
   backgroundColor?: string;
   border?: string;
+  borderRadius?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
 type BoxLayoutElement = HTMLDivElement;
@@ -66,6 +67,7 @@ const BoxLayoutInner = (
     verticalAlignment,
     backgroundColor,
     border,
+    borderRadius,
     children,
     ...props
   } = boxLayoutProps;
@@ -86,6 +88,7 @@ const BoxLayoutInner = (
       $verticalAlignment={getVerticalAlignment(verticalAlignment)}
       $backgroundColor={backgroundColor}
       $border={border}
+      $borderRadius={borderRadius}
       ref={forwardedRef}
     >
       {children}

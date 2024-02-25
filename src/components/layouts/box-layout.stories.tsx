@@ -55,6 +55,9 @@ const meta: Meta<typeof BoxLayout> = {
     },
     border: {
       control: { type: 'text' }
+    },
+    borderRadius: {
+      control: { type: 'text' }
     }
   },
   args: {

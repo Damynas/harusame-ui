@@ -13,6 +13,7 @@ type StyledBoxLayoutProps = {
   $verticalAlignment?: string;
   $backgroundColor?: string;
   $border?: string;
+  $borderRadius?: string;
 };
 
 const BoxLayoutBase = styled.div<StyledBoxLayoutProps>`
@@ -80,6 +81,11 @@ const BoxLayoutBase = styled.div<StyledBoxLayoutProps>`
     props.$border &&
     css`
       border: ${props.$border};
+    `}
+  ${(props) =>
+    props.$borderRadius &&
+    css`
+      border-radius: ${props.$borderRadius};
     `}
 `;
 
