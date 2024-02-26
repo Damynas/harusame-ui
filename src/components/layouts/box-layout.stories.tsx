@@ -76,7 +76,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const BoxBase = styled.div<{ $theme?: Nullable<Theme> }>`
+const SquareBase = styled.div<{ $theme?: Nullable<Theme> }>`
   min-width: 3rem;
   min-height: 3rem;
   ${(props) =>
@@ -86,15 +86,15 @@ const BoxBase = styled.div<{ $theme?: Nullable<Theme> }>`
     `}
 `;
 
-const Box = () => {
+const Square = () => {
   const theme = useTheme();
-  return <BoxBase $theme={theme} />;
+  return <SquareBase $theme={theme} />;
 };
 
 const Template: Story = {
   render: (args) => (
     <BoxLayout {...args}>
-      <Box />
+      <Square />
     </BoxLayout>
   )
 };

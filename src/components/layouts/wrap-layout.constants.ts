@@ -1,5 +1,5 @@
-const StackLayoutConstants = {
-  DISPLAY_NAME: 'Stack Layout',
+const WrapLayoutConstants = {
+  DISPLAY_NAME: 'Wrap Layout',
   ORIENTATION: {
     horizontal: 'horizontal',
     vertical: 'vertical'
@@ -27,4 +27,4 @@ const StackLayoutConstants = {
   DEFAULT_VERTICAL_ALIGNMENT: 'stretch'
 } as const;
 
-export { StackLayoutConstants };
+export { WrapLayoutConstants };

@@ -2,12 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react';
 import styled, { css } from 'styled-components';
 import { useTheme, type Theme } from '@common/theme';
 import type { Nullable } from '@common/shared';
-import { StackLayout } from './stack-layout';
-import { StackLayoutConstants } from './stack-layout.constants';
+import { WrapLayout } from './wrap-layout';
+import { WrapLayoutConstants } from './wrap-layout.constants';
 
-const meta: Meta<typeof StackLayout> = {
-  title: 'Components/Layouts/Stack Layout',
-  component: StackLayout,
+const meta: Meta<typeof WrapLayout> = {
+  title: 'Components/Layouts/Wrap Layout',
+  component: WrapLayout,
   tags: ['autodocs'],
   parameters: {
     layout: 'centered'
@@ -15,28 +15,31 @@ const meta: Meta<typeof StackLayout> = {
   argTypes: {
     orientation: {
       control: { type: 'select' },
-      options: Object.getOwnPropertyNames(StackLayoutConstants.ORIENTATION),
+      options: Object.getOwnPropertyNames(WrapLayoutConstants.ORIENTATION),
       defaultValue: {
-        summary: StackLayoutConstants.DEFAULT_ORIENTATION
+        summary: WrapLayoutConstants.DEFAULT_ORIENTATION
       }
     },
     horizontalAlignment: {
       control: { type: 'select' },
       options: Object.getOwnPropertyNames(
-        StackLayoutConstants.HORIZONTAL_ALIGNMENT
+        WrapLayoutConstants.HORIZONTAL_ALIGNMENT
       ),
       defaultValue: {
-        summary: StackLayoutConstants.DEFAULT_HORIZONTAL_ALIGNMENT
+        summary: WrapLayoutConstants.DEFAULT_HORIZONTAL_ALIGNMENT
       }
     },
     verticalAlignment: {
       control: { type: 'select' },
       options: Object.getOwnPropertyNames(
-        StackLayoutConstants.VERTICAL_ALIGNMENT
+        WrapLayoutConstants.VERTICAL_ALIGNMENT
       ),
-      defaultValue: { summary: StackLayoutConstants.DEFAULT_VERTICAL_ALIGNMENT }
+      defaultValue: { summary: WrapLayoutConstants.DEFAULT_VERTICAL_ALIGNMENT }
     },
-    gap: {
+    rowGap: {
+      control: { type: 'text' }
+    },
+    columnGap: {
       control: { type: 'text' }
     },
     margin: {
@@ -74,14 +77,13 @@ const meta: Meta<typeof StackLayout> = {
     }
   },
   args: {
-    orientation: StackLayoutConstants.DEFAULT_ORIENTATION,
-    horizontalAlignment: StackLayoutConstants.DEFAULT_HORIZONTAL_ALIGNMENT,
-    verticalAlignment: StackLayoutConstants.DEFAULT_VERTICAL_ALIGNMENT,
-    gap: '0.5rem',
+    orientation: WrapLayoutConstants.DEFAULT_ORIENTATION,
+    horizontalAlignment: WrapLayoutConstants.DEFAULT_HORIZONTAL_ALIGNMENT,
+    verticalAlignment: WrapLayoutConstants.DEFAULT_VERTICAL_ALIGNMENT,
+    rowGap: '0.5rem',
+    columnGap: '0.5rem',
     margin: '0.5rem',
     padding: '0.5rem',
-    minWidth: '22rem',
-    minHeight: '16rem',
     border: '0.06rem solid black'
   }
 };
@@ -105,27 +107,45 @@ const Square = () => {
   return <SquareBase $theme={theme} />;
 };
 
+const RectangleBase = styled.div<{ $theme?: Nullable<Theme> }>`
+  min-width: 4rem;
+  min-height: 2rem;
+  ${(props) =>
+    props.$theme &&
+    css`
+      background-color: ${props.$theme.colors.neutral500};
+    `}
+`;
+
+const Rectangle = () => {
+  const theme = useTheme();
+  return <RectangleBase $theme={theme} />;
+};
+
 const Template: Story = {
   render: (args) => (
-    <StackLayout {...args}>
-      {Array.from({ length: 3 }).map((_, index) => (
-        <Square key={index} />
+    <WrapLayout {...args}>
+      {Array.from({ length: 12 }).map((_, index) => (
+        <>
+          <Square key={`square-${index}`} />
+          <Rectangle key={`rectangle-${index}`} />
+        </>
       ))}
-    </StackLayout>
+    </WrapLayout>
   )
 };
 
 const Horizontal: Story = {
   ...Template,
   args: {
-    orientation: StackLayoutConstants.ORIENTATION.horizontal
+    orientation: WrapLayoutConstants.ORIENTATION.horizontal
   }
 };
 
 const Vertical: Story = {
   ...Template,
   args: {
-    orientation: StackLayoutConstants.ORIENTATION.vertical
+    orientation: WrapLayoutConstants.ORIENTATION.vertical
   }
 };
 
