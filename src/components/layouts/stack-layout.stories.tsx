@@ -2,30 +2,42 @@ import type { Meta, StoryObj } from '@storybook/react';
 import styled, { css } from 'styled-components';
 import { useTheme, type Theme } from '@common/theme';
 import type { Nullable } from '@common/shared';
-import { BoxLayout } from './box-layout';
-import { BoxLayoutConstants } from './box-layout.constants';
+import { StackLayout } from './stack-layout';
+import { StackLayoutConstants } from './stack-layout.constants';
 
-const meta: Meta<typeof BoxLayout> = {
-  title: 'Components/Layouts/Box Layout',
-  component: BoxLayout,
+const meta: Meta<typeof StackLayout> = {
+  title: 'Components/Layouts/Stack Layout',
+  component: StackLayout,
   tags: ['autodocs'],
   parameters: {
     layout: 'centered'
   },
   argTypes: {
+    orientation: {
+      control: { type: 'select' },
+      options: Object.getOwnPropertyNames(StackLayoutConstants.ORIENTATION),
+      defaultValue: {
+        summary: StackLayoutConstants.DEFAULT_ORIENTATION
+      }
+    },
     horizontalAlignment: {
       control: { type: 'select' },
       options: Object.getOwnPropertyNames(
-        BoxLayoutConstants.HORIZONTAL_ALIGNMENT
+        StackLayoutConstants.HORIZONTAL_ALIGNMENT
       ),
-      defaultValue: { summary: BoxLayoutConstants.DEFAULT_HORIZONTAL_ALIGNMENT }
+      defaultValue: {
+        summary: StackLayoutConstants.DEFAULT_HORIZONTAL_ALIGNMENT
+      }
     },
     verticalAlignment: {
       control: { type: 'select' },
       options: Object.getOwnPropertyNames(
-        BoxLayoutConstants.VERTICAL_ALIGNMENT
+        StackLayoutConstants.VERTICAL_ALIGNMENT
       ),
-      defaultValue: { summary: BoxLayoutConstants.DEFAULT_VERTICAL_ALIGNMENT }
+      defaultValue: { summary: StackLayoutConstants.DEFAULT_VERTICAL_ALIGNMENT }
+    },
+    gap: {
+      control: { type: 'text' }
     },
     margin: {
       control: { type: 'text' }
@@ -62,12 +74,14 @@ const meta: Meta<typeof BoxLayout> = {
     }
   },
   args: {
-    horizontalAlignment: BoxLayoutConstants.DEFAULT_HORIZONTAL_ALIGNMENT,
-    verticalAlignment: BoxLayoutConstants.DEFAULT_VERTICAL_ALIGNMENT,
+    orientation: StackLayoutConstants.DEFAULT_ORIENTATION,
+    horizontalAlignment: StackLayoutConstants.DEFAULT_HORIZONTAL_ALIGNMENT,
+    verticalAlignment: StackLayoutConstants.DEFAULT_VERTICAL_ALIGNMENT,
+    gap: '0.5rem',
     margin: '0.5rem',
     padding: '0.5rem',
-    width: '16rem',
-    height: '16rem',
+    minWidth: '22rem',
+    minHeight: '16rem',
     border: '0.06rem solid black'
   }
 };
@@ -93,26 +107,26 @@ const Box = () => {
 
 const Template: Story = {
   render: (args) => (
-    <BoxLayout {...args}>
-      <Box />
-    </BoxLayout>
+    <StackLayout {...args}>
+      {Array.from({ length: 3 }).map((_, index) => (
+        <Box key={index} />
+      ))}
+    </StackLayout>
   )
 };
 
-const Stretched: Story = {
+const Horizontal: Story = {
   ...Template,
   args: {
-    horizontalAlignment: BoxLayoutConstants.HORIZONTAL_ALIGNMENT.stretch,
-    verticalAlignment: BoxLayoutConstants.VERTICAL_ALIGNMENT.stretch
+    orientation: StackLayoutConstants.ORIENTATION.horizontal
   }
 };
 
-const Centered: Story = {
+const Vertical: Story = {
   ...Template,
   args: {
-    horizontalAlignment: BoxLayoutConstants.HORIZONTAL_ALIGNMENT.center,
-    verticalAlignment: BoxLayoutConstants.VERTICAL_ALIGNMENT.center
+    orientation: StackLayoutConstants.ORIENTATION.vertical
   }
 };
 
-export { Stretched, Centered };
+export { Horizontal, Vertical };

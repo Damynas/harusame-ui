@@ -28,28 +28,6 @@ type BoxLayoutProps = {
 
 type BoxLayoutElement = HTMLDivElement;
 
-const HorizontalAlignments: Record<HorizontalAlignment, string> = {
-  [BoxLayoutConstants.HORIZONTAL_ALIGNMENT.stretch]: '& > * { flex-grow: 1; }',
-  [BoxLayoutConstants.HORIZONTAL_ALIGNMENT.left]: 'flex-start',
-  [BoxLayoutConstants.HORIZONTAL_ALIGNMENT.center]: 'center',
-  [BoxLayoutConstants.HORIZONTAL_ALIGNMENT.right]: 'flex-end'
-};
-
-const getHorizontalAlignment = (
-  alignment: HorizontalAlignment = BoxLayoutConstants.DEFAULT_HORIZONTAL_ALIGNMENT
-) => HorizontalAlignments[alignment];
-
-const VerticalAlignments: Record<VerticalAlignment, string> = {
-  [BoxLayoutConstants.VERTICAL_ALIGNMENT.stretch]: 'stretch',
-  [BoxLayoutConstants.VERTICAL_ALIGNMENT.top]: 'flex-start',
-  [BoxLayoutConstants.VERTICAL_ALIGNMENT.center]: 'center',
-  [BoxLayoutConstants.VERTICAL_ALIGNMENT.bottom]: 'flex-end'
-};
-
-const getVerticalAlignment = (
-  alignment: VerticalAlignment = BoxLayoutConstants.DEFAULT_VERTICAL_ALIGNMENT
-) => VerticalAlignments[alignment];
-
 const BoxLayoutInner = (
   boxLayoutProps: BoxLayoutProps,
   forwardedRef: ForwardedRef<BoxLayoutElement>
@@ -63,8 +41,8 @@ const BoxLayoutInner = (
     height,
     maxWidth,
     maxHeight,
-    horizontalAlignment,
-    verticalAlignment,
+    horizontalAlignment = BoxLayoutConstants.DEFAULT_HORIZONTAL_ALIGNMENT,
+    verticalAlignment = BoxLayoutConstants.DEFAULT_VERTICAL_ALIGNMENT,
     backgroundColor,
     border,
     borderRadius,
@@ -84,8 +62,8 @@ const BoxLayoutInner = (
       $height={height}
       $maxWidth={maxWidth}
       $maxHeight={maxHeight}
-      $horizontalAlignment={getHorizontalAlignment(horizontalAlignment)}
-      $verticalAlignment={getVerticalAlignment(verticalAlignment)}
+      $horizontalAlignment={horizontalAlignment}
+      $verticalAlignment={verticalAlignment}
       $backgroundColor={backgroundColor}
       $border={border}
       $borderRadius={borderRadius}

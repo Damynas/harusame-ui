@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { BoxLayoutConstants } from './box-layout.constants';
 
 type StyledBoxLayoutProps = {
   $margin?: string;
@@ -9,8 +10,8 @@ type StyledBoxLayoutProps = {
   $height?: string;
   $maxWidth?: string;
   $maxHeight?: string;
-  $horizontalAlignment?: string;
-  $verticalAlignment?: string;
+  $horizontalAlignment: string;
+  $verticalAlignment: string;
   $backgroundColor?: string;
   $border?: string;
   $borderRadius?: string;
@@ -19,6 +20,8 @@ type StyledBoxLayoutProps = {
 const BoxLayoutBase = styled.div<StyledBoxLayoutProps>`
   display: flex;
   box-sizing: border-box;
+  flex-grow: 1;
+  flex-basis: 0;
   ${(props) =>
     props.$margin &&
     css`
@@ -59,18 +62,53 @@ const BoxLayoutBase = styled.div<StyledBoxLayoutProps>`
     css`
       max-height: ${props.$maxHeight};
     `}
-    ${(props) =>
-    props.$horizontalAlignment && props.$horizontalAlignment.startsWith('&')
-      ? css`
-          ${props.$horizontalAlignment};
-        `
-      : css`
-          justify-content: ${props.$horizontalAlignment};
-        `}
   ${(props) =>
-    props.$verticalAlignment &&
+    props.$horizontalAlignment ===
+      BoxLayoutConstants.HORIZONTAL_ALIGNMENT.stretch &&
     css`
-      align-items: ${props.$verticalAlignment};
+      justify-content: flex-start;
+      & > * {
+        flex-grow: 1;
+      }
+    `}
+  ${(props) =>
+    props.$horizontalAlignment ===
+      BoxLayoutConstants.HORIZONTAL_ALIGNMENT.left &&
+    css`
+      justify-content: flex-start;
+    `}
+  ${(props) =>
+    props.$horizontalAlignment ===
+      BoxLayoutConstants.HORIZONTAL_ALIGNMENT.center &&
+    css`
+      justify-content: center;
+    `}
+  ${(props) =>
+    props.$horizontalAlignment ===
+      BoxLayoutConstants.HORIZONTAL_ALIGNMENT.right &&
+    css`
+      justify-content: flex-end;
+    `}
+  ${(props) =>
+    props.$verticalAlignment ===
+      BoxLayoutConstants.VERTICAL_ALIGNMENT.stretch &&
+    css`
+      align-items: stretch;
+    `}
+  ${(props) =>
+    props.$verticalAlignment === BoxLayoutConstants.VERTICAL_ALIGNMENT.top &&
+    css`
+      align-items: flex-start;
+    `}
+  ${(props) =>
+    props.$verticalAlignment === BoxLayoutConstants.VERTICAL_ALIGNMENT.center &&
+    css`
+      align-items: center;
+    `}
+  ${(props) =>
+    props.$verticalAlignment === BoxLayoutConstants.VERTICAL_ALIGNMENT.bottom &&
+    css`
+      align-items: flex-end;
     `}
   ${(props) =>
     props.$backgroundColor &&

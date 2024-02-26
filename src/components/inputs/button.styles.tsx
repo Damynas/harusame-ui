@@ -91,5 +91,4 @@ const TextButton = styled(ButtonBase)`
     `}
 `;
 
-export type StyledButton = typeof ButtonBase;
-export { ContainedButton, OutlinedButton, TextButton };
+export { ButtonBase, ContainedButton, OutlinedButton, TextButton };
