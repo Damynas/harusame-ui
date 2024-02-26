@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import styled, { css } from 'styled-components';
-import type { Theme } from 'common';
+import { useTheme, type Theme } from '@common/theme';
+import type { Nullable } from '@common/shared';
 import { BoxLayout } from './box-layout';
 import { BoxLayoutConstants } from './box-layout.constants';
 
@@ -75,15 +76,20 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const Box = styled.div<{ theme?: Theme }>`
+const BoxBase = styled.div<{ $theme?: Nullable<Theme> }>`
   min-width: 6.25rem;
   min-height: 6.25rem;
   ${(props) =>
-    props.theme?.colors &&
+    props.$theme &&
     css`
-      background-color: ${props.theme.colors.primary500};
+      background-color: ${props.$theme.colors.primary500};
     `}
 `;
+
+const Box = () => {
+  const theme = useTheme();
+  return <BoxBase $theme={theme} />;
+};
 
 const Template: Story = {
   render: (args) => (
