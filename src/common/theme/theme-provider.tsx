@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react';
-import { ThemeProvider as ThemeProviderBase } from 'styled-components';
+import { createContext, useContext, type ReactNode } from 'react';
 import type { Theme } from './theme';
 
 type ThemeProviderProps = {
@@ -7,10 +6,16 @@ type ThemeProviderProps = {
   children?: ReactNode;
 };
 
+const ThemeContext = createContext<Theme | null>(null);
+
 const ThemeProvider = (props: ThemeProviderProps) => {
   const { theme, children } = props;
-  return <ThemeProviderBase theme={theme}>{children}</ThemeProviderBase>;
+  return (
+    <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
+  );
 };
 
-export { ThemeProvider };
+const useTheme = () => useContext<Theme | null>(ThemeContext);
+
+export { ThemeProvider, useTheme };
 export type { ThemeProviderProps };

@@ -10,6 +10,7 @@ import {
   type StyledButton
 } from './button.styles';
 import { ButtonConstants } from './button.constants';
+import { useTheme } from '@common/theme';
 
 type ButtonVariant = keyof typeof ButtonConstants.BUTTON_VARIANTS;
 type ButtonSize = keyof typeof ButtonConstants.BUTTON_SIZES;
@@ -48,12 +49,14 @@ const ButtonInner = (
 ) => {
   const { label, variant, size, ...props } = buttonProps;
   const ButtonComponent = getButtonComponent(variant);
+  const theme = useTheme();
   return (
     <ButtonComponent
       {...props}
       ref={forwardedRef}
       data-variant={variant}
       $size={getButtonSize(size)}
+      $theme={theme}
     >
       {label}
     </ButtonComponent>
