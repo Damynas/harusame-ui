@@ -85,7 +85,7 @@ const TextButton = styled(ButtonBase)`
         background-color: ${props.$theme.colors.primary300};
       }
       &:focus {
-        outline: 0.125rem solid ${props.theme.colors.primary700};
+        outline: 0.125rem solid ${props.$theme.colors.primary700};
         outline-offset: 0.125rem;
       }
     `}
