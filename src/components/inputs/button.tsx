@@ -25,16 +25,6 @@ type ButtonElement = HTMLButtonElement;
 
 type StyledButton = typeof ButtonBase;
 
-const ButtonSizes: Record<ButtonSize, string> = {
-  [ButtonConstants.BUTTON_SIZES.small]: '2rem',
-  [ButtonConstants.BUTTON_SIZES.regular]: '2.25rem',
-  [ButtonConstants.BUTTON_SIZES.large]: '2.5rem'
-};
-
-const getButtonSize = (
-  size: ButtonSize = ButtonConstants.DEFAULT_BUTTON_SIZE
-) => ButtonSizes[size];
-
 const ButtonComponents: Record<ButtonVariant, StyledButton> = {
   [ButtonConstants.BUTTON_VARIANTS.contained]: ContainedButton,
   [ButtonConstants.BUTTON_VARIANTS.outlined]: OutlinedButton,
@@ -57,7 +47,7 @@ const ButtonInner = (
       {...props}
       ref={forwardedRef}
       data-variant={variant}
-      $size={getButtonSize(size)}
+      $size={size}
       $theme={theme}
     >
       {label}

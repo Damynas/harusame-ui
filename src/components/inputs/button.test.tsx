@@ -2,7 +2,6 @@ import { createRef, type Ref } from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
 import { Button, type ButtonElement, type ButtonProps } from './button';
 import { ButtonConstants } from './button.constants';
-import { ThemeProvider, Themes } from 'common/theme';
 
 const buttonTestId = 'button-test-id';
 
@@ -20,22 +19,6 @@ const renderButton = (
       data-testid={buttonTestId}
       ref={ref}
     />
-  );
-};
-
-const renderButtonWithTheme = (
-  props: ButtonProps = defaultProps,
-  ref?: Ref<ButtonElement>
-) => {
-  const theme = Themes.hunterGreen;
-  render(
-    <ThemeProvider theme={theme}>
-      <Button
-        {...props}
-        data-testid={buttonTestId}
-        ref={ref}
-      />
-    </ThemeProvider>
   );
 };
 
@@ -97,7 +80,7 @@ describe('Button tests', () => {
       ...defaultProps,
       size: ButtonConstants.BUTTON_SIZES.small
     };
-    renderButtonWithTheme(props);
+    renderButton(props);
     const button = screen.queryByTestId(buttonTestId);
     expect(button).toBeDefined();
     expect(button).toHaveStyle({
@@ -111,7 +94,7 @@ describe('Button tests', () => {
       ...defaultProps,
       size: ButtonConstants.BUTTON_SIZES.regular
     };
-    renderButtonWithTheme(props);
+    renderButton(props);
     const button = screen.queryByTestId(buttonTestId);
     expect(button).toBeDefined();
     expect(button).toHaveStyle({
@@ -125,7 +108,7 @@ describe('Button tests', () => {
       ...defaultProps,
       size: ButtonConstants.BUTTON_SIZES.large
     };
-    renderButtonWithTheme(props);
+    renderButton(props);
     const button = screen.queryByTestId(buttonTestId);
     expect(button).toBeDefined();
     expect(button).toHaveStyle({

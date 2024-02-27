@@ -1,11 +1,24 @@
 import styled, { css } from 'styled-components';
 import type { Nullable } from '@common/shared';
 import type { Theme } from '@common/theme';
+import { ButtonConstants } from './button.constants';
+
+type ButtonSize = keyof typeof ButtonConstants.BUTTON_SIZES;
 
 type StyledButtonProps = {
-  $size: string;
+  $size?: ButtonSize;
   $theme: Nullable<Theme>;
 };
+
+const ButtonSizes: Record<ButtonSize, string> = {
+  [ButtonConstants.BUTTON_SIZES.small]: '2rem',
+  [ButtonConstants.BUTTON_SIZES.regular]: '2.25rem',
+  [ButtonConstants.BUTTON_SIZES.large]: '2.5rem'
+};
+
+const getButtonSize = (
+  size: ButtonSize = ButtonConstants.DEFAULT_BUTTON_SIZE
+) => ButtonSizes[size];
 
 const ButtonBase = styled.button<StyledButtonProps>`
   border: none;
@@ -16,8 +29,8 @@ const ButtonBase = styled.button<StyledButtonProps>`
   padding: 0.5rem 1rem;
   border-radius: 0.3rem;
   ${(props) => css`
-    height: ${props.$size};
-    line-height: calc(${props.$size} - 1rem);
+    height: ${getButtonSize(props.$size)};
+    line-height: calc(${getButtonSize(props.$size)} - 1rem);
   `}
   ${(props) =>
     props.$theme?.typography &&
