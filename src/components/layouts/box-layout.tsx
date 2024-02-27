@@ -41,8 +41,8 @@ const BoxLayoutInner = (
     height,
     maxWidth,
     maxHeight,
-    horizontalAlignment = BoxLayoutConstants.DEFAULT_HORIZONTAL_ALIGNMENT,
-    verticalAlignment = BoxLayoutConstants.DEFAULT_VERTICAL_ALIGNMENT,
+    horizontalAlignment,
+    verticalAlignment,
     backgroundColor,
     border,
     borderRadius,
@@ -62,8 +62,12 @@ const BoxLayoutInner = (
       $height={height}
       $maxWidth={maxWidth}
       $maxHeight={maxHeight}
-      $horizontalAlignment={horizontalAlignment}
-      $verticalAlignment={verticalAlignment}
+      $horizontalAlignment={
+        horizontalAlignment ?? BoxLayoutConstants.DEFAULT_HORIZONTAL_ALIGNMENT
+      }
+      $verticalAlignment={
+        verticalAlignment ?? BoxLayoutConstants.DEFAULT_VERTICAL_ALIGNMENT
+      }
       $backgroundColor={backgroundColor}
       $border={border}
       $borderRadius={borderRadius}

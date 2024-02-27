@@ -55,8 +55,8 @@ const StackLayoutInner = (
     height,
     maxWidth,
     maxHeight,
-    horizontalAlignment = StackLayoutConstants.DEFAULT_HORIZONTAL_ALIGNMENT,
-    verticalAlignment = StackLayoutConstants.DEFAULT_VERTICAL_ALIGNMENT,
+    horizontalAlignment,
+    verticalAlignment,
     orientation,
     gap,
     backgroundColor,
@@ -77,8 +77,12 @@ const StackLayoutInner = (
       $height={height}
       $maxWidth={maxWidth}
       $maxHeight={maxHeight}
-      $horizontalAlignment={horizontalAlignment}
-      $verticalAlignment={verticalAlignment}
+      $horizontalAlignment={
+        horizontalAlignment ?? StackLayoutConstants.DEFAULT_HORIZONTAL_ALIGNMENT
+      }
+      $verticalAlignment={
+        verticalAlignment ?? StackLayoutConstants.DEFAULT_VERTICAL_ALIGNMENT
+      }
       $gap={gap}
       $backgroundColor={backgroundColor}
       $border={border}

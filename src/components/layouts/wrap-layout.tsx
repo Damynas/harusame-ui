@@ -56,8 +56,8 @@ const WrapLayoutInner = (
     height,
     maxWidth,
     maxHeight,
-    horizontalAlignment = WrapLayoutConstants.DEFAULT_HORIZONTAL_ALIGNMENT,
-    verticalAlignment = WrapLayoutConstants.DEFAULT_VERTICAL_ALIGNMENT,
+    horizontalAlignment,
+    verticalAlignment,
     orientation,
     rowGap,
     columnGap,
@@ -79,8 +79,12 @@ const WrapLayoutInner = (
       $height={height}
       $maxWidth={maxWidth}
       $maxHeight={maxHeight}
-      $horizontalAlignment={horizontalAlignment}
-      $verticalAlignment={verticalAlignment}
+      $horizontalAlignment={
+        horizontalAlignment ?? WrapLayoutConstants.DEFAULT_HORIZONTAL_ALIGNMENT
+      }
+      $verticalAlignment={
+        verticalAlignment ?? WrapLayoutConstants.DEFAULT_VERTICAL_ALIGNMENT
+      }
       $rowGap={rowGap}
       $columnGap={columnGap}
       $backgroundColor={backgroundColor}
