@@ -4,8 +4,8 @@ import {
   type ForwardedRef,
   type SVGAttributes
 } from 'react';
-import { useTheme } from '@common/theme';
 import { IconConstants } from './icon.constants';
+import { commonColors, useTheme } from '@common/theme';
 
 type PropsToOmit = 'xmlns' | 'viewBox' | 'width' | 'height' | 'fill';
 
@@ -15,6 +15,12 @@ type IconProps = {
 } & Omit<SVGAttributes<SVGSVGElement>, PropsToOmit>;
 
 type IconElement = SVGSVGElement;
+
+const isValidSize = (value?: string) => {
+  const pattern =
+    /^[\d.]+(?<!\.)((px|em|rem|%|vh|vw|vmin|vmax|cm|mm|in|pt|pc|ex|ch)?)$/;
+  return value && pattern.test(value);
+};
 
 const IconInner = (
   iconProps: IconProps,
@@ -30,9 +36,9 @@ const IconInner = (
       ref={forwardedRef}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 24 24'
-      width={size ?? IconConstants.DEFAULT_ICON_SIZE}
-      height={size ?? IconConstants.DEFAULT_ICON_SIZE}
-      fill={color ?? theme?.colors.primary500}
+      width={isValidSize(size) ? size : IconConstants.DEFAULT_ICON_SIZE}
+      height={isValidSize(size) ? size : IconConstants.DEFAULT_ICON_SIZE}
+      fill={color ?? theme?.colors.primary500 ?? commonColors.black}
     >
       {children}
     </svg>
