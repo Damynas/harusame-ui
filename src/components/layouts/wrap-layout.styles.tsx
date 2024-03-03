@@ -25,9 +25,14 @@ const WrapLayoutBase = styled.div<StyledWrapLayoutProps>`
   box-sizing: border-box;
   flex-wrap: wrap;
   ${(props) =>
-    (isValidSize(props.$rowGap) || isValidSize(props.$columnGap)) &&
+    isValidSize(props.$rowGap) &&
     css`
-      gap: ${props.$rowGap ?? 0} ${props.$columnGap ?? 0};
+      row-gap: ${props.$rowGap};
+    `}
+  ${(props) =>
+    isValidSize(props.$columnGap) &&
+    css`
+      column-gap: ${props.$columnGap};
     `}
   ${(props) =>
     isValidSize(props.$margin) &&
