@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { StackLayoutConstants } from './stack-layout.constants';
+import { isValidSize } from '@utils/is-valid-size';
 
 type StyledStackLayoutProps = {
   $margin?: string;
@@ -21,51 +22,52 @@ type StyledStackLayoutProps = {
 const StackLayoutBase = styled.div<StyledStackLayoutProps>`
   display: flex;
   box-sizing: border-box;
-  flex-grow: 1;
-  flex-basis: auto;
   flex-wrap: nowrap;
   ${(props) =>
     props.$margin &&
-    css`
-      margin: ${props.$margin};
-    `}
-  ${(props) =>
-    props.$margin &&
+    isValidSize(props.$margin) &&
     css`
       margin: ${props.$margin};
     `}
   ${(props) =>
     props.$padding &&
+    isValidSize(props.$padding) &&
     css`
       padding: ${props.$padding};
     `}
   ${(props) =>
     props.$minWidth &&
+    isValidSize(props.$minWidth) &&
     css`
       min-width: ${props.$minWidth};
     `}
   ${(props) =>
     props.$minHeight &&
+    isValidSize(props.$minHeight) &&
     css`
       min-height: ${props.$minHeight};
     `}
   ${(props) =>
     props.$width &&
+    isValidSize(props.$width) &&
     css`
       width: ${props.$width};
     `}
   ${(props) =>
     props.$height &&
+    isValidSize(props.$height) &&
     css`
       height: ${props.$height};
     `}
   ${(props) =>
     props.$maxWidth &&
+    isValidSize(props.$maxWidth) &&
     css`
       max-width: ${props.$maxWidth};
     `}
   ${(props) =>
     props.$maxHeight &&
+    isValidSize(props.$maxHeight) &&
     css`
       max-height: ${props.$maxHeight};
     `}
@@ -81,6 +83,7 @@ const StackLayoutBase = styled.div<StyledStackLayoutProps>`
     `}
   ${(props) =>
     props.$borderRadius &&
+    isValidSize(props.$borderRadius) &&
     css`
       border-radius: ${props.$borderRadius};
     `}

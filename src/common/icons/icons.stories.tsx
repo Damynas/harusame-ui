@@ -7,7 +7,7 @@ import * as Icons from '../icons';
 const meta: Meta = {
   title: 'Design System/Icons',
   parameters: {
-    layout: 'centered'
+    layout: 'padded'
   }
 };
 
@@ -18,10 +18,9 @@ type Story = StoryObj<typeof meta>;
 const Default: Story = {
   render: () => (
     <WrapLayout
+      padding='3rem'
       rowGap='1rem'
       columnGap='1rem'
-      horizontalAlignment='left'
-      verticalAlignment='top'
     >
       {Object.entries(Icons).map(([name, Icon]) => (
         <StackLayout

@@ -6,6 +6,7 @@ import {
 } from 'react';
 import { IconConstants } from './icon.constants';
 import { commonColors, useTheme } from '@common/theme';
+import { isValidSize } from '@utils/is-valid-size';
 
 type PropsToOmit = 'xmlns' | 'viewBox' | 'width' | 'height' | 'fill';
 
@@ -15,12 +16,6 @@ type IconProps = {
 } & Omit<SVGAttributes<SVGSVGElement>, PropsToOmit>;
 
 type IconElement = SVGSVGElement;
-
-const isValidSize = (value?: string) => {
-  const pattern =
-    /^[\d.]+(?<!\.)((px|em|rem|%|vh|vw|vmin|vmax|cm|mm|in|pt|pc|ex|ch)?)$/;
-  return value && pattern.test(value);
-};
 
 const IconInner = (
   iconProps: IconProps,
