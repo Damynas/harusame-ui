@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components';
 import type { Nullable } from '@common/shared';
-import type { Theme } from '@common/theme';
+import { commonColors, type Theme } from '@common/theme';
 import { TextConstants } from './text.constants';
 
 type FontWeight = keyof typeof TextConstants.FONT_WEIGHTS;
 
 type StyledTextProps = {
+  $color?: string;
   $truncate?: boolean;
   $selectionDisabled?: boolean;
   $fontWeight?: FontWeight;
@@ -15,12 +16,8 @@ type StyledTextProps = {
 const TextBase = styled.span<StyledTextProps>`
   margin: 0;
   padding: 0;
-  color: black;
-  ${(props) =>
-    props.$theme &&
-    css`
-      color: ${props.$theme.colors.black};
-    `}
+  color: ${(props) =>
+    props.color ?? props.$theme?.colors.black ?? commonColors.black};
   ${(props) =>
     props.$truncate &&
     css`
