@@ -1,12 +1,13 @@
 import { createContext, useContext, type ReactNode } from 'react';
-import type { Theme } from './theme';
+import type { Theme } from './themes';
+import type { Nullable } from '..';
 
 type ThemeProviderProps = {
   theme: Theme;
   children?: ReactNode;
 };
 
-const ThemeContext = createContext<Theme | null>(null);
+const ThemeContext = createContext<Nullable<Theme>>(null);
 
 const ThemeProvider = (props: ThemeProviderProps) => {
   const { theme, children } = props;
@@ -15,7 +16,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
   );
 };
 
-const useTheme = () => useContext<Theme | null>(ThemeContext);
+const useTheme = () => useContext<Nullable<Theme>>(ThemeContext);
 
 export { ThemeProvider, useTheme };
 export type { ThemeProviderProps };
