@@ -6,9 +6,10 @@ import {
 } from 'react';
 import { BoxLayoutConstants } from './box-layout.constants';
 import { BoxLayoutBase } from './box-layout.styles';
-
-type HorizontalAlignment = keyof typeof BoxLayoutConstants.HORIZONTAL_ALIGNMENT;
-type VerticalAlignment = keyof typeof BoxLayoutConstants.VERTICAL_ALIGNMENT;
+import type {
+  HorizontalAlignment,
+  VerticalAlignment
+} from './box-layout.types';
 
 type BoxLayoutProps = {
   margin?: string;

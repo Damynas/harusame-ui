@@ -16,14 +16,14 @@ const meta: Meta<typeof BoxLayout> = {
     horizontalAlignment: {
       control: { type: 'select' },
       options: Object.getOwnPropertyNames(
-        BoxLayoutConstants.HORIZONTAL_ALIGNMENT
+        BoxLayoutConstants.HORIZONTAL_ALIGNMENTS
       ),
       defaultValue: { summary: BoxLayoutConstants.DEFAULT_HORIZONTAL_ALIGNMENT }
     },
     verticalAlignment: {
       control: { type: 'select' },
       options: Object.getOwnPropertyNames(
-        BoxLayoutConstants.VERTICAL_ALIGNMENT
+        BoxLayoutConstants.VERTICAL_ALIGNMENTS
       ),
       defaultValue: { summary: BoxLayoutConstants.DEFAULT_VERTICAL_ALIGNMENT }
     },
@@ -102,16 +102,16 @@ const Template: Story = {
 const Stretched: Story = {
   ...Template,
   args: {
-    horizontalAlignment: BoxLayoutConstants.HORIZONTAL_ALIGNMENT.stretch,
-    verticalAlignment: BoxLayoutConstants.VERTICAL_ALIGNMENT.stretch
+    horizontalAlignment: BoxLayoutConstants.HORIZONTAL_ALIGNMENTS.stretch,
+    verticalAlignment: BoxLayoutConstants.VERTICAL_ALIGNMENTS.stretch
   }
 };
 
 const Centered: Story = {
   ...Template,
   args: {
-    horizontalAlignment: BoxLayoutConstants.HORIZONTAL_ALIGNMENT.center,
-    verticalAlignment: BoxLayoutConstants.VERTICAL_ALIGNMENT.center
+    horizontalAlignment: BoxLayoutConstants.HORIZONTAL_ALIGNMENTS.center,
+    verticalAlignment: BoxLayoutConstants.VERTICAL_ALIGNMENTS.center
   }
 };
 

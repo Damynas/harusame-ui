@@ -63,7 +63,7 @@ const BoxLayoutBase = styled.div<StyledBoxLayoutProps>`
     `}
   ${(props) =>
     props.$horizontalAlignment ===
-      BoxLayoutConstants.HORIZONTAL_ALIGNMENT.stretch &&
+      BoxLayoutConstants.HORIZONTAL_ALIGNMENTS.stretch &&
     css`
       justify-content: flex-start;
       & > * {
@@ -72,40 +72,42 @@ const BoxLayoutBase = styled.div<StyledBoxLayoutProps>`
     `}
   ${(props) =>
     props.$horizontalAlignment ===
-      BoxLayoutConstants.HORIZONTAL_ALIGNMENT.left &&
+      BoxLayoutConstants.HORIZONTAL_ALIGNMENTS.left &&
     css`
       justify-content: flex-start;
     `}
   ${(props) =>
     props.$horizontalAlignment ===
-      BoxLayoutConstants.HORIZONTAL_ALIGNMENT.center &&
+      BoxLayoutConstants.HORIZONTAL_ALIGNMENTS.center &&
     css`
       justify-content: center;
     `}
   ${(props) =>
     props.$horizontalAlignment ===
-      BoxLayoutConstants.HORIZONTAL_ALIGNMENT.right &&
+      BoxLayoutConstants.HORIZONTAL_ALIGNMENTS.right &&
     css`
       justify-content: flex-end;
     `}
   ${(props) =>
     props.$verticalAlignment ===
-      BoxLayoutConstants.VERTICAL_ALIGNMENT.stretch &&
+      BoxLayoutConstants.VERTICAL_ALIGNMENTS.stretch &&
     css`
       align-items: stretch;
     `}
   ${(props) =>
-    props.$verticalAlignment === BoxLayoutConstants.VERTICAL_ALIGNMENT.top &&
+    props.$verticalAlignment === BoxLayoutConstants.VERTICAL_ALIGNMENTS.top &&
     css`
       align-items: flex-start;
     `}
   ${(props) =>
-    props.$verticalAlignment === BoxLayoutConstants.VERTICAL_ALIGNMENT.center &&
+    props.$verticalAlignment ===
+      BoxLayoutConstants.VERTICAL_ALIGNMENTS.center &&
     css`
       align-items: center;
     `}
   ${(props) =>
-    props.$verticalAlignment === BoxLayoutConstants.VERTICAL_ALIGNMENT.bottom &&
+    props.$verticalAlignment ===
+      BoxLayoutConstants.VERTICAL_ALIGNMENTS.bottom &&
     css`
       align-items: flex-end;
     `}
