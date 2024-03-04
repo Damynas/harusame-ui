@@ -10,9 +10,10 @@ import {
   Heading3,
   Heading4,
   Heading5,
-  Heading6
+  Heading6,
+  type StyledText
 } from './text.styles';
-import type { FontWeight, TextVariant, StyledText } from './text.types';
+import type { FontWeight, TextVariant } from './text.types';
 import { useTheme } from '@common/theme';
 
 type TextProps = {
