@@ -2,14 +2,14 @@ import { forwardRef, type ForwardedRef, type HTMLAttributes } from 'react';
 import { WrapLayoutConstants } from './wrap-layout.constants';
 import {
   HorizontalWrapLayout,
-  WrapLayoutBase,
-  VerticalWrapLayout
+  VerticalWrapLayout,
+  type StyledWrapLayout
 } from './wrap-layout.styles';
-
-type Orientation = keyof typeof WrapLayoutConstants.ORIENTATION;
-type HorizontalAlignment =
-  keyof typeof WrapLayoutConstants.HORIZONTAL_ALIGNMENT;
-type VerticalAlignment = keyof typeof WrapLayoutConstants.VERTICAL_ALIGNMENT;
+import {
+  Orientation,
+  HorizontalAlignment,
+  VerticalAlignment
+} from './wrap-layout.types';
 
 type WrapLayoutProps = {
   margin?: string;
@@ -32,11 +32,9 @@ type WrapLayoutProps = {
 
 type WrapLayoutElement = HTMLDivElement;
 
-type StyledWrapLayout = typeof WrapLayoutBase;
-
 const WrapLayoutComponents: Record<Orientation, StyledWrapLayout> = {
-  [WrapLayoutConstants.ORIENTATION.horizontal]: HorizontalWrapLayout,
-  [WrapLayoutConstants.ORIENTATION.vertical]: VerticalWrapLayout
+  [WrapLayoutConstants.ORIENTATIONS.horizontal]: HorizontalWrapLayout,
+  [WrapLayoutConstants.ORIENTATIONS.vertical]: VerticalWrapLayout
 };
 
 const getWrapLayoutComponent = (

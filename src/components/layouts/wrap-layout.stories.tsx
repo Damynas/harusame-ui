@@ -15,7 +15,7 @@ const meta: Meta<typeof WrapLayout> = {
   argTypes: {
     orientation: {
       control: { type: 'select' },
-      options: Object.getOwnPropertyNames(WrapLayoutConstants.ORIENTATION),
+      options: Object.getOwnPropertyNames(WrapLayoutConstants.ORIENTATIONS),
       defaultValue: {
         summary: WrapLayoutConstants.DEFAULT_ORIENTATION
       }
@@ -23,7 +23,7 @@ const meta: Meta<typeof WrapLayout> = {
     horizontalAlignment: {
       control: { type: 'select' },
       options: Object.getOwnPropertyNames(
-        WrapLayoutConstants.HORIZONTAL_ALIGNMENT
+        WrapLayoutConstants.HORIZONTAL_ALIGNMENTS
       ),
       defaultValue: {
         summary: WrapLayoutConstants.DEFAULT_HORIZONTAL_ALIGNMENT
@@ -32,7 +32,7 @@ const meta: Meta<typeof WrapLayout> = {
     verticalAlignment: {
       control: { type: 'select' },
       options: Object.getOwnPropertyNames(
-        WrapLayoutConstants.VERTICAL_ALIGNMENT
+        WrapLayoutConstants.VERTICAL_ALIGNMENTS
       ),
       defaultValue: { summary: WrapLayoutConstants.DEFAULT_VERTICAL_ALIGNMENT }
     },
@@ -138,14 +138,14 @@ const Template: Story = {
 const Horizontal: Story = {
   ...Template,
   args: {
-    orientation: WrapLayoutConstants.ORIENTATION.horizontal
+    orientation: WrapLayoutConstants.ORIENTATIONS.horizontal
   }
 };
 
 const Vertical: Story = {
   ...Template,
   args: {
-    orientation: WrapLayoutConstants.ORIENTATION.vertical
+    orientation: WrapLayoutConstants.ORIENTATIONS.vertical
   }
 };
 
