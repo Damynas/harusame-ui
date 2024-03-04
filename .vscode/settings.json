@@ -1,8 +1,8 @@
 {
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
-    "*.ts": "${capture}.constants.ts, ${capture}.test.ts",
-    "*.tsx": "${capture}.constants.ts, ${capture}.stories.tsx,, ${capture}.styles.tsx, ${capture}.test.tsx"
+    "*.ts": "${capture}.constants.ts, ${capture}.test.ts, ${capture}.stories.tsx, ${capture}.types.ts",
+    "*.tsx": "${capture}.constants.ts, ${capture}.stories.tsx,, ${capture}.styles.tsx, ${capture}.test.tsx, ${capture}.types.ts"
   },
   "jest.runMode": "on-demand"
 }

@@ -33,13 +33,11 @@ const globalTypes = {
 
 const withThemeProvider: Decorator = (Story, context) => {
   const themeName = context.globals.theme;
-  const theme = {
-    ...Themes[convertCase(themeName, 'titleCase', 'camelCase')]
-  };
+  const theme = Themes[convertCase(themeName, 'titleCase', 'camelCase')];
   return (
     <ThemeProvider theme={theme}>
       <Font />
-      <Story />
+      {Story(context)}
     </ThemeProvider>
   );
 };
