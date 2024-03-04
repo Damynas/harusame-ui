@@ -116,4 +116,17 @@ describe('Button tests', () => {
       'line-height': 'calc(2.5rem - 1rem)'
     });
   });
+
+  it('Should render loading button', () => {
+    const props: ButtonProps = {
+      ...defaultProps,
+      loading: true
+    };
+    renderButton(props);
+    const button = screen.queryByTestId(buttonTestId);
+    expect(button).toBeDefined();
+    expect(button?.children.length).toEqual(2);
+    expect(button?.children[0]).toBeVisible();
+    expect(button?.children[1]).not.toBeVisible();
+  });
 });

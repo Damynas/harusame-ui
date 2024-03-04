@@ -1,11 +1,14 @@
 import styled, { css } from 'styled-components';
 import { ButtonConstants } from './button.constants';
-import type { ButtonSize } from './button.types';
+import type { ButtonSize, ButtonVariant } from './button.types';
 import type { Nullable } from '@common/shared';
 import type { Theme } from '@common/theme';
+import { BoxLayout } from '@components/layouts';
+import { DottedProgressIndicator } from '@components/feedback';
 
 type StyledButtonProps = {
   $size?: ButtonSize;
+  $loading?: boolean;
   $theme: Nullable<Theme>;
 };
 
@@ -23,12 +26,16 @@ const getButtonSize = (
 
 const ButtonBase = styled.button<StyledButtonProps>`
   border: none;
-  cursor: pointer;
   margin: 0.25rem;
   min-width: 4rem;
   white-space: nowrap;
   padding: 0.5rem 1rem;
   border-radius: 0.3rem;
+  ${(props) =>
+    !props.$loading &&
+    css`
+      cursor: pointer;
+    `}
   ${(props) => css`
     height: ${getButtonSize(props.$size)};
     line-height: calc(${getButtonSize(props.$size)} - 1rem);
@@ -50,18 +57,21 @@ const ContainedButton = styled(ButtonBase)`
       color: ${props.$theme.colors.white};
       border-color: ${props.$theme.colors.primary500};
       background-color: ${props.$theme.colors.primary500};
-      &:hover {
-        border-color: ${props.$theme.colors.primary400};
-        background-color: ${props.$theme.colors.primary400};
-      }
-      &:active {
-        border-color: ${props.$theme.colors.primary700};
-        background-color: ${props.$theme.colors.primary700};
-      }
-      &:focus {
-        outline: 0.125rem solid ${props.$theme.colors.primary700};
-        outline-offset: 0.125rem;
-      }
+      ${!props.$loading &&
+      css`
+        &:hover {
+          border-color: ${props.$theme.colors.primary400};
+          background-color: ${props.$theme.colors.primary400};
+        }
+        &:active {
+          border-color: ${props.$theme.colors.primary700};
+          background-color: ${props.$theme.colors.primary700};
+        }
+        &:focus {
+          outline: 0.125rem solid ${props.$theme.colors.primary700};
+          outline-offset: 0.125rem;
+        }
+      `}
     `}
 `;
 
@@ -73,16 +83,19 @@ const OutlinedButton = styled(ButtonBase)`
       background-color: transparent;
       color: ${props.$theme.colors.primary500};
       border-color: ${props.$theme.colors.primary500};
-      &:hover {
-        background-color: ${props.$theme.colors.primary100};
-      }
-      &:active {
-        background-color: ${props.$theme.colors.primary300};
-      }
-      &:focus {
-        outline: 0.125rem solid ${props.$theme.colors.primary700};
-        outline-offset: 0.125rem;
-      }
+      ${!props.$loading &&
+      css`
+        &:hover {
+          background-color: ${props.$theme.colors.primary100};
+        }
+        &:active {
+          background-color: ${props.$theme.colors.primary300};
+        }
+        &:focus {
+          outline: 0.125rem solid ${props.$theme.colors.primary700};
+          outline-offset: 0.125rem;
+        }
+      `}
     `}
 `;
 
@@ -92,18 +105,61 @@ const TextButton = styled(ButtonBase)`
     css`
       background-color: transparent;
       color: ${props.$theme.colors.primary500};
-      &:hover {
-        background-color: ${props.$theme.colors.primary100};
-      }
-      &:active {
-        background-color: ${props.$theme.colors.primary300};
-      }
-      &:focus {
-        outline: 0.125rem solid ${props.$theme.colors.primary700};
-        outline-offset: 0.125rem;
+      ${!props.$loading &&
+      css`
+        &:hover {
+          background-color: ${props.$theme.colors.primary100};
+        }
+        &:active {
+          background-color: ${props.$theme.colors.primary300};
+        }
+        &:focus {
+          outline: 0.125rem solid ${props.$theme.colors.primary700};
+          outline-offset: 0.125rem;
+        }
+      `}
+    `}
+`;
+
+const LabelContainer = styled(BoxLayout)<{ $loading?: boolean }>`
+  ${(props) =>
+    props.$loading &&
+    css`
+      visibility: hidden;
+    `}
+`;
+
+const ProgressIndicatorContainer = styled(BoxLayout)`
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+`;
+
+const ProgressIndicator = styled(DottedProgressIndicator)<{
+  $variant?: ButtonVariant;
+  $theme: Nullable<Theme>;
+}>`
+  ${(props) =>
+    props.$variant &&
+    props.$theme &&
+    css`
+      & > * {
+        background-color: ${props.$variant ===
+        ButtonConstants.BUTTON_VARIANTS.contained
+          ? props.$theme?.colors.white
+          : props.$theme?.colors.primary500};
       }
     `}
 `;
 
-export { ContainedButton, OutlinedButton, TextButton };
+export {
+  ContainedButton,
+  OutlinedButton,
+  TextButton,
+  LabelContainer,
+  ProgressIndicatorContainer,
+  ProgressIndicator
+};
 export type { StyledButton };

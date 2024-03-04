@@ -7,6 +7,9 @@ import {
   ContainedButton,
   OutlinedButton,
   TextButton,
+  LabelContainer,
+  ProgressIndicatorContainer,
+  ProgressIndicator,
   type StyledButton
 } from './button.styles';
 import { ButtonConstants } from './button.constants';
@@ -17,6 +20,7 @@ type ButtonProps = {
   label: string;
   variant?: ButtonVariant;
   size?: ButtonSize;
+  loading?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 type ButtonElement = HTMLButtonElement;
@@ -35,7 +39,7 @@ const ButtonInner = (
   buttonProps: ButtonProps,
   forwardedRef: ForwardedRef<ButtonElement>
 ) => {
-  const { label, variant, size, ...props } = buttonProps;
+  const { label, variant, size, loading, ...props } = buttonProps;
   const ButtonComponent = getButtonComponent(variant);
   const theme = useTheme();
   return (
@@ -44,9 +48,22 @@ const ButtonInner = (
       ref={forwardedRef}
       data-variant={variant}
       $size={size}
+      $loading={loading}
       $theme={theme}
     >
-      {label}
+      {loading && (
+        <ProgressIndicatorContainer
+          horizontalAlignment='center'
+          verticalAlignment='center'
+        >
+          <ProgressIndicator
+            size='small'
+            $variant={variant}
+            $theme={theme}
+          />
+        </ProgressIndicatorContainer>
+      )}
+      <LabelContainer $loading={loading}>{label}</LabelContainer>
     </ButtonComponent>
   );
 };
