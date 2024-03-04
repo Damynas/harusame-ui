@@ -1,4 +1,4 @@
-import { forwardRef, type ForwardedRef } from 'react';
+import { forwardRef, type ForwardedRef, type HTMLAttributes } from 'react';
 import { TextConstants } from './text.constants';
 import {
   Body1,
@@ -12,13 +12,17 @@ import {
   Heading5,
   Heading6
 } from './text.styles';
-import type {
-  StyledText,
-  TextElement,
-  TextProps,
-  TextVariant
-} from './text.types';
+import type { FontWeight, TextVariant, StyledText } from './text.types';
 import { useTheme } from '@common/theme';
+
+type TextProps = {
+  variant?: TextVariant;
+  truncate?: boolean;
+  selectionDisabled?: boolean;
+  fontWeight?: FontWeight;
+} & HTMLAttributes<HTMLSpanElement>;
+
+type TextElement = HTMLSpanElement;
 
 const TextComponents: Record<TextVariant, StyledText> = {
   [TextConstants.TEXT_VARIANTS.heading1]: Heading1,

@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components';
+import { TextConstants } from './text.constants';
+import type { FontWeight } from './text.types';
 import type { Nullable } from '@common/shared';
 import { commonColors, type Theme } from '@common/theme';
-import { TextConstants } from './text.constants';
-
-type FontWeight = keyof typeof TextConstants.FONT_WEIGHTS;
 
 type StyledTextProps = {
   $color?: string;
