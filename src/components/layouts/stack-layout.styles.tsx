@@ -19,6 +19,8 @@ type StyledStackLayoutProps = {
   $borderRadius?: string;
 };
 
+type StyledStackLayout = typeof StackLayoutBase;
+
 const StackLayoutBase = styled.div<StyledStackLayoutProps>`
   display: flex;
   box-sizing: border-box;
@@ -89,7 +91,7 @@ const HorizontalStackLayout = styled(StackLayoutBase)`
     `}
   ${(props) =>
     props.$horizontalAlignment ===
-      StackLayoutConstants.HORIZONTAL_ALIGNMENT.stretch &&
+      StackLayoutConstants.HORIZONTAL_ALIGNMENTS.stretch &&
     css`
       justify-content: flex-start;
       & > * {
@@ -98,60 +100,60 @@ const HorizontalStackLayout = styled(StackLayoutBase)`
     `}
   ${(props) =>
     props.$horizontalAlignment ===
-      StackLayoutConstants.HORIZONTAL_ALIGNMENT.left &&
+      StackLayoutConstants.HORIZONTAL_ALIGNMENTS.left &&
     css`
       justify-content: flex-start;
     `}
   ${(props) =>
     props.$horizontalAlignment ===
-      StackLayoutConstants.HORIZONTAL_ALIGNMENT.center &&
+      StackLayoutConstants.HORIZONTAL_ALIGNMENTS.center &&
     css`
       justify-content: center;
     `}
   ${(props) =>
     props.$horizontalAlignment ===
-      StackLayoutConstants.HORIZONTAL_ALIGNMENT.right &&
+      StackLayoutConstants.HORIZONTAL_ALIGNMENTS.right &&
     css`
       justify-content: flex-end;
     `}
   ${(props) =>
     props.$horizontalAlignment ===
-      StackLayoutConstants.HORIZONTAL_ALIGNMENT.spaceBetween &&
+      StackLayoutConstants.HORIZONTAL_ALIGNMENTS.spaceBetween &&
     css`
       justify-content: space-between;
     `}
   ${(props) =>
     props.$horizontalAlignment ===
-      StackLayoutConstants.HORIZONTAL_ALIGNMENT.spaceAround &&
+      StackLayoutConstants.HORIZONTAL_ALIGNMENTS.spaceAround &&
     css`
       justify-content: space-around;
     `}
   ${(props) =>
     props.$horizontalAlignment ===
-      StackLayoutConstants.HORIZONTAL_ALIGNMENT.spaceEvenly &&
+      StackLayoutConstants.HORIZONTAL_ALIGNMENTS.spaceEvenly &&
     css`
       justify-content: space-evenly;
     `}
   ${(props) =>
     props.$verticalAlignment ===
-      StackLayoutConstants.VERTICAL_ALIGNMENT.stretch &&
+      StackLayoutConstants.VERTICAL_ALIGNMENTS.stretch &&
     css`
       align-items: stretch;
     `}
   ${(props) =>
-    props.$verticalAlignment === StackLayoutConstants.VERTICAL_ALIGNMENT.top &&
+    props.$verticalAlignment === StackLayoutConstants.VERTICAL_ALIGNMENTS.top &&
     css`
       align-items: flex-start;
     `}
   ${(props) =>
     props.$verticalAlignment ===
-      StackLayoutConstants.VERTICAL_ALIGNMENT.center &&
+      StackLayoutConstants.VERTICAL_ALIGNMENTS.center &&
     css`
       align-items: center;
     `}
   ${(props) =>
     props.$verticalAlignment ===
-      StackLayoutConstants.VERTICAL_ALIGNMENT.bottom &&
+      StackLayoutConstants.VERTICAL_ALIGNMENTS.bottom &&
     css`
       align-items: flex-end;
     `}
@@ -166,31 +168,31 @@ const VerticalStackLayout = styled(StackLayoutBase)`
     `}
   ${(props) =>
     props.$horizontalAlignment ===
-      StackLayoutConstants.HORIZONTAL_ALIGNMENT.stretch &&
+      StackLayoutConstants.HORIZONTAL_ALIGNMENTS.stretch &&
     css`
       align-items: stretch;
     `}
   ${(props) =>
     props.$horizontalAlignment ===
-      StackLayoutConstants.HORIZONTAL_ALIGNMENT.left &&
+      StackLayoutConstants.HORIZONTAL_ALIGNMENTS.left &&
     css`
       align-items: flex-start;
     `}
   ${(props) =>
     props.$horizontalAlignment ===
-      StackLayoutConstants.HORIZONTAL_ALIGNMENT.center &&
+      StackLayoutConstants.HORIZONTAL_ALIGNMENTS.center &&
     css`
       align-items: center;
     `}
   ${(props) =>
     props.$horizontalAlignment ===
-      StackLayoutConstants.HORIZONTAL_ALIGNMENT.right &&
+      StackLayoutConstants.HORIZONTAL_ALIGNMENTS.right &&
     css`
       align-items: flex-end;
     `}
   ${(props) =>
     props.$verticalAlignment ===
-      StackLayoutConstants.VERTICAL_ALIGNMENT.stretch &&
+      StackLayoutConstants.VERTICAL_ALIGNMENTS.stretch &&
     css`
       justify-content: flex-start;
       & > * {
@@ -198,40 +200,41 @@ const VerticalStackLayout = styled(StackLayoutBase)`
       }
     `}
   ${(props) =>
-    props.$verticalAlignment === StackLayoutConstants.VERTICAL_ALIGNMENT.top &&
+    props.$verticalAlignment === StackLayoutConstants.VERTICAL_ALIGNMENTS.top &&
     css`
       justify-content: flex-start;
     `}
   ${(props) =>
     props.$verticalAlignment ===
-      StackLayoutConstants.VERTICAL_ALIGNMENT.center &&
+      StackLayoutConstants.VERTICAL_ALIGNMENTS.center &&
     css`
       justify-content: center;
     `}
   ${(props) =>
     props.$verticalAlignment ===
-      StackLayoutConstants.VERTICAL_ALIGNMENT.bottom &&
+      StackLayoutConstants.VERTICAL_ALIGNMENTS.bottom &&
     css`
       justify-content: flex-end;
     `}
   ${(props) =>
     props.$verticalAlignment ===
-      StackLayoutConstants.VERTICAL_ALIGNMENT.spaceBetween &&
+      StackLayoutConstants.VERTICAL_ALIGNMENTS.spaceBetween &&
     css`
       justify-content: space-between;
     `}
   ${(props) =>
     props.$verticalAlignment ===
-      StackLayoutConstants.VERTICAL_ALIGNMENT.spaceAround &&
+      StackLayoutConstants.VERTICAL_ALIGNMENTS.spaceAround &&
     css`
       justify-content: space-around;
     `}
   ${(props) =>
     props.$verticalAlignment ===
-      StackLayoutConstants.VERTICAL_ALIGNMENT.spaceEvenly &&
+      StackLayoutConstants.VERTICAL_ALIGNMENTS.spaceEvenly &&
     css`
       justify-content: space-evenly;
     `}
 `;
 
-export { StackLayoutBase, HorizontalStackLayout, VerticalStackLayout };
+export { HorizontalStackLayout, VerticalStackLayout };
+export type { StyledStackLayout };

@@ -2,14 +2,14 @@ import { forwardRef, type ForwardedRef, type HTMLAttributes } from 'react';
 import { StackLayoutConstants } from './stack-layout.constants';
 import {
   HorizontalStackLayout,
-  StackLayoutBase,
-  VerticalStackLayout
+  VerticalStackLayout,
+  type StyledStackLayout
 } from './stack-layout.styles';
-
-type Orientation = keyof typeof StackLayoutConstants.ORIENTATION;
-type HorizontalAlignment =
-  keyof typeof StackLayoutConstants.HORIZONTAL_ALIGNMENT;
-type VerticalAlignment = keyof typeof StackLayoutConstants.VERTICAL_ALIGNMENT;
+import type {
+  Orientation,
+  HorizontalAlignment,
+  VerticalAlignment
+} from './stack-layout.types';
 
 type StackLayoutProps = {
   margin?: string;
@@ -31,11 +31,9 @@ type StackLayoutProps = {
 
 type StackLayoutElement = HTMLDivElement;
 
-type StyledStackLayout = typeof StackLayoutBase;
-
 const StackLayoutComponents: Record<Orientation, StyledStackLayout> = {
-  [StackLayoutConstants.ORIENTATION.horizontal]: HorizontalStackLayout,
-  [StackLayoutConstants.ORIENTATION.vertical]: VerticalStackLayout
+  [StackLayoutConstants.ORIENTATIONS.horizontal]: HorizontalStackLayout,
+  [StackLayoutConstants.ORIENTATIONS.vertical]: VerticalStackLayout
 };
 
 const getStackLayoutComponent = (

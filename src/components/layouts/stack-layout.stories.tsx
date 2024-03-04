@@ -15,7 +15,7 @@ const meta: Meta<typeof StackLayout> = {
   argTypes: {
     orientation: {
       control: { type: 'select' },
-      options: Object.getOwnPropertyNames(StackLayoutConstants.ORIENTATION),
+      options: Object.getOwnPropertyNames(StackLayoutConstants.ORIENTATIONS),
       defaultValue: {
         summary: StackLayoutConstants.DEFAULT_ORIENTATION
       }
@@ -23,7 +23,7 @@ const meta: Meta<typeof StackLayout> = {
     horizontalAlignment: {
       control: { type: 'select' },
       options: Object.getOwnPropertyNames(
-        StackLayoutConstants.HORIZONTAL_ALIGNMENT
+        StackLayoutConstants.HORIZONTAL_ALIGNMENTS
       ),
       defaultValue: {
         summary: StackLayoutConstants.DEFAULT_HORIZONTAL_ALIGNMENT
@@ -32,7 +32,7 @@ const meta: Meta<typeof StackLayout> = {
     verticalAlignment: {
       control: { type: 'select' },
       options: Object.getOwnPropertyNames(
-        StackLayoutConstants.VERTICAL_ALIGNMENT
+        StackLayoutConstants.VERTICAL_ALIGNMENTS
       ),
       defaultValue: { summary: StackLayoutConstants.DEFAULT_VERTICAL_ALIGNMENT }
     },
@@ -118,14 +118,14 @@ const Template: Story = {
 const Horizontal: Story = {
   ...Template,
   args: {
-    orientation: StackLayoutConstants.ORIENTATION.horizontal
+    orientation: StackLayoutConstants.ORIENTATIONS.horizontal
   }
 };
 
 const Vertical: Story = {
   ...Template,
   args: {
-    orientation: StackLayoutConstants.ORIENTATION.vertical
+    orientation: StackLayoutConstants.ORIENTATIONS.vertical
   }
 };
 

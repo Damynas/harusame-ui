@@ -1,11 +1,11 @@
 const StackLayoutConstants = {
   DISPLAY_NAME: 'Stack Layout',
-  ORIENTATION: {
+  ORIENTATIONS: {
     horizontal: 'horizontal',
     vertical: 'vertical'
   },
   DEFAULT_ORIENTATION: 'horizontal',
-  HORIZONTAL_ALIGNMENT: {
+  HORIZONTAL_ALIGNMENTS: {
     stretch: 'stretch',
     left: 'left',
     center: 'center',
@@ -15,7 +15,7 @@ const StackLayoutConstants = {
     spaceEvenly: 'spaceEvenly'
   },
   DEFAULT_HORIZONTAL_ALIGNMENT: 'stretch',
-  VERTICAL_ALIGNMENT: {
+  VERTICAL_ALIGNMENTS: {
     stretch: 'stretch',
     top: 'top',
     center: 'center',
