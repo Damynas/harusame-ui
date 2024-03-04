@@ -185,4 +185,5 @@ const convertCase = (
   }
 };
 
-export { convertCase, type NamingConvention };
+export { convertCase };
+export type { NamingConvention };
