@@ -4,16 +4,14 @@ import {
   type ForwardedRef
 } from 'react';
 import {
-  ButtonBase,
   ContainedButton,
   OutlinedButton,
-  TextButton
+  TextButton,
+  type StyledButton
 } from './button.styles';
 import { ButtonConstants } from './button.constants';
+import type { ButtonSize, ButtonVariant } from './button.types';
 import { useTheme } from '@common/theme';
-
-type ButtonVariant = keyof typeof ButtonConstants.BUTTON_VARIANTS;
-type ButtonSize = keyof typeof ButtonConstants.BUTTON_SIZES;
 
 type ButtonProps = {
   label: string;
@@ -22,8 +20,6 @@ type ButtonProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 type ButtonElement = HTMLButtonElement;
-
-type StyledButton = typeof ButtonBase;
 
 const ButtonComponents: Record<ButtonVariant, StyledButton> = {
   [ButtonConstants.BUTTON_VARIANTS.contained]: ContainedButton,

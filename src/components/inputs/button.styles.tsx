@@ -1,14 +1,15 @@
 import styled, { css } from 'styled-components';
+import { ButtonConstants } from './button.constants';
+import type { ButtonSize } from './button.types';
 import type { Nullable } from '@common/shared';
 import type { Theme } from '@common/theme';
-import { ButtonConstants } from './button.constants';
-
-type ButtonSize = keyof typeof ButtonConstants.BUTTON_SIZES;
 
 type StyledButtonProps = {
   $size?: ButtonSize;
   $theme: Nullable<Theme>;
 };
+
+type StyledButton = typeof ButtonBase;
 
 const ButtonSizes: Record<ButtonSize, string> = {
   [ButtonConstants.BUTTON_SIZES.small]: '2rem',
@@ -104,4 +105,5 @@ const TextButton = styled(ButtonBase)`
     `}
 `;
 
-export { ButtonBase, ContainedButton, OutlinedButton, TextButton };
+export { ContainedButton, OutlinedButton, TextButton };
+export type { StyledButton };

@@ -164,7 +164,6 @@ const Caption2 = styled(TextBase)`
 `;
 
 export {
-  TextBase,
   Heading1,
   Heading2,
   Heading3,

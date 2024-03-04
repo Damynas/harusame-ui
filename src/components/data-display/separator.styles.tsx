@@ -31,5 +31,5 @@ const VerticalSeparator = styled(SeparatorBase)`
       : SeparatorConstants.DEFAULT_SEPARATOR_SIZE};
 `;
 
-export { SeparatorBase, HorizontalSeparator, VerticalSeparator };
+export { HorizontalSeparator, VerticalSeparator };
 export type { StyledSeparator };
