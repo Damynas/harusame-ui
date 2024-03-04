@@ -1,6 +1,6 @@
 const SeparatorConstants = {
   DISPLAY_NAME: 'Separator',
-  ORIENTATION: {
+  ORIENTATIONS: {
     horizontal: 'horizontal',
     vertical: 'vertical'
   },

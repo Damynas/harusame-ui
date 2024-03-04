@@ -13,7 +13,7 @@ const meta: Meta<typeof Separator> = {
   argTypes: {
     orientation: {
       control: { type: 'select' },
-      options: Object.getOwnPropertyNames(SeparatorConstants.ORIENTATION),
+      options: Object.getOwnPropertyNames(SeparatorConstants.ORIENTATIONS),
       defaultValue: {
         summary: SeparatorConstants.DEFAULT_ORIENTATION
       }
@@ -41,7 +41,7 @@ type Story = StoryObj<typeof meta>;
 const Template: Story = {
   render: (args) => (
     <BoxLayout
-      {...(args.orientation === SeparatorConstants.ORIENTATION.vertical
+      {...(args.orientation === SeparatorConstants.ORIENTATIONS.vertical
         ? { horizontalAlignment: 'center' }
         : { verticalAlignment: 'center' })}
       width='25rem'
@@ -55,14 +55,14 @@ const Template: Story = {
 const Horizontal: Story = {
   ...Template,
   args: {
-    orientation: SeparatorConstants.ORIENTATION.horizontal
+    orientation: SeparatorConstants.ORIENTATIONS.horizontal
   }
 };
 
 const Vertical: Story = {
   ...Template,
   args: {
-    orientation: SeparatorConstants.ORIENTATION.vertical
+    orientation: SeparatorConstants.ORIENTATIONS.vertical
   }
 };
 

@@ -1,7 +1,7 @@
+import styled from 'styled-components';
 import type { Nullable } from '@common/shared';
 import { commonColors, type Theme } from '@common/theme';
 import { isValidSize } from '@utils/is-valid-size';
-import styled from 'styled-components';
 import { SeparatorConstants } from './separator.constants';
 
 type StyledSeparatorProps = {
@@ -9,6 +9,8 @@ type StyledSeparatorProps = {
   $size?: string;
   $theme: Nullable<Theme>;
 };
+
+type StyledSeparator = typeof SeparatorBase;
 
 const SeparatorBase = styled.div<StyledSeparatorProps>`
   background-color: ${(props) =>
@@ -30,3 +32,4 @@ const VerticalSeparator = styled(SeparatorBase)`
 `;
 
 export { SeparatorBase, HorizontalSeparator, VerticalSeparator };
+export type { StyledSeparator };

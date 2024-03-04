@@ -12,6 +12,8 @@ type StyledTextProps = {
   $theme: Nullable<Theme>;
 };
 
+type StyledText = typeof TextBase;
+
 const TextBase = styled.span<StyledTextProps>`
   margin: 0;
   padding: 0;
@@ -174,3 +176,4 @@ export {
   Caption1,
   Caption2
 };
+export type { StyledText };

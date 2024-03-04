@@ -2,12 +2,11 @@ import { ForwardedRef, forwardRef, type HTMLAttributes } from 'react';
 import { SeparatorConstants } from './separator.constants';
 import {
   HorizontalSeparator,
-  SeparatorBase,
-  VerticalSeparator
+  VerticalSeparator,
+  type StyledSeparator
 } from './separator.styles';
+import type { Orientation } from './separator.types';
 import { useTheme } from '@common/theme';
-
-type Orientation = keyof typeof SeparatorConstants.ORIENTATION;
 
 type SeparatorProps = {
   orientation?: Orientation;
@@ -17,11 +16,9 @@ type SeparatorProps = {
 
 type SeparatorElement = HTMLDivElement;
 
-type StyledSeparator = typeof SeparatorBase;
-
 const SeparatorComponents: Record<Orientation, StyledSeparator> = {
-  [SeparatorConstants.ORIENTATION.horizontal]: HorizontalSeparator,
-  [SeparatorConstants.ORIENTATION.vertical]: VerticalSeparator
+  [SeparatorConstants.ORIENTATIONS.horizontal]: HorizontalSeparator,
+  [SeparatorConstants.ORIENTATIONS.vertical]: VerticalSeparator
 };
 
 const getSeparatorComponent = (

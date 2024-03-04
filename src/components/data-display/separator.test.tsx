@@ -29,9 +29,18 @@ describe('Separator tests', () => {
     cleanup();
   });
 
+  it('Should render horizontal separator when no orientation is given', () => {
+    renderSeparator();
+    const separator = screen.queryByTestId(separatorTestId);
+    expect(separator).toBeDefined();
+    expect(separator).toHaveStyle({
+      height: SeparatorConstants.DEFAULT_SEPARATOR_SIZE
+    });
+  });
+
   it('Should render horizontal separator', () => {
     const props: SeparatorProps = {
-      orientation: SeparatorConstants.ORIENTATION.horizontal
+      orientation: SeparatorConstants.ORIENTATIONS.horizontal
     };
     renderSeparator(props);
     const separator = screen.queryByTestId(separatorTestId);
@@ -43,7 +52,7 @@ describe('Separator tests', () => {
 
   it('Should render vertical separator', () => {
     const props: SeparatorProps = {
-      orientation: SeparatorConstants.ORIENTATION.vertical
+      orientation: SeparatorConstants.ORIENTATIONS.vertical
     };
     renderSeparator(props);
     const separator = screen.queryByTestId(separatorTestId);
