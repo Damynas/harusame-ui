@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import type { Nullable } from '@common/shared';
-import type { Theme } from '@common/theme';
+import { commonColors, type Theme } from '@common/theme';
 import type { DottedProgressIndicatorSize } from './dotted-progress-indicator.types';
 import { DottedProgressIndicatorConstants } from './dotted-progress-indicator.constants';
 
@@ -40,7 +40,7 @@ const BouncingDot = styled.div<StyledBouncingDotProps>`
   width: ${(props) => getBouncingDotSize(props.$size)};
   height: ${(props) => getBouncingDotSize(props.$size)};
   background-color: ${(props) =>
-    props.$color ?? props.$theme?.colors.primary500};
+    props.$color ?? props.$theme?.colors.primary500 ?? commonColors.black};
   animation: ${bounceAnimation} 0.6s infinite alternate;
   animation-delay: ${(props) => props.$animationDelay ?? '0s'};
   border-radius: 100%;

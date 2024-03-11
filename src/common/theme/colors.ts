@@ -19,6 +19,7 @@ type ThemeColors = {
 
 const commonColors: CommonColors = {
   white: '#FFFFFF',
+  gray: '#808080',
   black: '#000000'
 };
 

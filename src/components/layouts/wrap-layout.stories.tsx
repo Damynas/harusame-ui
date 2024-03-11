@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import styled, { css } from 'styled-components';
-import { useTheme, type Theme } from '@common/theme';
+import styled from 'styled-components';
+import { commonColors, useTheme, type Theme } from '@common/theme';
 import type { Nullable } from '@common/shared';
 import { WrapLayout } from './wrap-layout';
 import { WrapLayoutConstants } from './wrap-layout.constants';
+import { Fragment } from 'react';
 
 const meta: Meta<typeof WrapLayout> = {
   title: 'Components/Layouts/Wrap Layout',
@@ -84,7 +85,7 @@ const meta: Meta<typeof WrapLayout> = {
     columnGap: '0.5rem',
     margin: '0.5rem',
     padding: '0.5rem',
-    border: '0.06rem solid black'
+    border: `0.06rem solid ${commonColors.black}`
   }
 };
 
@@ -95,11 +96,8 @@ type Story = StoryObj<typeof meta>;
 const SquareBase = styled.div<{ $theme?: Nullable<Theme> }>`
   min-width: 3rem;
   min-height: 3rem;
-  ${(props) =>
-    props.$theme &&
-    css`
-      background-color: ${props.$theme.colors.primary500};
-    `}
+  background-color: ${(props) =>
+    props.$theme?.colors.primary500 ?? commonColors.black};
 `;
 
 const Square = () => {
@@ -110,11 +108,8 @@ const Square = () => {
 const RectangleBase = styled.div<{ $theme?: Nullable<Theme> }>`
   min-width: 4rem;
   min-height: 2rem;
-  ${(props) =>
-    props.$theme &&
-    css`
-      background-color: ${props.$theme.colors.neutral500};
-    `}
+  background-color: ${(props) =>
+    props.$theme?.colors.neutral500 ?? commonColors.gray};
 `;
 
 const Rectangle = () => {
@@ -126,10 +121,10 @@ const Template: Story = {
   render: (args) => (
     <WrapLayout {...args}>
       {Array.from({ length: 12 }).map((_, index) => (
-        <>
+        <Fragment key={index}>
           <Square key={`square-${index}`} />
           <Rectangle key={`rectangle-${index}`} />
-        </>
+        </Fragment>
       ))}
     </WrapLayout>
   )

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import styled, { css } from 'styled-components';
-import { useTheme, type Theme } from '@common/theme';
+import styled from 'styled-components';
+import { commonColors, useTheme, type Theme } from '@common/theme';
 import type { Nullable } from '@common/shared';
 import { BoxLayout } from './box-layout';
 import { BoxLayoutConstants } from './box-layout.constants';
@@ -79,11 +79,8 @@ type Story = StoryObj<typeof meta>;
 const SquareBase = styled.div<{ $theme?: Nullable<Theme> }>`
   min-width: 3rem;
   min-height: 3rem;
-  ${(props) =>
-    props.$theme &&
-    css`
-      background-color: ${props.$theme.colors.primary500};
-    `}
+  background-color: ${(props) =>
+    props.$theme?.colors.primary500 ?? commonColors.black};
 `;
 
 const Square = () => {

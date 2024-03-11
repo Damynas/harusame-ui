@@ -120,7 +120,7 @@ const Default: Story = {
       'camelCase'
     ) as ThemeVariant;
     const theme = Themes[themeName];
-    return renderTypography(theme);
+    return theme ? renderTypography(theme) : <></>;
   }
 };
 

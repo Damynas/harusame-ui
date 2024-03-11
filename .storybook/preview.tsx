@@ -25,7 +25,7 @@ const globalTypes = {
     defaultValue: themeNames.length && themeNames.at(0),
     toolbar: {
       icon: 'lightning',
-      items: themeNames,
+      items: themeNames.concat(['No Theme']),
       dynamicTitle: true
     }
   }

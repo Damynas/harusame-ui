@@ -1,6 +1,7 @@
 const ColorConstants = {
   COMMON_COLORS: {
     white: 'white',
+    gray: 'gray',
     black: 'black'
   },
   FEEDBACK_COLORS: {

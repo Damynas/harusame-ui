@@ -165,7 +165,7 @@ const Default: Story = {
       'camelCase'
     ) as ThemeVariant;
     const theme = Themes[themeName];
-    return (
+    return theme ? (
       <StackLayout
         orientation='vertical'
         width='100%'
@@ -177,6 +177,8 @@ const Default: Story = {
         {renderFeedbackColors(theme)}
         {renderCommonColors(theme)}
       </StackLayout>
+    ) : (
+      <></>
     );
   }
 };
