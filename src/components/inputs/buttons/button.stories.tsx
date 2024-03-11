@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './button';
 import { ButtonConstants } from './button.constants';
+import { CloseIcon } from '@common/icons';
+import { ButtonBaseConstants } from './button-base.constants';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Inputs/Button',
@@ -10,7 +12,7 @@ const meta: Meta<typeof Button> = {
     layout: 'centered'
   },
   argTypes: {
-    label: {
+    text: {
       control: { type: 'text' }
     },
     variant: {
@@ -20,18 +22,33 @@ const meta: Meta<typeof Button> = {
     },
     size: {
       control: { type: 'select' },
-      options: Object.getOwnPropertyNames(ButtonConstants.BUTTON_SIZES),
-      defaultValue: { summary: ButtonConstants.DEFAULT_BUTTON_SIZE }
+      options: Object.getOwnPropertyNames(ButtonBaseConstants.BUTTON_SIZES),
+      defaultValue: { summary: ButtonBaseConstants.DEFAULT_BUTTON_SIZE }
     },
     loading: {
       control: { type: 'boolean' }
+    },
+    disabled: {
+      control: { type: 'boolean' }
+    },
+    borderRadius: {
+      control: { type: 'text' },
+      defaultValue: { summary: '0.25rem' }
+    },
+    leadingIcon: {
+      table: { disable: true }
+    },
+    trailingIcon: {
+      table: { disable: true }
     }
   },
   args: {
-    label: ButtonConstants.DISPLAY_NAME,
+    text: ButtonConstants.DISPLAY_NAME,
     variant: ButtonConstants.DEFAULT_BUTTON_VARIANT,
-    size: ButtonConstants.DEFAULT_BUTTON_SIZE,
-    loading: false
+    size: ButtonBaseConstants.DEFAULT_BUTTON_SIZE,
+    loading: false,
+    disabled: false,
+    borderRadius: '0.25rem'
   }
 };
 
@@ -64,4 +81,18 @@ const Text: Story = {
   }
 };
 
-export { Contained, Outlined, Text };
+const LeadingIcon: Story = {
+  ...Template,
+  args: {
+    leadingIcon: <CloseIcon />
+  }
+};
+
+const TrailingIcon: Story = {
+  ...Template,
+  args: {
+    trailingIcon: <CloseIcon />
+  }
+};
+
+export { Contained, Outlined, Text, LeadingIcon, TrailingIcon };

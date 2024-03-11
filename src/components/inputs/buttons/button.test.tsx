@@ -2,11 +2,12 @@ import { createRef, type Ref } from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
 import { Button, type ButtonElement, type ButtonProps } from './button';
 import { ButtonConstants } from './button.constants';
+import { ButtonBaseConstants } from './button-base.constants';
 
 const buttonTestId = 'button-test-id';
 
 const defaultProps: ButtonProps = {
-  label: ButtonConstants.DISPLAY_NAME
+  text: ButtonConstants.DISPLAY_NAME
 };
 
 const renderButton = (
@@ -78,7 +79,7 @@ describe('Button tests', () => {
   it('Should render small button', () => {
     const props: ButtonProps = {
       ...defaultProps,
-      size: ButtonConstants.BUTTON_SIZES.small
+      size: ButtonBaseConstants.BUTTON_SIZES.small
     };
     renderButton(props);
     const button = screen.queryByTestId(buttonTestId);
@@ -92,7 +93,7 @@ describe('Button tests', () => {
   it('Should render regular button', () => {
     const props: ButtonProps = {
       ...defaultProps,
-      size: ButtonConstants.BUTTON_SIZES.regular
+      size: ButtonBaseConstants.BUTTON_SIZES.regular
     };
     renderButton(props);
     const button = screen.queryByTestId(buttonTestId);
@@ -106,7 +107,7 @@ describe('Button tests', () => {
   it('Should render large button', () => {
     const props: ButtonProps = {
       ...defaultProps,
-      size: ButtonConstants.BUTTON_SIZES.large
+      size: ButtonBaseConstants.BUTTON_SIZES.large
     };
     renderButton(props);
     const button = screen.queryByTestId(buttonTestId);
