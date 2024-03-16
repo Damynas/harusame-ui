@@ -23,28 +23,7 @@ const ButtonInner = (
   buttonProps: ButtonProps,
   forwardedRef: ForwardedRef<ButtonElement>
 ) => {
-  const {
-    variant,
-    textColor,
-    hoveredTextColor,
-    pressedTextColor,
-    disabledTextColor,
-    backgroundColor,
-    hoveredBackgroundColor,
-    pressedBackgroundColor,
-    disabledBackgroundColor,
-    borderColor,
-    hoveredBorderColor,
-    pressedBorderColor,
-    disabledBorderColor,
-    leadingIconColor,
-    disabledLeadingIconColor,
-    trailingIconColor,
-    disabledTrailingIconColor,
-    progressIndicatorColor,
-    disabledProgressIndicatorColor,
-    ...props
-  } = buttonProps;
+  const { variant, ...props } = buttonProps;
   const ButtonComponent = getButtonComponent(variant);
   const theme = useTheme();
   return (
@@ -52,24 +31,6 @@ const ButtonInner = (
       {...props}
       ref={forwardedRef}
       data-variant={variant}
-      $textColor={textColor}
-      $hoveredTextColor={hoveredTextColor}
-      $pressedTextColor={pressedTextColor}
-      $disabledTextColor={disabledTextColor}
-      $backgroundColor={backgroundColor}
-      $hoveredBackgroundColor={hoveredBackgroundColor}
-      $pressedBackgroundColor={pressedBackgroundColor}
-      $disabledBackgroundColor={disabledBackgroundColor}
-      $borderColor={borderColor}
-      $hoveredBorderColor={hoveredBorderColor}
-      $pressedBorderColor={pressedBorderColor}
-      $disabledBorderColor={disabledBorderColor}
-      $leadingIconColor={leadingIconColor}
-      $disabledLeadingIconColor={disabledLeadingIconColor}
-      $trailingIconColor={trailingIconColor}
-      $disabledTrailingIconColor={disabledTrailingIconColor}
-      $progressIndicatorColor={progressIndicatorColor}
-      $disabledProgressIndicatorColor={disabledProgressIndicatorColor}
       $theme={theme}
     />
   );
