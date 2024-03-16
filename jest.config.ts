@@ -1,5 +1,4 @@
-import { pathsToModuleNameMapper, type JestConfigWithTsJest } from 'ts-jest';
-import { compilerOptions } from './tsconfig.json';
+import type { JestConfigWithTsJest } from 'ts-jest';
 
 const config: JestConfigWithTsJest = {
   coverageDirectory: 'coverage',
@@ -13,8 +12,6 @@ const config: JestConfigWithTsJest = {
   ],
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
-  modulePaths: [compilerOptions.baseUrl],
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
   setupFilesAfterEnv: ['./jest.setup.ts']
 };
 

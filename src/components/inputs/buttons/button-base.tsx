@@ -13,8 +13,8 @@ import {
   ProgressIndicatorContainer
 } from './button-base.styles';
 import type { ButtonIcon, ButtonSize } from './button-base.types';
-import { DottedProgressIndicator } from '@components/feedback';
-import { useTheme } from '@common/theme';
+import { DottedProgressIndicator } from '../../../components/feedback';
+import { useTheme } from '../../../common/theme';
 
 type ButtonBaseProps = {
   text: string;

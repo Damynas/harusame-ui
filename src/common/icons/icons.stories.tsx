@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { StackLayout, WrapLayout } from '@components/layouts';
-import { convertCase } from '@utils/case-converter';
-import { Text } from '@components/data-display';
+import { StackLayout, WrapLayout } from '../../components/layouts';
+import { convertCase } from '../../utils';
+import { Text } from '../../components/data-display';
 import * as Icons from '../icons';
 
 const meta: Meta = {

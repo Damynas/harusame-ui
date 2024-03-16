@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { ButtonBase } from './button-base';
-import type { Nullable } from '@common/shared';
-import type { Theme } from '@common/theme';
+import type { Nullable } from '../../../common/shared';
+import type { Theme } from '../../../common/theme';
 
 type StyledButtonProps = {
   $theme: Nullable<Theme>;

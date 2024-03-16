@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import type { Nullable } from '@common/shared';
-import { commonColors, type Theme } from '@common/theme';
-import { isValidSize } from '@utils/is-valid-size';
+import type { Nullable } from '../../common/shared';
+import { commonColors, type Theme } from '../../common/theme';
+import { isValidSize } from '../../utils';
 import { SeparatorConstants } from './separator.constants';
 
 type StyledSeparatorProps = {

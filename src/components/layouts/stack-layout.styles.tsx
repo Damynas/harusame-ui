@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { StackLayoutConstants } from './stack-layout.constants';
-import { isValidSize } from '@utils/is-valid-size';
+import { isValidSize } from '../../utils';
 
 type StyledStackLayoutProps = {
   $margin?: string;

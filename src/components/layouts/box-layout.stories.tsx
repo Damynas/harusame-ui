@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import styled from 'styled-components';
-import { commonColors, useTheme, type Theme } from '@common/theme';
-import type { Nullable } from '@common/shared';
+import { commonColors, useTheme, type Theme } from '../../common/theme';
+import type { Nullable } from '../../common/shared';
 import { BoxLayout } from './box-layout';
 import { BoxLayoutConstants } from './box-layout.constants';
 

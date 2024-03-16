@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { WrapLayoutConstants } from './wrap-layout.constants';
-import { isValidSize } from '@utils/is-valid-size';
+import { isValidSize } from '../../utils';
 
 type StyledWrapLayoutProps = {
   $margin?: string;

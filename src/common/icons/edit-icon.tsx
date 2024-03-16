@@ -3,7 +3,7 @@ import {
   Icon,
   type IconElement,
   type IconProps
-} from '@components/data-display';
+} from '../../components/data-display';
 import { EditIconConstants } from './edit-icon.constants';
 
 const EditIconInner = (

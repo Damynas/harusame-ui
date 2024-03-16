@@ -2,8 +2,8 @@ import { forwardRef, type ForwardedRef, type HTMLAttributes } from 'react';
 import { DottedProgressIndicatorConstants } from './dotted-progress-indicator.constants';
 import type { DottedProgressIndicatorSize } from './dotted-progress-indicator.types';
 import { BouncingDot } from './dotted-progress-indicator.styles';
-import { useTheme } from '@common/theme';
-import { StackLayout } from '@components/layouts';
+import { useTheme } from '../../common/theme';
+import { StackLayout } from '../../components/layouts';
 
 type DottedProgressIndicatorProps = {
   color?: string;

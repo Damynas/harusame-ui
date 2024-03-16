@@ -5,8 +5,8 @@ import {
   type SVGAttributes
 } from 'react';
 import { IconConstants } from './icon.constants';
-import { commonColors, useTheme } from '@common/theme';
-import { isValidSize } from '@utils/is-valid-size';
+import { commonColors, useTheme } from '../../common/theme';
+import { isValidSize } from '../../utils';
 
 type PropsToOmit = 'xmlns' | 'viewBox' | 'width' | 'height' | 'fill';
 

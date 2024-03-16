@@ -3,7 +3,7 @@ import { ButtonConstants } from './button.constants';
 import { ContainedButton, OutlinedButton, TextButton } from './button.styles';
 import type { ButtonVariant, StyledButton } from './button.types';
 import { ButtonBaseProps } from './button-base';
-import { useTheme } from '@common/theme';
+import { useTheme } from '../../../common/theme';
 
 type ButtonProps = { variant?: ButtonVariant } & ButtonBaseProps;
 

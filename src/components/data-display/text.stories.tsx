@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Text } from './text';
 import { TextConstants } from './text.constants';
-import { BoxLayout } from '..';
+import { BoxLayout } from '../layouts';
 
 const meta: Meta<typeof Text> = {
   title: 'Components/Data Display/Text',

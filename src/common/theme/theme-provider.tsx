@@ -1,6 +1,6 @@
 import { createContext, useContext, type ReactNode } from 'react';
 import type { Theme } from './themes';
-import type { Nullable } from '..';
+import type { Nullable } from '../shared';
 
 type ThemeProviderProps = {
   theme: Theme;

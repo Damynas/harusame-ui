@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Separator } from './separator';
 import { SeparatorConstants } from './separator.constants';
-import { BoxLayout } from '..';
+import { BoxLayout } from '../layouts';
 
 const meta: Meta<typeof Separator> = {
   title: 'Components/Data Display/Separator',

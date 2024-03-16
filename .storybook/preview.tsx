@@ -1,5 +1,5 @@
-import React from 'react';
 import type { Decorator, Parameters, Preview } from '@storybook/react';
+import type { ThemeVariant } from '../src/common/theme/themes.types';
 import { Themes, ThemeProvider } from '../src/common/theme';
 import { Font } from '../src/common/font';
 import { convertCase } from '../src/utils';
@@ -32,8 +32,12 @@ const globalTypes = {
 };
 
 const withThemeProvider: Decorator = (Story, context) => {
-  const themeName = context.globals.theme;
-  const theme = Themes[convertCase(themeName, 'titleCase', 'camelCase')];
+  const themeName = convertCase(
+    context.globals.theme,
+    'titleCase',
+    'camelCase'
+  ) as ThemeVariant;
+  const theme = Themes[themeName];
   return (
     <ThemeProvider theme={theme}>
       <Font />

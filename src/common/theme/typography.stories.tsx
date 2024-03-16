@@ -4,10 +4,10 @@ import { TypographyConstants } from './typography.constants';
 import { FontStyle } from './typography.types';
 import { Themes, type Theme } from './themes';
 import type { ThemeVariant } from './themes.types';
-import { StackLayout } from '@components/layouts';
-import { Separator, Text } from '@components/data-display';
-import type { FontWeight } from '@components/data-display/text.types';
-import { convertCase } from '@utils/case-converter';
+import { StackLayout } from '../../components/layouts';
+import { Separator, Text } from '../../components/data-display';
+import type { FontWeight } from '../../components/data-display/text.types';
+import { convertCase } from '../../utils';
 
 const meta: Meta = {
   title: 'Design System/Typography',

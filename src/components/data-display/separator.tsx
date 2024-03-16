@@ -6,7 +6,7 @@ import {
   type StyledSeparator
 } from './separator.styles';
 import type { Orientation } from './separator.types';
-import { useTheme } from '@common/theme';
+import { useTheme } from '../../common/theme';
 
 type SeparatorProps = {
   orientation?: Orientation;

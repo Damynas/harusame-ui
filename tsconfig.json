@@ -27,14 +27,7 @@
     "allowUnreachableCode": false,
     "noUncheckedIndexedAccess": true,
 
-    "skipLibCheck": true,
-
-    "baseUrl": "src",
-    "paths": {
-      "@common/*": ["common/*"],
-      "@components/*": ["components/*"],
-      "@utils/*": ["utils/*"]
-    }
+    "skipLibCheck": true
   },
   "exclude": ["dist", "node_modules"]
 }

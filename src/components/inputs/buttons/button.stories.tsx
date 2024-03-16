@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './button';
 import { ButtonConstants } from './button.constants';
-import { CloseIcon } from '@common/icons';
+import { CloseIcon } from '../../../common/icons';
 import { ButtonBaseConstants } from './button-base.constants';
 
 const meta: Meta<typeof Button> = {

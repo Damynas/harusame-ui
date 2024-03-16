@@ -14,7 +14,7 @@ import {
   type StyledText
 } from './text.styles';
 import type { FontWeight, TextVariant } from './text.types';
-import { useTheme } from '@common/theme';
+import { useTheme } from '../../common/theme';
 
 type TextProps = {
   variant?: TextVariant;

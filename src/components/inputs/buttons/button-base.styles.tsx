@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 import { ButtonBaseConstants } from './button-base.constants';
 import type { ButtonSize } from './button-base.types';
-import type { Nullable } from '@common/shared';
-import type { Theme } from '@common/theme';
-import { BoxLayout, StackLayout } from '@components/layouts';
-import { isValidSize } from '@utils/is-valid-size';
+import type { Nullable } from '../../../common/shared';
+import type { Theme } from '../../../common/theme';
+import { BoxLayout, StackLayout } from '../../../components/layouts';
+import { isValidSize } from '../../../utils';
 
 type StyledButtonContainerProps = {
   $loading?: boolean;

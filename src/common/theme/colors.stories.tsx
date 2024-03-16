@@ -5,9 +5,9 @@ import { ColorConstants } from './colors.constants';
 import type { CommonColor, FeedbackColor, ThemeColor } from './colors.types';
 import { Themes, type Theme } from './themes';
 import type { ThemeVariant } from './themes.types';
-import { BoxLayout, StackLayout, WrapLayout } from '@components/layouts';
-import { Text } from '@components/data-display';
-import { convertCase } from '@utils/case-converter';
+import { BoxLayout, StackLayout, WrapLayout } from '../../components/layouts';
+import { Text } from '../../components/data-display';
+import { convertCase } from '../../utils';
 
 const meta: Meta = {
   title: 'Design System/Colors',
