@@ -10,8 +10,6 @@ type StyledButtonProps = {
 const ContainedButton = styled(ButtonBase).attrs<StyledButtonProps>(
   (props) => ({
     textColor: props.textColor ?? props.$theme?.colors.white,
-    hoveredTextColor: props.hoveredTextColor ?? props.$theme?.colors.white,
-    pressedTextColor: props.pressedTextColor ?? props.$theme?.colors.white,
     disabledTextColor:
       props.disabledTextColor ?? props.$theme?.colors.neutral500,
     borderColor: props.borderColor ?? props.$theme?.colors.primary500,
@@ -43,8 +41,6 @@ const ContainedButton = styled(ButtonBase).attrs<StyledButtonProps>(
 
 const OutlinedButton = styled(ButtonBase).attrs<StyledButtonProps>((props) => ({
   textColor: props.textColor ?? props.$theme?.colors.primary500,
-  hoveredTextColor: props.hoveredTextColor ?? props.$theme?.colors.primary500,
-  pressedTextColor: props.pressedTextColor ?? props.$theme?.colors.primary500,
   disabledTextColor: props.disabledTextColor ?? props.$theme?.colors.neutral500,
   borderColor: props.borderColor ?? props.$theme?.colors.primary500,
   hoveredBorderColor:
@@ -73,8 +69,6 @@ const OutlinedButton = styled(ButtonBase).attrs<StyledButtonProps>((props) => ({
 
 const TextButton = styled(ButtonBase).attrs<StyledButtonProps>((props) => ({
   textColor: props.textColor ?? props.$theme?.colors.primary500,
-  hoveredTextColor: props.hoveredTextColor ?? props.$theme?.colors.primary500,
-  pressedTextColor: props.pressedTextColor ?? props.$theme?.colors.primary500,
   disabledTextColor: props.disabledTextColor ?? props.$theme?.colors.neutral500,
   borderColor: props.borderColor ?? 'transparent',
   hoveredBorderColor: props.hoveredBorderColor ?? 'transparent',

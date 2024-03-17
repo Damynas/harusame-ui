@@ -4,5 +4,6 @@ import type { IconProps } from '../../../components/data-display';
 
 type ButtonIcon = ReactElement<IconProps>;
 type ButtonSize = keyof typeof ButtonBaseConstants.BUTTON_SIZES;
+type ButtonVariant = keyof typeof ButtonBaseConstants.BUTTON_VARIANTS;
 
-export type { ButtonIcon, ButtonSize };
+export type { ButtonIcon, ButtonSize, ButtonVariant };

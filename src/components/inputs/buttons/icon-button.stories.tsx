@@ -1,19 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './button';
-import { ButtonConstants } from './button.constants';
+import { IconButton } from './icon-button';
 import { ButtonBaseConstants } from './button-base.constants';
 import { CloseIcon } from '../../../common/icons';
 
-const meta: Meta<typeof Button> = {
-  title: 'Components/Inputs/Button',
-  component: Button,
+const meta: Meta<typeof IconButton> = {
+  title: 'Components/Inputs/Icon Button',
+  component: IconButton,
   tags: ['autodocs'],
   parameters: {
     layout: 'centered'
   },
   argTypes: {
-    text: {
-      control: { type: 'text' }
+    icon: {
+      table: { disable: true }
     },
     variant: {
       control: { type: 'select' },
@@ -34,16 +33,10 @@ const meta: Meta<typeof Button> = {
     borderRadius: {
       control: { type: 'text' },
       defaultValue: { summary: '0.25rem' }
-    },
-    leadingIcon: {
-      table: { disable: true }
-    },
-    trailingIcon: {
-      table: { disable: true }
     }
   },
   args: {
-    text: ButtonConstants.DISPLAY_NAME,
+    icon: <CloseIcon />,
     variant: ButtonBaseConstants.DEFAULT_BUTTON_VARIANT,
     size: ButtonBaseConstants.DEFAULT_BUTTON_SIZE,
     loading: false,
@@ -57,7 +50,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const Template: Story = {
-  render: (args) => <Button {...args} />
+  render: (args) => <IconButton {...args} />
 };
 
 const Contained: Story = {
@@ -81,18 +74,4 @@ const Text: Story = {
   }
 };
 
-const LeadingIcon: Story = {
-  ...Template,
-  args: {
-    leadingIcon: <CloseIcon />
-  }
-};
-
-const TrailingIcon: Story = {
-  ...Template,
-  args: {
-    trailingIcon: <CloseIcon />
-  }
-};
-
-export { Contained, Outlined, Text, LeadingIcon, TrailingIcon };
+export { Contained, Outlined, Text };

@@ -1,22 +1,29 @@
 import { forwardRef, type ForwardedRef } from 'react';
+import type { ButtonBaseElement, ButtonBaseProps } from './button-base';
 import { ButtonConstants } from './button.constants';
+import { ButtonBaseConstants } from './button-base.constants';
 import { ContainedButton, OutlinedButton, TextButton } from './button.styles';
-import type { ButtonVariant, StyledButton } from './button.types';
-import { ButtonBaseProps } from './button-base';
+import type { StyledButton } from './button.types';
+import type { ButtonVariant } from './button-base.types';
 import { useTheme } from '../../../common/theme';
 
-type ButtonProps = { variant?: ButtonVariant } & ButtonBaseProps;
+type PropsToOmit = 'text' | 'icon' | 'iconColor' | 'disabledIconColor';
 
-type ButtonElement = HTMLButtonElement;
+type ButtonProps = { text: string; variant?: ButtonVariant } & Omit<
+  ButtonBaseProps,
+  PropsToOmit
+>;
+
+type ButtonElement = ButtonBaseElement;
 
 const ButtonComponents: Record<ButtonVariant, StyledButton> = {
-  [ButtonConstants.BUTTON_VARIANTS.contained]: ContainedButton,
-  [ButtonConstants.BUTTON_VARIANTS.outlined]: OutlinedButton,
-  [ButtonConstants.BUTTON_VARIANTS.text]: TextButton
+  [ButtonBaseConstants.BUTTON_VARIANTS.contained]: ContainedButton,
+  [ButtonBaseConstants.BUTTON_VARIANTS.outlined]: OutlinedButton,
+  [ButtonBaseConstants.BUTTON_VARIANTS.text]: TextButton
 };
 
 const getButtonComponent = (
-  variant: ButtonVariant = ButtonConstants.DEFAULT_BUTTON_VARIANT
+  variant: ButtonVariant = ButtonBaseConstants.DEFAULT_BUTTON_VARIANT
 ) => ButtonComponents[variant];
 
 const ButtonInner = (
@@ -31,6 +38,7 @@ const ButtonInner = (
       {...props}
       ref={forwardedRef}
       data-variant={variant}
+      icon={null}
       $theme={theme}
     />
   );

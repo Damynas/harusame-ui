@@ -12,8 +12,6 @@ type StyledButtonContainerProps = {
   $size?: ButtonSize;
   $borderRadius?: string;
   $textColor?: string;
-  $hoveredTextColor?: string;
-  $pressedTextColor?: string;
   $disabledTextColor?: string;
   $backgroundColor?: string;
   $hoveredBackgroundColor?: string;
@@ -23,10 +21,6 @@ type StyledButtonContainerProps = {
   $hoveredBorderColor?: string;
   $pressedBorderColor?: string;
   $disabledBorderColor?: string;
-  $leadingIconColor?: string;
-  $disabledLeadingIconColor?: string;
-  $trailingIconColor?: string;
-  $disabledTrailingIconColor?: string;
   $focusedOutlineColor?: string;
   $theme: Nullable<Theme>;
 };
@@ -68,12 +62,10 @@ const ButtonContainer = styled.button<StyledButtonContainerProps>`
     !props.$disabled &&
     css`
       &:hover {
-        color: ${props.$hoveredTextColor};
         border-color: ${props.$hoveredBorderColor};
         background-color: ${props.$hoveredBackgroundColor};
       }
       &:active {
-        color: ${props.$pressedTextColor};
         border-color: ${props.$pressedBorderColor};
         background-color: ${props.$pressedBackgroundColor};
       }
@@ -118,8 +110,10 @@ const IconContainer = styled(BoxLayout).attrs({
   horizontalAlignment: 'center',
   verticalAlignment: 'center'
 })<{
+  $loading?: boolean;
   $size?: ButtonSize;
 }>`
+  visibility: ${(props) => (!props.$loading ? 'visible' : 'hidden')};
   & > svg {
     width: calc(${(props) => getButtonSize(props.$size)} - 1rem);
     height: calc(${(props) => getButtonSize(props.$size)} - 1rem);
@@ -137,6 +131,7 @@ const ProgressIndicatorContainer = styled(BoxLayout).attrs({
 `;
 
 export {
+  getButtonSize,
   ButtonContainer,
   ItemContainer,
   TextContainer,

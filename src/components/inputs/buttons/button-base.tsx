@@ -14,10 +14,12 @@ import {
 } from './button-base.styles';
 import type { ButtonIcon, ButtonSize } from './button-base.types';
 import { DottedProgressIndicator } from '../../../components/feedback';
+import type { Nullable } from '../../../common/shared';
 import { useTheme } from '../../../common/theme';
 
 type ButtonBaseProps = {
-  text: string;
+  text: Nullable<string>;
+  icon: Nullable<ButtonIcon>;
   loading?: boolean;
   disabled?: boolean;
   size?: ButtonSize;
@@ -25,9 +27,9 @@ type ButtonBaseProps = {
   trailingIcon?: ButtonIcon;
   borderRadius?: string;
   textColor?: string;
-  hoveredTextColor?: string;
-  pressedTextColor?: string;
   disabledTextColor?: string;
+  iconColor?: string;
+  disabledIconColor?: string;
   backgroundColor?: string;
   hoveredBackgroundColor?: string;
   pressedBackgroundColor?: string;
@@ -53,6 +55,7 @@ const ButtonBaseInner = (
 ) => {
   const {
     text,
+    icon,
     loading,
     disabled,
     size,
@@ -60,9 +63,9 @@ const ButtonBaseInner = (
     trailingIcon,
     borderRadius,
     textColor,
-    hoveredTextColor,
-    pressedTextColor,
     disabledTextColor,
+    iconColor,
+    disabledIconColor,
     backgroundColor,
     hoveredBackgroundColor,
     pressedBackgroundColor,
@@ -91,8 +94,6 @@ const ButtonBaseInner = (
       $size={size}
       $borderRadius={borderRadius}
       $textColor={textColor}
-      $hoveredTextColor={hoveredTextColor}
-      $pressedTextColor={pressedTextColor}
       $disabledTextColor={disabledTextColor}
       $backgroundColor={backgroundColor}
       $hoveredBackgroundColor={hoveredBackgroundColor}
@@ -102,18 +103,11 @@ const ButtonBaseInner = (
       $hoveredBorderColor={hoveredBorderColor}
       $pressedBorderColor={pressedBorderColor}
       $disabledBorderColor={disabledBorderColor}
-      $leadingIconColor={leadingIconColor}
-      $disabledLeadingIconColor={disabledLeadingIconColor}
-      $trailingIconColor={trailingIconColor}
-      $disabledTrailingIconColor={disabledTrailingIconColor}
       $focusedOutlineColor={focusedOutlineColor}
       $theme={theme}
     >
       {loading && (
-        <ProgressIndicatorContainer
-          horizontalAlignment='center'
-          verticalAlignment='center'
-        >
+        <ProgressIndicatorContainer>
           <DottedProgressIndicator
             size='small'
             color={
@@ -124,23 +118,35 @@ const ButtonBaseInner = (
           />
         </ProgressIndicatorContainer>
       )}
-      <ItemContainer $loading={loading}>
-        {leadingIcon && (
-          <IconContainer $size={size}>
-            {cloneElement(leadingIcon, {
-              color: !disabled ? leadingIconColor : disabledLeadingIconColor
-            })}
-          </IconContainer>
-        )}
-        <TextContainer>{text}</TextContainer>
-        {trailingIcon && (
-          <IconContainer $size={size}>
-            {cloneElement(trailingIcon, {
-              color: !disabled ? trailingIconColor : disabledTrailingIconColor
-            })}
-          </IconContainer>
-        )}
-      </ItemContainer>
+      {text && (
+        <ItemContainer $loading={loading}>
+          {leadingIcon && (
+            <IconContainer $size={size}>
+              {cloneElement(leadingIcon, {
+                color: !disabled ? leadingIconColor : disabledLeadingIconColor
+              })}
+            </IconContainer>
+          )}
+          <TextContainer>{text}</TextContainer>
+          {trailingIcon && (
+            <IconContainer $size={size}>
+              {cloneElement(trailingIcon, {
+                color: !disabled ? trailingIconColor : disabledTrailingIconColor
+              })}
+            </IconContainer>
+          )}
+        </ItemContainer>
+      )}
+      {icon && (
+        <IconContainer
+          $loading={loading}
+          $size={size}
+        >
+          {cloneElement(icon, {
+            color: !disabled ? iconColor : disabledIconColor
+          })}
+        </IconContainer>
+      )}
     </ButtonContainer>
   );
 };

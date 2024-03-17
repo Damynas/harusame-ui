@@ -31,7 +31,7 @@ describe('Button tests', () => {
   it('Should render contained button', () => {
     const props: ButtonProps = {
       ...defaultProps,
-      variant: ButtonConstants.BUTTON_VARIANTS.contained
+      variant: ButtonBaseConstants.BUTTON_VARIANTS.contained
     };
     renderButton(props);
     const button = screen.queryByTestId(buttonTestId);
@@ -42,7 +42,7 @@ describe('Button tests', () => {
   it('Should render outlined button', () => {
     const props: ButtonProps = {
       ...defaultProps,
-      variant: ButtonConstants.BUTTON_VARIANTS.outlined
+      variant: ButtonBaseConstants.BUTTON_VARIANTS.outlined
     };
     renderButton(props);
     const button = screen.queryByTestId(buttonTestId);
@@ -53,7 +53,7 @@ describe('Button tests', () => {
   it('Should render text button', () => {
     const props: ButtonProps = {
       ...defaultProps,
-      variant: ButtonConstants.BUTTON_VARIANTS.text
+      variant: ButtonBaseConstants.BUTTON_VARIANTS.text
     };
     renderButton(props);
     const button = screen.queryByTestId(buttonTestId);
