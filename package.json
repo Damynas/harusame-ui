@@ -61,6 +61,10 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Damynas/harusame-ui.git"
+  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/damynas"
   }
