@@ -21,7 +21,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const renderTypographyBlock = (theme: Theme, fontStyle: FontStyle) => {
-  const typography = theme.typography && theme.typography[fontStyle];
+  const typography = theme.typography?.[fontStyle];
   if (!typography) return;
   return (
     <StackLayout

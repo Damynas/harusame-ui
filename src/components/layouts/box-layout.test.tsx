@@ -23,7 +23,7 @@ const renderBoxLayout = (
       ref={ref}
     >
       {Array.from({ length: childrenCount }).map((_, index) => (
-        <div key={index} />
+        <div key={`child-${index}`} />
       ))}
     </BoxLayout>
   );

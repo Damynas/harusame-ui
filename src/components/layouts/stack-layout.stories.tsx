@@ -106,7 +106,7 @@ const Template: Story = {
   render: (args) => (
     <StackLayout {...args}>
       {Array.from({ length: 3 }).map((_, index) => (
-        <Square key={index} />
+        <Square key={`square-${index}`} />
       ))}
     </StackLayout>
   )

@@ -121,7 +121,7 @@ const Template: Story = {
   render: (args) => (
     <WrapLayout {...args}>
       {Array.from({ length: 12 }).map((_, index) => (
-        <Fragment key={index}>
+        <Fragment key={`child-${index}`}>
           <Square key={`square-${index}`} />
           <Rectangle key={`rectangle-${index}`} />
         </Fragment>
