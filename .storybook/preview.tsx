@@ -9,7 +9,6 @@ const themeNames = Object.getOwnPropertyNames(Themes).map((theme) =>
 );
 
 const parameters: Parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
