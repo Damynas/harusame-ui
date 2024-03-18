@@ -8,7 +8,7 @@ import {
 } from 'react';
 import { DialogConstants } from './dialog.constants';
 import { DialogBase, DialogInnerContainer } from './dialog.styles';
-import { useTheme } from '../../common/theme';
+import { useTheme } from '../../../common/theme';
 
 type DialogProps = {
   isOpen: boolean;

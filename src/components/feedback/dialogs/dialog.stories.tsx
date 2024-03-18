@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useEffect, useState } from 'react';
 import { Dialog } from './dialog';
-import { Button } from '../inputs';
+import { Button } from '../../inputs';
 
 const meta: Meta<typeof Dialog> = {
   title: 'Components/Feedback/Dialog',
@@ -10,10 +10,24 @@ const meta: Meta<typeof Dialog> = {
   parameters: {
     layout: 'centered'
   },
+  argTypes: {
+    width: {
+      control: { type: 'text' },
+      defaultValue: {
+        summary: '32rem'
+      }
+    },
+    height: {
+      control: { type: 'text' },
+      defaultValue: {
+        summary: '16rem'
+      }
+    }
+  },
   args: {
     isOpen: false,
-    width: '30rem',
-    height: '15rem'
+    width: '32rem',
+    height: '16rem'
   }
 };
 

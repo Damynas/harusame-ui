@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import type { Nullable } from '../../common/shared';
-import type { Theme } from '../../common/theme';
-import { isValidSize } from '../../utils';
+import type { Nullable } from '../../../common/shared';
+import type { Theme } from '../../../common/theme';
+import { isValidSize } from '../../../utils';
 
 type StyledDialogProps = {
   $minWidth?: string;
@@ -36,16 +36,10 @@ const DialogBase = styled.dialog<StyledDialogProps>`
     css`
       min-height: ${props.$minHeight};
     `}
-  ${(props) =>
-    isValidSize(props.$width) &&
-    css`
-      width: ${props.$width};
-    `}
-  ${(props) =>
-    isValidSize(props.$height) &&
-    css`
-      height: ${props.$height};
-    `}
+
+  width: ${(props) => (isValidSize(props.$width) ? props.$width : '32rem')};
+  height: ${(props) => (isValidSize(props.$height) ? props.$height : '16rem')};
+
   ${(props) =>
     isValidSize(props.$maxWidth) &&
     css`
