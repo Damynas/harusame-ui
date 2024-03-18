@@ -7,8 +7,8 @@ describe('Size Validator Tests', () => {
   });
 
   it('Should return true if size string is valid', () => {
-    const invalidSize = '10rem';
-    const actual = isValidSize(invalidSize);
+    const validSize = '10rem';
+    const actual = isValidSize(validSize);
     expect(actual).toBeTruthy();
   });
 
@@ -16,5 +16,11 @@ describe('Size Validator Tests', () => {
     const invalidSize = 'Invalid Size';
     const actual = isValidSize(invalidSize);
     expect(actual).toBeFalsy();
+  });
+
+  it('Should return true if size string is comprised of multiple sizes separated by a space', () => {
+    const validSize = '1px 10rem 20px 30%';
+    const actual = isValidSize(validSize);
+    expect(actual).toBeTruthy();
   });
 });
