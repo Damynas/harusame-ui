@@ -28,7 +28,7 @@ const renderStackLayout = (
   );
 };
 
-describe('Stack Layout tests', () => {
+describe('Stack Layout Tests', () => {
   afterEach(() => {
     cleanup();
   });

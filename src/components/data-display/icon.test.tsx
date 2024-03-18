@@ -22,7 +22,7 @@ const renderIcon = (
   );
 };
 
-describe('Icon tests', () => {
+describe('Icon Tests', () => {
   afterEach(() => {
     cleanup();
   });

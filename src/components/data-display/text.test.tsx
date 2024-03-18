@@ -22,7 +22,7 @@ const renderText = (
   );
 };
 
-describe('Text tests', () => {
+describe('Text Tests', () => {
   afterEach(() => {
     cleanup();
   });

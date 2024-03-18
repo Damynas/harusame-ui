@@ -24,7 +24,7 @@ const renderSeparator = (
   );
 };
 
-describe('Separator tests', () => {
+describe('Separator Tests', () => {
   afterEach(() => {
     cleanup();
   });

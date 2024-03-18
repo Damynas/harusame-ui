@@ -27,7 +27,7 @@ const renderIconButton = (
   );
 };
 
-describe('IconButton tests', () => {
+describe('IconButton Tests', () => {
   afterEach(() => {
     cleanup();
   });

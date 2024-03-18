@@ -29,7 +29,7 @@ const renderBoxLayout = (
   );
 };
 
-describe('Box Layout tests', () => {
+describe('Box Layout Tests', () => {
   afterEach(() => {
     cleanup();
   });

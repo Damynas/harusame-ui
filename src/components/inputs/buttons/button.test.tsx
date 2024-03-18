@@ -23,7 +23,7 @@ const renderButton = (
   );
 };
 
-describe('Button tests', () => {
+describe('Button Tests', () => {
   afterEach(() => {
     cleanup();
   });

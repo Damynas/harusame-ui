@@ -28,7 +28,7 @@ const renderWrapLayout = (
   );
 };
 
-describe('Wrap Layout tests', () => {
+describe('Wrap Layout Tests', () => {
   afterEach(() => {
     cleanup();
   });

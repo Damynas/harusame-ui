@@ -23,7 +23,7 @@ const renderDottedProgressIndicator = (
   );
 };
 
-describe('Dotted Progress Indicator tests', () => {
+describe('Dotted Progress Indicator Tests', () => {
   afterEach(() => {
     cleanup();
   });
