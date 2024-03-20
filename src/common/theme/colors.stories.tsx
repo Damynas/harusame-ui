@@ -1,9 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ReactNode } from 'react';
-import { commonColors, type FeedbackColors, type ThemeColors } from './colors';
+import {
+  commonColors,
+  feedbackColors,
+  type CommonColors,
+  type FeedbackColors,
+  type ThemeColors
+} from './colors';
 import { ColorConstants } from './colors.constants';
 import type { CommonColor, FeedbackColor, ThemeColor } from './colors.types';
-import { Themes, type Theme } from './themes';
+import { Themes } from './themes';
 import type { ThemeVariant } from './themes.types';
 import { BoxLayout, StackLayout, WrapLayout } from '../../components/layouts';
 import { Text } from '../../components/data-display';
@@ -96,54 +102,54 @@ const renderPaletteGroup = (groupName: string, palettes: ReactNode) => {
   );
 };
 
-const renderThemeColors = (theme: Theme) => {
+const renderThemeColors = (colors: ThemeColors) => {
   const themeColorNames = Object.getOwnPropertyNames(
     ColorConstants.THEME_COLORS
   ) as ThemeColor[];
   const palettes = themeColorNames.map((colorName) => {
-    const filteredColors = Object.getOwnPropertyNames(theme.colors).filter(
-      (color) => color.startsWith(colorName)
+    const filteredColors = Object.getOwnPropertyNames(colors).filter((color) =>
+      color.startsWith(colorName)
     ) as (keyof ThemeColors)[];
-    const colors = filteredColors.map((colorName) => {
+    const paletteColors = filteredColors.map((colorName) => {
       const color: Color = {
         name: colorName,
-        value: theme.colors[colorName]
+        value: colors[colorName]
       };
       return color;
     });
-    return renderPalette(colorName, colors);
+    return renderPalette(colorName, paletteColors);
   });
   return renderPaletteGroup('Theme Colors', palettes);
 };
 
-const renderFeedbackColors = (theme: Theme) => {
+const renderFeedbackColors = (colors: FeedbackColors) => {
   const feedbackColorNames = Object.getOwnPropertyNames(
     ColorConstants.FEEDBACK_COLORS
   ) as FeedbackColor[];
   const palettes = feedbackColorNames.map((colorName) => {
-    const filteredColors = Object.getOwnPropertyNames(theme.colors).filter(
-      (color) => color.startsWith(colorName)
+    const filteredColors = Object.getOwnPropertyNames(colors).filter((color) =>
+      color.startsWith(colorName)
     ) as (keyof FeedbackColors)[];
-    const colors = filteredColors.map((colorName) => {
+    const paletteColors = filteredColors.map((colorName) => {
       const color: Color = {
         name: colorName,
-        value: theme.colors[colorName]
+        value: colors[colorName]
       };
       return color;
     });
-    return renderPalette(colorName, colors);
+    return renderPalette(colorName, paletteColors);
   });
   return renderPaletteGroup('Feedback Colors', palettes);
 };
 
-const renderCommonColors = (theme: Theme) => {
+const renderCommonColors = (colors: CommonColors) => {
   const commonColorNames = Object.getOwnPropertyNames(
     ColorConstants.COMMON_COLORS
   ) as CommonColor[];
-  const colors = commonColorNames.map((colorName) => {
+  const paletteColors = commonColorNames.map((colorName) => {
     const color: Color = {
       name: colorName,
-      value: theme.colors[colorName]
+      value: colors[colorName]
     };
     if (colorName === ColorConstants.COMMON_COLORS.black) {
       color.textColor = commonColors.white;
@@ -153,7 +159,7 @@ const renderCommonColors = (theme: Theme) => {
     }
     return color;
   });
-  const palette = renderPalette('common', colors);
+  const palette = renderPalette('common', paletteColors);
   return renderPaletteGroup('Common Colors', palette);
 };
 
@@ -165,7 +171,7 @@ const Default: Story = {
       'camelCase'
     ) as ThemeVariant;
     const theme = Themes[themeName];
-    return theme ? (
+    return (
       <StackLayout
         orientation='vertical'
         width='100%'
@@ -173,12 +179,10 @@ const Default: Story = {
         horizontalAlignment='left'
         gap='1rem'
       >
-        {renderThemeColors(theme)}
-        {renderFeedbackColors(theme)}
-        {renderCommonColors(theme)}
+        {theme && renderThemeColors(theme.colors)}
+        {renderFeedbackColors(theme?.colors ?? feedbackColors)}
+        {renderCommonColors(theme?.colors ?? commonColors)}
       </StackLayout>
-    ) : (
-      <></>
     );
   }
 };

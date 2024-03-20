@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Fragment } from 'react';
+import { typography, type Typography } from './typography';
 import { TypographyConstants } from './typography.constants';
 import { FontStyle } from './typography.types';
-import { Themes, type Theme } from './themes';
+import { Themes } from './themes';
 import type { ThemeVariant } from './themes.types';
 import { StackLayout } from '../../components/layouts';
 import { Separator, Text } from '../../components/data-display';
@@ -20,9 +21,12 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const renderTypographyBlock = (theme: Theme, fontStyle: FontStyle) => {
-  const typography = theme.typography?.[fontStyle];
-  if (!typography) return;
+const renderTypographyBlock = (
+  typography: Typography,
+  fontStyle: FontStyle
+) => {
+  const fontStyleTypography = typography?.[fontStyle];
+  if (!fontStyleTypography) return;
   return (
     <StackLayout
       key={fontStyle}
@@ -43,21 +47,21 @@ const renderTypographyBlock = (theme: Theme, fontStyle: FontStyle) => {
           variant='heading6'
           fontWeight='bold'
         >
-          {typography.fontFamily}
+          {fontStyleTypography.fontFamily}
         </Text>
         <Separator orientation='vertical' />
         <Text
           variant='heading6'
           fontWeight='bold'
         >
-          {typography.fontSize}
+          {fontStyleTypography.fontSize}
         </Text>
         <Separator orientation='vertical' />
         <Text
           variant='heading6'
           fontWeight='bold'
         >
-          {typography.lineHeight}
+          {fontStyleTypography.lineHeight}
         </Text>
       </StackLayout>
       <Separator />
@@ -65,7 +69,7 @@ const renderTypographyBlock = (theme: Theme, fontStyle: FontStyle) => {
         horizontalAlignment='left'
         gap='0.5rem'
       >
-        {Object.getOwnPropertyNames(typography.fontWeights).map(
+        {Object.getOwnPropertyNames(fontStyleTypography.fontWeights).map(
           (fontWeight, index) => (
             <Fragment key={`${fontStyle}-${fontWeight}`}>
               {index !== 0 && <Separator orientation='vertical' />}
@@ -96,7 +100,7 @@ const renderTypographyBlock = (theme: Theme, fontStyle: FontStyle) => {
   );
 };
 
-const renderTypography = (theme: Theme) => {
+const renderTypography = (typography: Typography) => {
   const fontStyles = Object.getOwnPropertyNames(
     TypographyConstants.FONT_STYLES
   ) as FontStyle[];
@@ -107,7 +111,9 @@ const renderTypography = (theme: Theme) => {
       padding='1rem'
       maxWidth='80rem'
     >
-      {fontStyles.map((fontStyle) => renderTypographyBlock(theme, fontStyle))}
+      {fontStyles.map((fontStyle) =>
+        renderTypographyBlock(typography, fontStyle)
+      )}
     </StackLayout>
   );
 };
@@ -120,7 +126,7 @@ const Default: Story = {
       'camelCase'
     ) as ThemeVariant;
     const theme = Themes[themeName];
-    return theme ? renderTypography(theme) : <></>;
+    return renderTypography(theme?.typography ?? typography);
   }
 };
 
