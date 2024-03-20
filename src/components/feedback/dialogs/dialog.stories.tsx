@@ -14,20 +14,20 @@ const meta: Meta<typeof Dialog> = {
     width: {
       control: { type: 'text' },
       defaultValue: {
-        summary: '32rem'
+        summary: '37.5rem'
       }
     },
     height: {
       control: { type: 'text' },
       defaultValue: {
-        summary: '16rem'
+        summary: '17.5rem'
       }
     }
   },
   args: {
     isOpen: false,
-    width: '32rem',
-    height: '16rem'
+    width: '37.5rem',
+    height: '17.5rem'
   }
 };
 
@@ -50,8 +50,6 @@ const Template: Story = {
           onClick={() => setIsOpen(true)}
         />
         <Dialog
-          width='30rem'
-          height='15rem'
           {...args}
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}

@@ -1,14 +1,16 @@
 import {
   forwardRef,
   useEffect,
-  useRef,
   type ForwardedRef,
   type HTMLAttributes,
-  type MouseEvent
+  type KeyboardEvent,
+  type PointerEvent
 } from 'react';
 import { DialogConstants } from './dialog.constants';
 import { DialogBase, DialogInnerContainer } from './dialog.styles';
+import { KeyCodes } from '../../../common/shared';
 import { useTheme } from '../../../common/theme';
+import { useForwardRef } from '../../../hooks';
 
 type DialogProps = {
   isOpen: boolean;
@@ -49,9 +51,11 @@ const DialogInner = (
     border,
     borderRadius,
     children,
+    onKeyDown,
+    onPointerDown,
     ...props
   } = dialogProps;
-  const dialogRef = useRef<DialogElement>(null);
+  const dialogRef = useForwardRef<DialogElement>(forwardedRef);
   const theme = useTheme();
 
   useEffect(() => {
@@ -60,19 +64,53 @@ const DialogInner = (
       const action = isOpen ? dialog.showModal : dialog.close;
       action.call(dialog);
     }
-  }, [isOpen]);
+  }, [dialogRef, isOpen]);
 
-  const handleClick = (event: MouseEvent<DialogElement>) => {
+  const handleClose = () => {
+    const dialog = dialogRef.current;
+    if (dialog) {
+      dialog.setAttribute('closing', '');
+      dialog.addEventListener(
+        'animationend',
+        () => {
+          dialog.removeAttribute('closing');
+          onClose();
+        },
+        { once: true }
+      );
+    }
+  };
+
+  const handleKeyDown = (event: KeyboardEvent<DialogElement>) => {
+    event.preventDefault();
+    if (onKeyDown) {
+      onKeyDown(event);
+    }
+    if (
+      isOpen &&
+      event.key === KeyCodes.ESCAPE &&
+      event.target === dialogRef.current
+    ) {
+      handleClose();
+    }
+  };
+
+  const handlePointerDown = (event: PointerEvent<DialogElement>) => {
+    event.preventDefault();
+    if (onPointerDown) {
+      onPointerDown(event);
+    }
     if (isOpen && event.target === dialogRef.current) {
-      onClose();
+      handleClose();
     }
   };
 
   return (
     <DialogBase
       {...props}
-      ref={forwardedRef ?? dialogRef}
-      onClick={handleClick}
+      ref={dialogRef}
+      onKeyDown={handleKeyDown}
+      onPointerDown={handlePointerDown}
       $minWidth={minWidth}
       $minHeight={minHeight}
       $width={width}

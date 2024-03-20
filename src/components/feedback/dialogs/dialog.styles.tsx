@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import type { Nullable } from '../../../common/shared';
 import type { Theme } from '../../../common/theme';
 import { isValidSize } from '../../../utils';
@@ -23,8 +23,35 @@ type StyledDialogInnerContainerProps = {
   $theme: Nullable<Theme>;
 };
 
+const getFadeAnimationKeyframes = (
+  opacityFrom: number,
+  opacityTo: number,
+  scaleFrom: Nullable<number> = null,
+  scaleTo: Nullable<number> = null
+) => keyframes`
+  from {
+    opacity: ${opacityFrom};
+    ${
+      scaleFrom &&
+      css`
+        transform: scale(${scaleFrom});
+      `
+    }
+  }
+  to {
+    opacity: ${opacityTo};
+    ${
+      scaleTo &&
+      css`
+        transform: scale(${scaleTo});
+      `
+    }
+  }
+`;
+
 const DialogBase = styled.dialog<StyledDialogProps>`
   padding: 0;
+  outline: none;
 
   ${(props) =>
     isValidSize(props.$minWidth) &&
@@ -37,8 +64,9 @@ const DialogBase = styled.dialog<StyledDialogProps>`
       min-height: ${props.$minHeight};
     `}
 
-  width: ${(props) => (isValidSize(props.$width) ? props.$width : '32rem')};
-  height: ${(props) => (isValidSize(props.$height) ? props.$height : '16rem')};
+  width: ${(props) => (isValidSize(props.$width) ? props.$width : '37.5rem')};
+  height: ${(props) =>
+    isValidSize(props.$height) ? props.$height : '17.5rem'};
 
   ${(props) =>
     isValidSize(props.$maxWidth) &&
@@ -55,10 +83,35 @@ const DialogBase = styled.dialog<StyledDialogProps>`
   border-radius: ${(props) =>
     isValidSize(props.$borderRadius) ? props.$borderRadius : '0.25rem'};
 
+  box-shadow: 0 0.35rem 1rem rgba(0, 0, 0, 0.35);
+
   &::backdrop {
     opacity: ${(props) => props.$backdropOpacity ?? '0.5'};
     background: ${(props) =>
       props.$backdropColor ?? props.$theme?.colors.neutral500};
+  }
+
+  &[open] {
+    animation: ${getFadeAnimationKeyframes(0, 1, 0.8, 1)} 0.3s forwards;
+  }
+
+  &[open]::backdrop {
+    animation: ${(props) =>
+        getFadeAnimationKeyframes(0, props.$backdropOpacity ?? 0.5)}
+      0.3s forwards;
+  }
+
+  &[closing] {
+    display: block;
+    pointer-events: none;
+    inset: 0;
+    animation: ${getFadeAnimationKeyframes(1, 0, 1, 0.8)} 0.3s forwards;
+  }
+
+  &[closing]::backdrop {
+    animation: ${(props) =>
+        getFadeAnimationKeyframes(props.$backdropOpacity ?? 0.5, 0)}
+      0.3s forwards;
   }
 `;
 
