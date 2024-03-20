@@ -2,7 +2,8 @@ import {
   cloneElement,
   forwardRef,
   type ButtonHTMLAttributes,
-  type ForwardedRef
+  type ForwardedRef,
+  type PointerEvent
 } from 'react';
 import { ButtonBaseConstants } from './button-base.constants';
 import {
@@ -13,7 +14,7 @@ import {
   ProgressIndicatorContainer
 } from './button-base.styles';
 import type { ButtonIcon, ButtonSize } from './button-base.types';
-import { DottedProgressIndicator } from '../../../components/feedback';
+import { DottedProgressIndicator } from '../../feedback';
 import type { Nullable } from '../../../common/shared';
 import { useTheme } from '../../../common/theme';
 
@@ -81,14 +82,24 @@ const ButtonBaseInner = (
     progressIndicatorColor,
     disabledProgressIndicatorColor,
     focusedOutlineColor,
+    onPointerDown,
     ...props
   } = buttonBaseProps;
   const theme = useTheme();
+
+  const handlePointerDown = (event: PointerEvent<ButtonBaseElement>) => {
+    event.preventDefault();
+    if (onPointerDown) {
+      onPointerDown(event);
+    }
+  };
+
   return (
     <ButtonContainer
       {...props}
       ref={forwardedRef}
       disabled={disabled}
+      onPointerDown={handlePointerDown}
       $loading={loading}
       $disabled={disabled}
       $size={size}
