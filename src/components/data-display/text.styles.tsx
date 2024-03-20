@@ -2,7 +2,8 @@ import styled, { css } from 'styled-components';
 import { TextConstants } from './text.constants';
 import type { FontWeight } from './text.types';
 import type { Nullable } from '../../common/shared';
-import { commonColors, type Theme } from '../../common/theme';
+import { commonColors, typography, type Theme } from '../../common/theme';
+import { FontStyle } from '../../common/theme/typography.types';
 
 type StyledTextProps = {
   $color?: string;
@@ -14,11 +15,30 @@ type StyledTextProps = {
 
 type StyledText = typeof TextBase;
 
+const getTypography = (
+  theme: Nullable<Theme>,
+  fontStyle: FontStyle,
+  fontWeight?: FontWeight
+) => css`
+  font-size: ${theme?.typography?.[fontStyle].fontSize ??
+  typography?.[fontStyle].fontSize};
+  font-family: ${theme?.typography?.[fontStyle].fontFamily ??
+  typography?.[fontStyle].fontFamily};
+  line-height: ${theme?.typography?.[fontStyle].lineHeight ??
+  typography?.[fontStyle].lineHeight};
+  font-weight: ${theme?.typography?.[fontStyle].fontWeights[
+    fontWeight ?? TextConstants.DEFAULT_FONT_WEIGHT
+  ] ??
+  typography?.[fontStyle].fontWeights[
+    fontWeight ?? TextConstants.DEFAULT_FONT_WEIGHT
+  ]};
+`;
+
 const TextBase = styled.span<StyledTextProps>`
   margin: 0;
   padding: 0;
   color: ${(props) =>
-    props.color ?? props.$theme?.colors.black ?? commonColors.black};
+    props.$color ?? props.$theme?.colors.black ?? commonColors.black};
   ${(props) =>
     props.$truncate &&
     css`
@@ -34,133 +54,43 @@ const TextBase = styled.span<StyledTextProps>`
 `;
 
 const Heading1 = styled(TextBase)`
-  ${(props) =>
-    props.$theme?.typography &&
-    css`
-      font-size: ${props.$theme.typography.heading1.fontSize};
-      font-family: ${props.$theme.typography.heading1.fontFamily};
-      line-height: ${props.$theme.typography.heading1.lineHeight};
-      font-weight: ${props.$theme.typography.heading1.fontWeights[
-        props.$fontWeight ?? TextConstants.DEFAULT_FONT_WEIGHT
-      ]};
-    `}
+  ${(props) => getTypography(props.$theme, 'heading1', props.$fontWeight)}
 `;
 
 const Heading2 = styled(TextBase)`
-  ${(props) =>
-    props.$theme?.typography &&
-    css`
-      font-size: ${props.$theme.typography.heading2.fontSize};
-      font-family: ${props.$theme.typography.heading2.fontFamily};
-      line-height: ${props.$theme.typography.heading2.lineHeight};
-      font-weight: ${props.$theme.typography.heading2.fontWeights[
-        props.$fontWeight ?? TextConstants.DEFAULT_FONT_WEIGHT
-      ]};
-    `}
+  ${(props) => getTypography(props.$theme, 'heading2', props.$fontWeight)}
 `;
 
 const Heading3 = styled(TextBase)`
-  ${(props) =>
-    props.$theme?.typography &&
-    css`
-      font-size: ${props.$theme.typography.heading3.fontSize};
-      font-family: ${props.$theme.typography.heading3.fontFamily};
-      line-height: ${props.$theme.typography.heading3.lineHeight};
-      font-weight: ${props.$theme.typography.heading3.fontWeights[
-        props.$fontWeight ?? TextConstants.DEFAULT_FONT_WEIGHT
-      ]};
-    `}
+  ${(props) => getTypography(props.$theme, 'heading3', props.$fontWeight)}
 `;
 
 const Heading4 = styled(TextBase)`
-  ${(props) =>
-    props.$theme?.typography &&
-    css`
-      font-size: ${props.$theme.typography.heading4.fontSize};
-      font-family: ${props.$theme.typography.heading4.fontFamily};
-      line-height: ${props.$theme.typography.heading4.lineHeight};
-      font-weight: ${props.$theme.typography.heading4.fontWeights[
-        props.$fontWeight ?? TextConstants.DEFAULT_FONT_WEIGHT
-      ]};
-    `}
+  ${(props) => getTypography(props.$theme, 'heading4', props.$fontWeight)}
 `;
 
 const Heading5 = styled(TextBase)`
-  ${(props) =>
-    props.$theme?.typography &&
-    css`
-      font-size: ${props.$theme.typography.heading5.fontSize};
-      font-family: ${props.$theme.typography.heading5.fontFamily};
-      line-height: ${props.$theme.typography.heading5.lineHeight};
-      font-weight: ${props.$theme.typography.heading5.fontWeights[
-        props.$fontWeight ?? TextConstants.DEFAULT_FONT_WEIGHT
-      ]};
-    `}
+  ${(props) => getTypography(props.$theme, 'heading5', props.$fontWeight)}
 `;
 
 const Heading6 = styled(TextBase)`
-  ${(props) =>
-    props.$theme?.typography &&
-    css`
-      font-size: ${props.$theme.typography.heading6.fontSize};
-      font-family: ${props.$theme.typography.heading6.fontFamily};
-      line-height: ${props.$theme.typography.heading6.lineHeight};
-      font-weight: ${props.$theme.typography.heading6.fontWeights[
-        props.$fontWeight ?? TextConstants.DEFAULT_FONT_WEIGHT
-      ]};
-    `}
+  ${(props) => getTypography(props.$theme, 'heading6', props.$fontWeight)}
 `;
 
 const Body1 = styled(TextBase)`
-  ${(props) =>
-    props.$theme?.typography &&
-    css`
-      font-size: ${props.$theme.typography.body1.fontSize};
-      font-family: ${props.$theme.typography.body1.fontFamily};
-      line-height: ${props.$theme.typography.body1.lineHeight};
-      font-weight: ${props.$theme.typography.body1.fontWeights[
-        props.$fontWeight ?? TextConstants.DEFAULT_FONT_WEIGHT
-      ]};
-    `}
+  ${(props) => getTypography(props.$theme, 'body1', props.$fontWeight)}
 `;
 
 const Body2 = styled(TextBase)`
-  ${(props) =>
-    props.$theme?.typography &&
-    css`
-      font-size: ${props.$theme.typography.body2.fontSize};
-      font-family: ${props.$theme.typography.body2.fontFamily};
-      line-height: ${props.$theme.typography.body2.lineHeight};
-      font-weight: ${props.$theme.typography.body2.fontWeights[
-        props.$fontWeight ?? TextConstants.DEFAULT_FONT_WEIGHT
-      ]};
-    `}
+  ${(props) => getTypography(props.$theme, 'body2', props.$fontWeight)}
 `;
 
 const Caption1 = styled(TextBase)`
-  ${(props) =>
-    props.$theme?.typography &&
-    css`
-      font-size: ${props.$theme.typography.caption1.fontSize};
-      font-family: ${props.$theme.typography.caption1.fontFamily};
-      line-height: ${props.$theme.typography.caption1.lineHeight};
-      font-weight: ${props.$theme.typography.caption1.fontWeights[
-        props.$fontWeight ?? TextConstants.DEFAULT_FONT_WEIGHT
-      ]};
-    `}
+  ${(props) => getTypography(props.$theme, 'caption1', props.$fontWeight)}
 `;
 
 const Caption2 = styled(TextBase)`
-  ${(props) =>
-    props.$theme?.typography &&
-    css`
-      font-size: ${props.$theme.typography.caption2.fontSize};
-      font-family: ${props.$theme.typography.caption2.fontFamily};
-      line-height: ${props.$theme.typography.caption2.lineHeight};
-      font-weight: ${props.$theme.typography.caption2.fontWeights[
-        props.$fontWeight ?? TextConstants.DEFAULT_FONT_WEIGHT
-      ]};
-    `}
+  ${(props) => getTypography(props.$theme, 'caption2', props.$fontWeight)}
 `;
 
 export {

@@ -20,12 +20,6 @@ const meta: Meta<typeof Text> = {
       control: { type: 'select' },
       options: Object.getOwnPropertyNames(TextConstants.FONT_WEIGHTS),
       defaultValue: { summary: TextConstants.DEFAULT_FONT_WEIGHT }
-    },
-    truncate: {
-      control: { type: 'boolean' }
-    },
-    selectionDisabled: {
-      control: { type: 'boolean' }
     }
   },
   args: {

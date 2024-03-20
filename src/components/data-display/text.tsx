@@ -18,6 +18,7 @@ import { useTheme } from '../../common/theme';
 
 type TextProps = {
   variant?: TextVariant;
+  color?: string;
   truncate?: boolean;
   selectionDisabled?: boolean;
   fontWeight?: FontWeight;
@@ -48,6 +49,7 @@ const TextInner = (
 ) => {
   const {
     variant,
+    color,
     truncate,
     selectionDisabled,
     fontWeight,
@@ -61,6 +63,7 @@ const TextInner = (
       {...props}
       ref={forwardedRef}
       data-variant={variant}
+      $color={color}
       $truncate={truncate}
       $selectionDisabled={selectionDisabled}
       $fontWeight={fontWeight}
