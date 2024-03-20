@@ -3,7 +3,7 @@ import { ButtonBaseConstants } from './button-base.constants';
 import type { ButtonSize } from './button-base.types';
 import type { Nullable } from '../../../common/shared';
 import type { Theme } from '../../../common/theme';
-import { BoxLayout, StackLayout } from '../../../components/layouts';
+import { BoxLayout, StackLayout } from '../../layouts';
 import { isValidSize } from '../../../utils';
 
 type StyledButtonContainerProps = {

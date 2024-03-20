@@ -3,7 +3,7 @@ import { DottedProgressIndicatorConstants } from './dotted-progress-indicator.co
 import type { DottedProgressIndicatorSize } from './dotted-progress-indicator.types';
 import { BouncingDot } from './dotted-progress-indicator.styles';
 import { useTheme } from '../../common/theme';
-import { StackLayout } from '../../components/layouts';
+import { StackLayout } from '../layouts';
 
 type DottedProgressIndicatorProps = {
   color?: string;

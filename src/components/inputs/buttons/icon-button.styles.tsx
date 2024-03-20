@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { ButtonBase } from './button-base';
+import { getButtonSize } from './button-base.styles';
 import type { Nullable } from '../../../common/shared';
 import type { Theme } from '../../../common/theme';
-import { getButtonSize } from './button-base.styles';
 
 type StyledIconButtonProps = {
   $theme: Nullable<Theme>;

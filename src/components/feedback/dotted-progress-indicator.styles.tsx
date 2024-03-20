@@ -1,8 +1,8 @@
 import styled, { keyframes } from 'styled-components';
+import { DottedProgressIndicatorConstants } from './dotted-progress-indicator.constants';
+import type { DottedProgressIndicatorSize } from './dotted-progress-indicator.types';
 import type { Nullable } from '../../common/shared';
 import { commonColors, type Theme } from '../../common/theme';
-import type { DottedProgressIndicatorSize } from './dotted-progress-indicator.types';
-import { DottedProgressIndicatorConstants } from './dotted-progress-indicator.constants';
 
 type StyledBouncingDotProps = {
   $color?: string;
