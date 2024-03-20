@@ -27,7 +27,9 @@
     "allowUnreachableCode": false,
     "noUncheckedIndexedAccess": true,
 
-    "skipLibCheck": true
+    "skipLibCheck": true,
+
+    "types": ["vite/client"]
   },
   "exclude": ["dist", "node_modules"]
 }
