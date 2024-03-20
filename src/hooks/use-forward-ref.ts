@@ -2,20 +2,20 @@ import { useEffect, useRef, type ForwardedRef } from 'react';
 import type { Nullable } from '../common/shared';
 
 const useForwardRef = <T>(
-  ref: ForwardedRef<T>,
+  forwardedRef: ForwardedRef<T>,
   initialValue: Nullable<T> = null
 ) => {
   const targetRef = useRef<T>(initialValue);
 
   useEffect(() => {
-    if (!ref) return;
+    if (!forwardedRef) return;
 
-    if (typeof ref === 'function') {
-      ref(targetRef.current);
+    if (typeof forwardedRef === 'function') {
+      forwardedRef(targetRef.current);
     } else {
-      ref.current = targetRef.current;
+      forwardedRef.current = targetRef.current;
     }
-  }, [ref]);
+  }, [forwardedRef]);
 
   return targetRef;
 };
