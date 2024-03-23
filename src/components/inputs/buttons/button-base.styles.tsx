@@ -93,11 +93,14 @@ const ButtonContainer = styled.button<StyledButtonContainerProps>`
     `};
 `;
 
-const ItemContainer = styled(StackLayout).attrs({
-  horizontalAlignment: 'spaceBetween',
+const ItemContainer = styled(StackLayout).attrs<{
+  $loading?: boolean;
+  $hasIcon?: boolean;
+}>((props) => ({
+  horizontalAlignment: props.$hasIcon ? 'spaceBetween' : 'center',
   verticalAlignment: 'center',
   gap: '0.125rem'
-})<{ $loading?: boolean }>`
+}))`
   visibility: ${(props) => (!props.$loading ? 'visible' : 'hidden')};
 `;
 

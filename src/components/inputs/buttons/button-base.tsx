@@ -14,7 +14,7 @@ import {
   ProgressIndicatorContainer
 } from './button-base.styles';
 import type { ButtonIcon, ButtonSize } from './button-base.types';
-import { DottedProgressIndicator } from '../../feedback';
+import { DottedProgressIndicator } from '../../feedback/dotted-progress-indicator';
 import type { Nullable } from '../../../common/shared';
 import { useTheme } from '../../../common/theme';
 
@@ -130,7 +130,10 @@ const ButtonBaseInner = (
         </ProgressIndicatorContainer>
       )}
       {text && (
-        <ItemContainer $loading={loading}>
+        <ItemContainer
+          $loading={loading}
+          $hasIcon={!!(leadingIcon || trailingIcon)}
+        >
           {leadingIcon && (
             <IconContainer $size={size}>
               {cloneElement(leadingIcon, {
