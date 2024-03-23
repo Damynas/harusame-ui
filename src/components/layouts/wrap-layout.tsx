@@ -69,6 +69,7 @@ const WrapLayoutInner = (
   return (
     <WrapLayoutComponent
       {...props}
+      ref={forwardedRef}
       $margin={margin}
       $padding={padding}
       $minWidth={minWidth}
@@ -88,7 +89,6 @@ const WrapLayoutInner = (
       $backgroundColor={backgroundColor}
       $border={border}
       $borderRadius={borderRadius}
-      ref={forwardedRef}
     >
       {children}
     </WrapLayoutComponent>

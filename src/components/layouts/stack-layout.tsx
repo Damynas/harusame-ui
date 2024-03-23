@@ -67,6 +67,7 @@ const StackLayoutInner = (
   return (
     <StackLayoutComponent
       {...props}
+      ref={forwardedRef}
       $margin={margin}
       $padding={padding}
       $minWidth={minWidth}
@@ -85,7 +86,6 @@ const StackLayoutInner = (
       $backgroundColor={backgroundColor}
       $border={border}
       $borderRadius={borderRadius}
-      ref={forwardedRef}
     >
       {children}
     </StackLayoutComponent>

@@ -55,6 +55,7 @@ const BoxLayoutInner = (
   return (
     <BoxLayoutBase
       {...props}
+      ref={forwardedRef}
       $margin={margin}
       $padding={padding}
       $minWidth={minWidth}
@@ -72,7 +73,6 @@ const BoxLayoutInner = (
       $backgroundColor={backgroundColor}
       $border={border}
       $borderRadius={borderRadius}
-      ref={forwardedRef}
     >
       {children}
     </BoxLayoutBase>
