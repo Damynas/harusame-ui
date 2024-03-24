@@ -24,7 +24,7 @@ const useDialog = () => {
     );
   };
 
-  return [DialogComponent, openDialog, closeDialog];
+  return { DialogComponent, openDialog, closeDialog };
 };
 
 export { useDialog };
