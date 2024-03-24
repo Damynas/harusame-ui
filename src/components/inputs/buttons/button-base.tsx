@@ -132,7 +132,7 @@ const ButtonBaseInner = (
       {text && (
         <ItemContainer
           $loading={loading}
-          $hasIcon={!!(leadingIcon || trailingIcon)}
+          $hasIcon={!!(leadingIcon ?? trailingIcon)}
         >
           {leadingIcon && (
             <IconContainer $size={size}>
