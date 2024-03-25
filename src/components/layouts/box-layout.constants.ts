@@ -14,7 +14,7 @@ const BoxLayoutConstants = {
     bottom: 'bottom'
   },
   DEFAULT_VERTICAL_ALIGNMENT: 'stretch',
-  CHILDREN_COUNT_ERROR_MESSAGE: 'Box layout must have exactly one child.'
+  CHILDREN_COUNT_ERROR_MESSAGE: 'Box layout must have no more than one child.'
 } as const;
 
 export { BoxLayoutConstants };

@@ -50,8 +50,10 @@ const BoxLayoutInner = (
     children,
     ...props
   } = boxLayoutProps;
-  if (Children.count(children) !== 1)
+
+  if (Children.count(children) > 1)
     throw new Error(BoxLayoutConstants.CHILDREN_COUNT_ERROR_MESSAGE);
+
   return (
     <BoxLayoutBase
       {...props}
