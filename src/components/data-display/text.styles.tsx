@@ -37,6 +37,7 @@ const getTypography = (
 const TextBase = styled.span<StyledTextProps>`
   margin: 0;
   padding: 0;
+  white-space: pre-line;
   color: ${(props) =>
     props.$color ?? props.$theme?.colors.black ?? commonColors.black};
   ${(props) =>
