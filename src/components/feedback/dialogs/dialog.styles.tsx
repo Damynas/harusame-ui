@@ -1,7 +1,8 @@
 import styled, { css, keyframes } from 'styled-components';
 import type { Nullable } from '../../../common/shared';
-import type { Theme } from '../../../common/theme';
+import { commonColors, type Theme } from '../../../common/theme';
 import { isValidSize } from '../../../utils';
+import { BoxLayout } from '../../layouts';
 
 type StyledDialogProps = {
   $minWidth?: string;
@@ -115,7 +116,13 @@ const DialogBase = styled.dialog<StyledDialogProps>`
   }
 `;
 
-const DialogInnerContainer = styled.div<StyledDialogInnerContainerProps>`
+const DialogInnerContainer = styled(
+  BoxLayout
+).attrs<StyledDialogInnerContainerProps>((props) => ({
+  padding: props.$padding,
+  backgroundColor:
+    props.$backgroundColor ?? props.$theme?.colors.white ?? commonColors.white
+}))`
   width: ${(props) =>
     isValidSize(props.$padding)
       ? `calc(100% - ${props.$padding} * 2)`
@@ -124,17 +131,6 @@ const DialogInnerContainer = styled.div<StyledDialogInnerContainerProps>`
     isValidSize(props.$padding)
       ? `calc(100% - ${props.$padding} * 2)`
       : '100%'};
-
-  ${(props) =>
-    isValidSize(props.$padding) &&
-    css`
-      padding: ${props.$padding};
-    `}
-  ${(props) =>
-    props.$backgroundColor &&
-    css`
-      background-color: ${props.$backgroundColor ?? props.$theme?.colors.white};
-    `}
 `;
 
 export { DialogBase, DialogInnerContainer };
