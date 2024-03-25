@@ -1,0 +1,116 @@
+import { forwardRef, type ForwardedRef } from 'react';
+import { Dialog, type DialogElement, type DialogProps } from './dialog';
+import { ConfirmDialogConstants } from './confirm-dialog.constants';
+import { useTheme } from '../../../common/theme';
+import { StackLayout } from '../../layouts';
+import {
+  ActionContainer,
+  CloseButton,
+  ContentContainer,
+  Divider,
+  Message,
+  Title,
+  TitleContainer
+} from './confirm-dialog.styles';
+import { TextVariant } from '../../data-display/text.types';
+import { CloseIcon } from '../../../common';
+import { Button } from '../../inputs';
+
+type ConfirmDialogProps = {
+  title?: string;
+  titleColor?: string;
+  titleVariant?: TextVariant;
+  message: string;
+  messageColor?: string;
+  messageVariant?: TextVariant;
+  confirmButtonText?: string;
+  onConfirmButtonClick?: () => void;
+  cancelButtonText?: string;
+  onCancelButtonClick?: () => void;
+} & DialogProps;
+
+type ConfirmDialogElement = DialogElement;
+
+const ConfirmDialogInner = (
+  confirmDialogProps: ConfirmDialogProps,
+  forwardedRef: ForwardedRef<ConfirmDialogElement>
+) => {
+  const {
+    title,
+    titleColor,
+    titleVariant,
+    message,
+    messageColor,
+    messageVariant,
+    confirmButtonText,
+    cancelButtonText,
+    onConfirmButtonClick,
+    onCancelButtonClick,
+    onClose,
+    height,
+    ...props
+  } = confirmDialogProps;
+
+  const theme = useTheme();
+
+  return (
+    <Dialog
+      {...props}
+      ref={forwardedRef}
+      onClose={onClose}
+      height={height}
+    >
+      <StackLayout orientation='vertical'>
+        <TitleContainer>
+          <Title
+            $color={titleColor}
+            $variant={titleVariant}
+          >
+            {title ?? ConfirmDialogConstants.DEFAULT_TITLE_TEXT}
+          </Title>
+          <CloseButton
+            icon={<CloseIcon />}
+            onClick={onClose}
+            $theme={theme}
+          />
+        </TitleContainer>
+        <Divider />
+        <ContentContainer $totalHeight={height}>
+          <Message
+            $color={messageColor}
+            $variant={messageVariant}
+          >
+            {message}
+          </Message>
+        </ContentContainer>
+        <Divider />
+        <ActionContainer>
+          <Button
+            text={
+              confirmButtonText ??
+              ConfirmDialogConstants.DEFAULT_CONFIRM_BUTTON_TEXT
+            }
+            variant='contained'
+            onClick={onConfirmButtonClick}
+          />
+          <Button
+            text={
+              cancelButtonText ??
+              ConfirmDialogConstants.DEFAULT_CANCEL_BUTTON_TEXT
+            }
+            variant='outlined'
+            onClick={onCancelButtonClick ?? onClose}
+          />
+        </ActionContainer>
+      </StackLayout>
+    </Dialog>
+  );
+};
+
+const ConfirmDialog = forwardRef<ConfirmDialogElement, ConfirmDialogProps>(
+  ConfirmDialogInner
+);
+ConfirmDialog.displayName = ConfirmDialogConstants.DISPLAY_NAME;
+
+export { ConfirmDialog };
+export type { ConfirmDialogElement, ConfirmDialogProps };
