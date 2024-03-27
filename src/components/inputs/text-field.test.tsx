@@ -75,7 +75,7 @@ describe('TextField Tests', () => {
     );
   });
 
-  it('Should forward a ref to the icon button', () => {
+  it('Should forward a ref to the text field', () => {
     const textFieldRef = createRef<TextFieldElement>();
     renderTextField(defaultProps, textFieldRef);
     const textField = screen.queryByTestId(textFieldTestId);
