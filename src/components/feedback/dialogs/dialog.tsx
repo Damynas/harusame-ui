@@ -11,7 +11,7 @@ import { DialogConstants } from './dialog.constants';
 import { DialogBase, DialogInnerContainer } from './dialog.styles';
 import { KeyCodes } from '../../../common/shared';
 import { useTheme } from '../../../common/theme';
-import { useForwardRef } from '../../../hooks';
+import { useForwardRef } from '../../../hooks/use-forward-ref';
 
 type DialogProps = {
   isOpen: boolean;

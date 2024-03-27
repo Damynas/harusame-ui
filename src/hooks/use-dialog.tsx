@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Dialog, type DialogProps } from '../components';
+import { Dialog, type DialogProps } from '../components/feedback';
 
 type PropsToOmit = 'isOpen' | 'onClose';
 

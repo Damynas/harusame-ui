@@ -19,7 +19,7 @@ import type {
 import type { StackLayoutElement, StackLayoutProps } from '../layouts';
 import { CloseIcon } from '../../common/icons';
 import { useTheme } from '../../common/theme';
-import { useForwardRef } from '../../hooks';
+import { useForwardRef } from '../../hooks/use-forward-ref';
 
 type PropsToOmit =
   | 'horizontalAlignment'
