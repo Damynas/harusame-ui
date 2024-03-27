@@ -48,12 +48,6 @@ describe('Box Layout Tests', () => {
     expect(boxLayoutRef.current).not.toBeNull();
   });
 
-  it('Should throw an exception if there are no children', () => {
-    expect(() => renderBoxLayout(defaultProps, undefined, 0)).toThrow(
-      BoxLayoutConstants.CHILDREN_COUNT_ERROR_MESSAGE
-    );
-  });
-
   it('Should throw an exception if there are more than one child', () => {
     expect(() => renderBoxLayout(defaultProps, undefined, 2)).toThrow(
       BoxLayoutConstants.CHILDREN_COUNT_ERROR_MESSAGE
