@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { BoxLayout, StackLayout } from '../../layouts';
 import { Separator, Text } from '../../data-display';
-import { TextVariant } from '../../data-display/text.types';
 import type { Nullable } from '../../../common/shared';
 import { commonColors, type Theme } from '../../../common/theme';
 import { IconButton } from '../../inputs/buttons';
@@ -38,10 +37,9 @@ const Divider = styled(Separator)`
 
 const Title = styled(Text).attrs<{
   $color?: string;
-  $variant?: TextVariant;
 }>((props) => {
   return {
-    variant: props.$variant ?? 'heading3',
+    variant: 'heading3',
     fontWeight: 'bold',
     truncate: true,
     color: props.$color
@@ -60,10 +58,9 @@ const CloseButton = styled(IconButton).attrs<{
 
 const Message = styled(Text).attrs<{
   $color?: string;
-  $variant?: TextVariant;
 }>((props) => {
   return {
-    variant: props.$variant ?? 'body1',
+    variant: 'body1',
     fontWeight: 'regular',
     color: props.$color
   };

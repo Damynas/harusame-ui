@@ -12,17 +12,14 @@ import {
   Title,
   TitleContainer
 } from './confirm-dialog.styles';
-import { TextVariant } from '../../data-display/text.types';
 import { CloseIcon } from '../../../common';
 import { Button } from '../../inputs';
 
 type ConfirmDialogProps = {
   title?: string;
   titleColor?: string;
-  titleVariant?: TextVariant;
   message: string;
   messageColor?: string;
-  messageVariant?: TextVariant;
   confirmButtonText?: string;
   onConfirmButtonClick?: () => void;
   cancelButtonText?: string;
@@ -38,10 +35,8 @@ const ConfirmDialogInner = (
   const {
     title,
     titleColor,
-    titleVariant,
     message,
     messageColor,
-    messageVariant,
     confirmButtonText,
     cancelButtonText,
     onConfirmButtonClick,
@@ -62,10 +57,7 @@ const ConfirmDialogInner = (
     >
       <StackLayout orientation='vertical'>
         <TitleContainer>
-          <Title
-            $color={titleColor}
-            $variant={titleVariant}
-          >
+          <Title $color={titleColor}>
             {title ?? ConfirmDialogConstants.DEFAULT_TITLE_TEXT}
           </Title>
           <CloseButton
@@ -76,12 +68,7 @@ const ConfirmDialogInner = (
         </TitleContainer>
         <Divider />
         <ContentContainer $totalHeight={height}>
-          <Message
-            $color={messageColor}
-            $variant={messageVariant}
-          >
-            {message}
-          </Message>
+          <Message $color={messageColor}>{message}</Message>
         </ContentContainer>
         <Divider />
         <ActionContainer>
