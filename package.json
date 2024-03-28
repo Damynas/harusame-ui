@@ -28,6 +28,7 @@
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
     "@types/jest": "^29.5.12",
+    "@types/pluralize": "^0.0.33",
     "@types/react": "^18.2.66",
     "@types/react-helmet": "^6.1.11",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
@@ -56,6 +57,9 @@
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "styled-components": "^6.1.8"
+  },
+  "dependencies": {
+    "pluralize": "^8.0.0"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

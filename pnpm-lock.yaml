@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  pluralize:
+    specifier: ^8.0.0
+    version: 8.0.0
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -61,6 +64,9 @@ devDependencies:
   '@types/jest':
     specifier: ^29.5.12
     version: 29.5.12
+  '@types/pluralize':
+    specifier: ^0.0.33
+    version: 0.0.33
   '@types/react':
     specifier: ^18.2.66
     version: 18.2.66
@@ -3402,6 +3408,10 @@ packages:
 
   /@types/normalize-package-data@2.4.4:
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
+    dev: true
+
+  /@types/pluralize@0.0.33:
+    resolution: {integrity: sha512-JOqsl+ZoCpP4e8TDke9W79FDcSgPAR0l6pixx2JHkhnRjvShyYiAYw2LVsnA7K08Y6DeOnaU6ujmENO4os/cYg==}
     dev: true
 
   /@types/pretty-hrtime@1.0.3:
@@ -7967,6 +7977,11 @@ packages:
     dependencies:
       find-up: 5.0.0
     dev: true
+
+  /pluralize@8.0.0:
+    resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
+    engines: {node: '>=4'}
+    dev: false
 
   /polished@4.3.1:
     resolution: {integrity: sha512-OBatVyC/N7SCW/FaDHrSd+vn0o5cS855TOmYi4OkdWUMSJCET/xip//ch8xGUvtr3i44X9LVyWwQlRMTN3pwSA==}
