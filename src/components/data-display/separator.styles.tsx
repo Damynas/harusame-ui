@@ -14,7 +14,7 @@ type StyledSeparator = typeof SeparatorBase;
 
 const SeparatorBase = styled.div<StyledSeparatorProps>`
   background-color: ${(props) =>
-    props.$color ?? props.$theme?.colors.neutral300 ?? commonColors.black};
+    props.$color ?? props.$theme?.colors.neutral300 ?? commonColors.gray};
 `;
 
 const HorizontalSeparator = styled(SeparatorBase)`
