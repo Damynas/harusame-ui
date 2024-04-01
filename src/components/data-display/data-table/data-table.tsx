@@ -87,22 +87,28 @@ const DataTableInner = (
       $borderRadius={borderRadius}
       $theme={theme}
     >
-      {Children.map(children, (child) =>
-        isValidElement<DataTableBodyProps>(child) &&
-        child.props.__TYPE === DataTableBodyConstants.DISPLAY_NAME
-          ? cloneElement(child, {
-              loading: child.props.loading ?? loading,
-              hoverable: child.props.hoverable ?? hoverable,
-              rowHeight: child.props.rowHeight ?? rowHeight,
-              hoveredBackgroundColor:
-                child.props.hoveredBackgroundColor ?? hoveredBackgroundColor
-            })
-          : isValidElement<DataTableHeaderProps | DataTableFooterProps>(child)
-            ? cloneElement(child, {
-                rowHeight: child.props.rowHeight ?? rowHeight
-              })
-            : child
-      )}
+      {Children.map(children, (child) => {
+        if (
+          isValidElement<DataTableBodyProps>(child) &&
+          child.props.__TYPE === DataTableBodyConstants.DISPLAY_NAME
+        ) {
+          return cloneElement(child, {
+            loading: child.props.loading ?? loading,
+            hoverable: child.props.hoverable ?? hoverable,
+            rowHeight: child.props.rowHeight ?? rowHeight,
+            hoveredBackgroundColor:
+              child.props.hoveredBackgroundColor ?? hoveredBackgroundColor
+          });
+        }
+        if (
+          isValidElement<DataTableHeaderProps | DataTableFooterProps>(child)
+        ) {
+          return cloneElement(child, {
+            rowHeight: child.props.rowHeight ?? rowHeight
+          });
+        }
+        return child;
+      })}
       {!loading && autoFooter && rowCount && (
         <DataTableFooter>
           <DataTableRow>

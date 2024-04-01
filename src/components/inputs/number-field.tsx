@@ -20,7 +20,7 @@ const handleInput = (
   allowDecimal?: boolean
 ) => {
   const numberField = numberFieldRef.current;
-  if (!numberField || !numberField.value) return;
+  if (!numberField?.value) return;
 
   let value = numberField.value;
   let allowedCharacters = NumberFieldConstants.ALLOWED_CHARACTERS;
