@@ -118,7 +118,7 @@ const SnackbarInner = (
 
   useEffect(() => {
     const action = isOpen ? handleOpen : handleClose;
-    action.call(this);
+    action.call(undefined);
   }, [isOpen, handleOpen, handleClose]);
 
   const SnackbarComponent = getSnackbarComponent(variant);
