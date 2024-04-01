@@ -1,14 +1,10 @@
 import styled, { css } from 'styled-components';
 import { DataTableCellConstants } from './data-table-cell.constants';
-import type {
-  TableCellAlignment,
-  TableCellVariant
-} from './data-table-cell.types';
 import { Text } from '../text';
 import { isValidSize } from '../../../utils/is-valid-size';
 
 type StyledTableCellProps = {
-  $alignment: TableCellAlignment;
+  $alignment: string;
   $width?: string;
   $minWidth?: string;
   $maxWidth?: string;
@@ -98,7 +94,7 @@ const FooterTableCell = styled.td<StyledTableCellProps>`
 `;
 
 const TableCellText = styled(Text).attrs<{
-  $variant: TableCellVariant;
+  $variant: string;
   $color?: string;
 }>((props) => {
   return {
