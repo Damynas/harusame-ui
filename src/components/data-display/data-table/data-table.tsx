@@ -27,6 +27,7 @@ type DataTableProps = {
   autoFooter?: boolean;
   hoverable?: boolean;
   itemName?: string;
+  noDataMessage?: string;
   rowHeight?: string;
   width?: string;
   minWidth?: string;
@@ -59,6 +60,7 @@ const DataTableInner = (
     autoFooter,
     hoverable,
     itemName,
+    noDataMessage,
     rowHeight,
     width,
     minWidth,
@@ -109,18 +111,20 @@ const DataTableInner = (
         }
         return child;
       })}
-      {!loading && autoFooter && rowCount && (
+      {!loading && autoFooter && (
         <DataTableFooter>
           <DataTableRow>
             <DataTableCell
               variant='footer'
               alignment='center'
             >
-              {pluralize(
-                itemName ?? DataTableConstants.DEFAULT_ITEM_NAME,
-                rowCount,
-                true
-              )}
+              {rowCount
+                ? pluralize(
+                    itemName ?? DataTableConstants.DEFAULT_ITEM_NAME,
+                    rowCount,
+                    true
+                  )
+                : noDataMessage ?? DataTableConstants.DEFAULT_NO_DATA_MESSAGE}
             </DataTableCell>
           </DataTableRow>
         </DataTableFooter>

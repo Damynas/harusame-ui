@@ -81,7 +81,7 @@ const Template: Story = {
         </DataTableRow>
       </DataTableHeader>
       <DataTableBody>
-        <DataTableRow>
+        {/* <DataTableRow>
           <DataTableCell
             variant='body'
             alignment='left'
@@ -140,7 +140,7 @@ const Template: Story = {
           >
             20
           </DataTableCell>
-        </DataTableRow>
+        </DataTableRow> */}
       </DataTableBody>
     </DataTable>
   )
