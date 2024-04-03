@@ -36,6 +36,8 @@ const getButtonSize = (
 ) => ButtonSizes[size];
 
 const ButtonContainer = styled.button<StyledButtonContainerProps>`
+  position: relative;
+
   cursor: ${(props) => !props.$loading && !props.$disabled && 'pointer'};
 
   white-space: nowrap;

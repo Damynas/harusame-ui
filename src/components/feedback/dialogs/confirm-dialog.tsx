@@ -21,8 +21,10 @@ type ConfirmDialogProps = {
   message: string;
   messageColor?: string;
   confirmButtonText?: string;
+  confirmButtonLoading?: boolean;
   onConfirmButtonClick?: () => void;
   cancelButtonText?: string;
+  cancelButtonLoading?: boolean;
   onCancelButtonClick?: () => void;
 } & DialogProps;
 
@@ -39,6 +41,8 @@ const ConfirmDialogInner = (
     messageColor,
     confirmButtonText,
     cancelButtonText,
+    confirmButtonLoading,
+    cancelButtonLoading,
     onConfirmButtonClick,
     onCancelButtonClick,
     onClose,
@@ -78,6 +82,7 @@ const ConfirmDialogInner = (
               ConfirmDialogConstants.DEFAULT_CONFIRM_BUTTON_TEXT
             }
             variant='contained'
+            loading={confirmButtonLoading}
             onClick={onConfirmButtonClick}
           />
           <Button
@@ -86,6 +91,7 @@ const ConfirmDialogInner = (
               ConfirmDialogConstants.DEFAULT_CANCEL_BUTTON_TEXT
             }
             variant='outlined'
+            loading={cancelButtonLoading}
             onClick={onCancelButtonClick ?? onClose}
           />
         </ActionContainer>

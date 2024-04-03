@@ -30,6 +30,18 @@ const meta: Meta<typeof ConfirmDialog> = {
         summary: ConfirmDialogConstants.DEFAULT_CANCEL_BUTTON_TEXT
       }
     },
+    confirmButtonLoading: {
+      control: { type: 'boolean' },
+      defaultValue: {
+        summary: false
+      }
+    },
+    cancelButtonLoading: {
+      control: { type: 'boolean' },
+      defaultValue: {
+        summary: false
+      }
+    },
     width: {
       control: { type: 'text' },
       defaultValue: {
@@ -50,6 +62,8 @@ const meta: Meta<typeof ConfirmDialog> = {
     Press 'Confirm' to continue or 'Cancel' to close the dialog.`,
     confirmButtonText: ConfirmDialogConstants.DEFAULT_CONFIRM_BUTTON_TEXT,
     cancelButtonText: ConfirmDialogConstants.DEFAULT_CANCEL_BUTTON_TEXT,
+    confirmButtonLoading: false,
+    cancelButtonLoading: false,
     width: '37.5rem',
     height: '17.5rem'
   }
