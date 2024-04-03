@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Snackbar, type SnackbarProps } from '../components';
 import type { SnackbarVariant } from '../components/feedback/snackbar.types';
 
@@ -18,41 +18,42 @@ const useSnackbar = () => {
     variant: 'default'
   });
 
-  const openSnackbar = (
-    message: string,
-    variant?: SnackbarVariant,
-    duration?: number
-  ) =>
-    setState({
-      ...state,
-      isOpen: true,
-      message: message,
-      ...(variant && { variant: variant }),
-      ...(duration && { duration: duration })
-    });
-  const closeSnackbar = () =>
-    setState({
-      ...state,
-      isOpen: false
-    });
+  const openSnackbar = useCallback(
+    (message: string, variant?: SnackbarVariant, duration?: number) => {
+      setState((prevState) => ({
+        ...prevState,
+        isOpen: true,
+        message,
+        variant: variant || prevState.variant,
+        duration: duration || prevState.duration
+      }));
+    },
+    []
+  );
 
-  const SnackbarComponent = (
-    snackbarComponentProps: Omit<SnackbarProps, PropsToOmit>
-  ) => {
-    const { children, ...props } = snackbarComponentProps;
-    return (
-      <Snackbar
-        {...props}
-        isOpen={state.isOpen}
-        onClose={closeSnackbar}
-        message={state.message}
-        variant={state.variant}
-        duration={state.duration}
-      >
-        {children}
-      </Snackbar>
-    );
-  };
+  const closeSnackbar = useCallback(
+    () => setState((prevState) => ({ ...prevState, isOpen: false })),
+    []
+  );
+
+  const SnackbarComponent = useCallback(
+    (snackbarComponentProps: Omit<SnackbarProps, PropsToOmit>) => {
+      const { children, ...props } = snackbarComponentProps;
+      return (
+        <Snackbar
+          {...props}
+          isOpen={state.isOpen}
+          onClose={closeSnackbar}
+          message={state.message}
+          variant={state.variant}
+          duration={state.duration}
+        >
+          {children}
+        </Snackbar>
+      );
+    },
+    [closeSnackbar, state.duration, state.isOpen, state.message, state.variant]
+  );
 
   return { SnackbarComponent, openSnackbar, closeSnackbar };
 };

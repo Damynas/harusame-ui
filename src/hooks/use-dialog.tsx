@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { ConfirmDialog, Dialog } from '../components/feedback/dialogs';
 import { UseDialogConstants } from './use-dialog.constants';
 import type {
@@ -25,26 +25,27 @@ const getDialogComponent = (
 const useDialog = ({ variant }: useDialogProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const openDialog = () => setIsOpen(true);
-  const closeDialog = () => setIsOpen(false);
+  const openDialog = useCallback(() => setIsOpen(true), []);
+  const closeDialog = useCallback(() => setIsOpen(false), []);
 
-  const DialogComponent = (
-    dialogComponentProps: Omit<DialogComponentProps, PropsToOmit>
-  ) => {
-    const { children, ...props } = dialogComponentProps;
-    const DialogComponent = getDialogComponent(variant);
-    return (
-      <DialogComponent
-        {...props}
-        isOpen={isOpen}
-        onClose={closeDialog}
-      >
-        {children}
-      </DialogComponent>
-    );
-  };
+  const renderDialog = useCallback(
+    (dialogComponentProps: Omit<DialogComponentProps, PropsToOmit>) => {
+      const { children, ...props } = dialogComponentProps;
+      const DialogComponent = getDialogComponent(variant);
+      return (
+        <DialogComponent
+          {...props}
+          isOpen={isOpen}
+          onClose={closeDialog}
+        >
+          {children}
+        </DialogComponent>
+      );
+    },
+    [closeDialog, isOpen, variant]
+  );
 
-  return { DialogComponent, openDialog, closeDialog };
+  return { renderDialog, openDialog, closeDialog };
 };
 
 export { useDialog };
