@@ -55,95 +55,84 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+type User = {
+  firstName: string;
+  lastName: string;
+  age: number;
+};
+
+const users: User[] = [
+  {
+    firstName: 'Testy',
+    lastName: 'McTesty',
+    age: 25
+  },
+  {
+    firstName: 'Rupert',
+    lastName: 'Brown',
+    age: 25
+  },
+  {
+    firstName: 'Jacob',
+    lastName: 'Ironside',
+    age: 25
+  }
+];
+
 const Template: Story = {
-  render: (args) => (
-    <DataTable {...args}>
-      <DataTableHeader>
+  render: (args) => {
+    const renderRow = (user: User) => {
+      return (
         <DataTableRow>
           <DataTableCell
-            variant='header'
             alignment='left'
+            variant='body'
           >
-            First Name
+            {user.firstName}
           </DataTableCell>
           <DataTableCell
-            variant='header'
             alignment='left'
+            variant='body'
           >
-            Last Name
+            {user.lastName}
           </DataTableCell>
           <DataTableCell
-            variant='header'
             alignment='right'
+            variant='body'
           >
-            Age
+            {user.age}
           </DataTableCell>
         </DataTableRow>
-      </DataTableHeader>
-      <DataTableBody>
-        {/* <DataTableRow>
-          <DataTableCell
-            variant='body'
-            alignment='left'
-          >
-            Testy
-          </DataTableCell>
-          <DataTableCell
-            variant='body'
-            alignment='left'
-          >
-            McTesty
-          </DataTableCell>
-          <DataTableCell
-            variant='body'
-            alignment='right'
-          >
-            25
-          </DataTableCell>
-        </DataTableRow>
-        <DataTableRow>
-          <DataTableCell
-            variant='body'
-            alignment='left'
-          >
-            Rupert
-          </DataTableCell>
-          <DataTableCell
-            variant='body'
-            alignment='left'
-          >
-            Brown
-          </DataTableCell>
-          <DataTableCell
-            variant='body'
-            alignment='right'
-          >
-            30
-          </DataTableCell>
-        </DataTableRow>
-        <DataTableRow>
-          <DataTableCell
-            variant='body'
-            alignment='left'
-          >
-            Jacob
-          </DataTableCell>
-          <DataTableCell
-            variant='body'
-            alignment='left'
-          >
-            Ironside
-          </DataTableCell>
-          <DataTableCell
-            variant='body'
-            alignment='right'
-          >
-            20
-          </DataTableCell>
-        </DataTableRow> */}
-      </DataTableBody>
-    </DataTable>
-  )
+      );
+    };
+    return (
+      <DataTable {...args}>
+        <DataTableHeader>
+          <DataTableRow>
+            <DataTableCell
+              variant='header'
+              alignment='left'
+            >
+              First Name
+            </DataTableCell>
+            <DataTableCell
+              variant='header'
+              alignment='left'
+            >
+              Last Name
+            </DataTableCell>
+            <DataTableCell
+              variant='header'
+              alignment='right'
+            >
+              Age
+            </DataTableCell>
+          </DataTableRow>
+        </DataTableHeader>
+        <DataTableBody>{users.map(renderRow)}</DataTableBody>
+      </DataTable>
+    );
+  }
 };
 
 const Example: Story = {
