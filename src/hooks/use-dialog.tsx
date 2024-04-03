@@ -1,26 +1,46 @@
 import { useState } from 'react';
-import { Dialog, type DialogProps } from '../components/feedback';
+import { ConfirmDialog, Dialog } from '../components/feedback/dialogs';
+import { UseDialogConstants } from './use-dialog.constants';
+import type {
+  DialogComponent,
+  DialogComponentProps,
+  DialogVariant
+} from './use-dialog.types';
 
 type PropsToOmit = 'isOpen' | 'onClose';
 
-const useDialog = () => {
+type useDialogProps = {
+  variant?: DialogVariant;
+};
+
+const DialogComponentVariants: Record<DialogVariant, DialogComponent> = {
+  [UseDialogConstants.VARIANTS.default]: Dialog,
+  [UseDialogConstants.VARIANTS.confirm]: ConfirmDialog
+};
+
+const getDialogComponent = (
+  variant: DialogVariant = UseDialogConstants.DEFAULT_VARIANT
+) => DialogComponentVariants[variant];
+
+const useDialog = ({ variant }: useDialogProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const openDialog = () => setIsOpen(true);
   const closeDialog = () => setIsOpen(false);
 
   const DialogComponent = (
-    dialogComponentProps: Omit<DialogProps, PropsToOmit>
+    dialogComponentProps: Omit<DialogComponentProps, PropsToOmit>
   ) => {
     const { children, ...props } = dialogComponentProps;
+    const DialogComponent = getDialogComponent(variant);
     return (
-      <Dialog
+      <DialogComponent
         {...props}
         isOpen={isOpen}
         onClose={closeDialog}
       >
         {children}
-      </Dialog>
+      </DialogComponent>
     );
   };
 
