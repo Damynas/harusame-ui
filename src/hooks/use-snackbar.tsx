@@ -4,6 +4,8 @@ import type { SnackbarVariant } from '../components/feedback/snackbar.types';
 
 type PropsToOmit = 'isOpen' | 'onClose' | 'message' | 'variant' | 'duration';
 
+type SnackbarComponentProps = Omit<SnackbarProps, PropsToOmit>;
+
 type SnackbarState = {
   isOpen: boolean;
   message: string;
@@ -36,8 +38,8 @@ const useSnackbar = () => {
     []
   );
 
-  const SnackbarComponent = useCallback(
-    (snackbarComponentProps: Omit<SnackbarProps, PropsToOmit>) => {
+  const renderSnackbar = useCallback(
+    (snackbarComponentProps: SnackbarComponentProps) => {
       const { children, ...props } = snackbarComponentProps;
       return (
         <Snackbar
@@ -55,7 +57,7 @@ const useSnackbar = () => {
     [closeSnackbar, state.duration, state.isOpen, state.message, state.variant]
   );
 
-  return { SnackbarComponent, openSnackbar, closeSnackbar };
+  return { renderSnackbar, openSnackbar, closeSnackbar };
 };
 
 export { useSnackbar };

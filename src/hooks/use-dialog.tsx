@@ -1,13 +1,16 @@
 import { useState, useCallback } from 'react';
-import { ConfirmDialog, Dialog } from '../components/feedback/dialogs';
+import {
+  ConfirmDialog,
+  Dialog,
+  type ConfirmDialogProps,
+  type DialogProps
+} from '../components/feedback/dialogs';
 import { UseDialogConstants } from './use-dialog.constants';
-import type {
-  DialogComponent,
-  DialogComponentProps,
-  DialogVariant
-} from './use-dialog.types';
+import type { DialogComponent, DialogVariant } from './use-dialog.types';
 
 type PropsToOmit = 'isOpen' | 'onClose';
+
+type DialogComponentProps = Omit<DialogProps & ConfirmDialogProps, PropsToOmit>;
 
 type useDialogProps = {
   variant?: DialogVariant;
