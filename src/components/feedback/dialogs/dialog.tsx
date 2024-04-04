@@ -2,6 +2,7 @@ import {
   forwardRef,
   useCallback,
   useEffect,
+  useRef,
   type ForwardedRef,
   type HTMLAttributes,
   type KeyboardEvent,
@@ -56,6 +57,7 @@ const DialogInner = (
     onPointerDown,
     ...props
   } = dialogProps;
+  const initialRenderRef = useRef<boolean>(true);
   const dialogRef = useForwardRef<DialogElement>(forwardedRef);
   const theme = useTheme();
 
@@ -75,6 +77,11 @@ const DialogInner = (
   }, [dialogRef]);
 
   useEffect(() => {
+    if (initialRenderRef.current) {
+      initialRenderRef.current = false;
+      return;
+    }
+
     const dialog = dialogRef.current;
     if (dialog) {
       const action = isOpen ? dialog.showModal : handleClose;

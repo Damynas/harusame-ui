@@ -1,4 +1,10 @@
-import { forwardRef, useEffect, useCallback, type ForwardedRef } from 'react';
+import {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useRef,
+  type ForwardedRef
+} from 'react';
 import { SnackbarConstants } from './snackbar.constants';
 import {
   SnackbarBase,
@@ -91,6 +97,7 @@ const SnackbarInner = (
     onActionButtonClick,
     ...props
   } = snackbarProps;
+  const initialRenderRef = useRef<boolean>(true);
   const snackbarRef = useForwardRef<SnackbarElement>(forwardedRef);
 
   const handleClose = useCallback(() => {
@@ -117,6 +124,11 @@ const SnackbarInner = (
   }, [isOpen, duration, handleClose]);
 
   useEffect(() => {
+    if (initialRenderRef.current) {
+      initialRenderRef.current = false;
+      return;
+    }
+
     const action = isOpen ? handleOpen : handleClose;
     action.call(undefined);
   }, [isOpen, handleOpen, handleClose]);
