@@ -51,6 +51,9 @@ const getFadeAnimationKeyframes = (
 `;
 
 const DialogBase = styled.dialog<StyledDialogProps>`
+  position: absolute;
+  z-index: 9999;
+
   padding: 0;
   outline: none;
 

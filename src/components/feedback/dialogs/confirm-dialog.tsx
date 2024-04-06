@@ -84,6 +84,7 @@ const ConfirmDialogInner = (
             variant='contained'
             loading={confirmButtonLoading}
             onClick={onConfirmButtonClick}
+            autoFocus
           />
           <Button
             text={

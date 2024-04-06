@@ -84,8 +84,11 @@ const DialogInner = (
 
     const dialog = dialogRef.current;
     if (dialog) {
-      const action = isOpen ? dialog.showModal : handleClose;
-      action.call(dialog);
+      if (isOpen) {
+        dialog.showModal();
+      } else {
+        handleClose();
+      }
     }
   }, [dialogRef, isOpen, handleClose]);
 

@@ -23,8 +23,8 @@ type StyledStackLayout = typeof StackLayoutBase;
 
 const StackLayoutBase = styled.div<StyledStackLayoutProps>`
   display: flex;
-  box-sizing: border-box;
   flex-wrap: nowrap;
+  box-sizing: border-box;
   ${(props) =>
     isValidSize(props.$margin) &&
     css`

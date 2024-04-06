@@ -130,7 +130,7 @@ const SnackbarInner = (
     }
 
     const action = isOpen ? handleOpen : handleClose;
-    action.call(undefined);
+    action.call(null);
   }, [isOpen, handleOpen, handleClose]);
 
   const SnackbarComponent = getSnackbarComponent(variant);

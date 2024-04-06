@@ -24,8 +24,8 @@ type StyledWrapLayout = typeof WrapLayoutBase;
 
 const WrapLayoutBase = styled.div<StyledWrapLayoutProps>`
   display: flex;
-  box-sizing: border-box;
   flex-wrap: wrap;
+  box-sizing: border-box;
   ${(props) =>
     isValidSize(props.$rowGap) &&
     css`
