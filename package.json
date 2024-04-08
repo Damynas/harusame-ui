@@ -55,11 +55,9 @@
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
-    "styled-components": "^6.1.8"
-  },
-  "dependencies": {
-    "pluralize": "^8.0.0"
+    "pluralize": "^8.0.0",
+    "styled-components": "^6.1.8",
+    "react-helmet-async": "^2.0.4"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

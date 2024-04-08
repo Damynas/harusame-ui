@@ -38,7 +38,13 @@ const config: RollupOptions[] = [
       }),
       terser()
     ],
-    external: ['react', 'react-dom', 'react-helmet', 'styled-components']
+    external: [
+      'react',
+      'react-dom',
+      'pluralize',
+      'styled-components',
+      'react-helmet-async'
+    ]
   },
   {
     input: './dist/esm/types/src/index.d.ts',

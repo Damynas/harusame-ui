@@ -1,12 +1,16 @@
 import { cleanup, render, waitFor } from '@testing-library/react';
-import { Font } from './font';
-import { FontConstants } from './font.constants';
+import { FontProvider } from './font-provider';
+import { FontProviderConstants } from './font-provider.constants';
 
 const renderFont = (url?: string) => {
-  render(<Font url={url} />);
+  render(
+    <FontProvider url={url}>
+      <></>
+    </FontProvider>
+  );
 };
 
-describe('Font Tests', () => {
+describe('Font Provider Tests', () => {
   afterEach(() => {
     cleanup();
   });
@@ -15,7 +19,7 @@ describe('Font Tests', () => {
     renderFont();
     await waitFor(() => {
       const fontLink = document.head.querySelector(
-        `link[href="${FontConstants.DEFAULT_FONT_URL}"]`
+        `link[href="${FontProviderConstants.DEFAULT_FONT_URL}"]`
       );
       expect(fontLink).toBeInTheDocument();
     });

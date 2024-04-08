@@ -1,7 +1,7 @@
 import type { Decorator, Parameters, Preview } from '@storybook/react';
 import type { ThemeVariant } from '../src/common/theme/themes.types';
 import { Themes, ThemeProvider } from '../src/common/theme';
-import { Font } from '../src/common/font';
+import { FontProvider } from '../src/common/font';
 import { convertCase } from '../src/utils';
 
 const themeNames = Object.getOwnPropertyNames(Themes).map((theme) =>
@@ -39,8 +39,7 @@ const withThemeProvider: Decorator = (Story, context) => {
   const theme = Themes[themeName];
   return (
     <ThemeProvider theme={theme}>
-      <Font />
-      {Story(context)}
+      <FontProvider>{Story(context)}</FontProvider>
     </ThemeProvider>
   );
 };
