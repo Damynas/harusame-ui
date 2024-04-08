@@ -57,7 +57,7 @@ const DialogInner = (
     onPointerDown,
     ...props
   } = dialogProps;
-  const initialRenderRef = useRef<boolean>(true);
+  const visibilityStateRef = useRef<boolean>(false);
   const dialogRef = useForwardRef<DialogElement>(forwardedRef);
   const theme = useTheme();
 
@@ -77,13 +77,9 @@ const DialogInner = (
   }, [dialogRef]);
 
   useEffect(() => {
-    if (initialRenderRef.current) {
-      initialRenderRef.current = false;
-      return;
-    }
-
     const dialog = dialogRef.current;
-    if (dialog) {
+    if (dialog && visibilityStateRef.current !== isOpen) {
+      visibilityStateRef.current = isOpen;
       if (isOpen) {
         dialog.showModal();
       } else {

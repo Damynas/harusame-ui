@@ -97,7 +97,7 @@ const SnackbarInner = (
     onActionButtonClick,
     ...props
   } = snackbarProps;
-  const initialRenderRef = useRef<boolean>(true);
+  const visibilityStateRef = useRef<boolean>(false);
   const snackbarRef = useForwardRef<SnackbarElement>(forwardedRef);
 
   const handleClose = useCallback(() => {
@@ -124,13 +124,12 @@ const SnackbarInner = (
   }, [isOpen, duration, handleClose]);
 
   useEffect(() => {
-    if (initialRenderRef.current) {
-      initialRenderRef.current = false;
-      return;
-    }
+    if (visibilityStateRef.current !== isOpen) {
+      visibilityStateRef.current = isOpen;
 
-    const action = isOpen ? handleOpen : handleClose;
-    action.call(null);
+      const action = isOpen ? handleOpen : handleClose;
+      action.call(null);
+    }
   }, [isOpen, handleOpen, handleClose]);
 
   const SnackbarComponent = getSnackbarComponent(variant);
