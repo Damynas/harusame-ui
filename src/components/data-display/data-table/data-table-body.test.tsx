@@ -35,6 +35,17 @@ describe('DataTableBody Tests', () => {
     expect(dataTableBody).toBeDefined();
   });
 
+  it('Should render 3 skeleton rows when loading', () => {
+    const props: DataTableBodyProps = {
+      ...defaultProps,
+      loading: true
+    };
+    renderDataTableBody(props);
+    const dataTableBody = screen.queryByTestId(dataTableBodyTestId);
+    expect(dataTableBody).toBeDefined();
+    expect(dataTableBody?.children.length).toEqual(3);
+  });
+
   it('Should throw an exception if __TYPE prop is changed', () => {
     const props: DataTableBodyProps = {
       ...defaultProps,

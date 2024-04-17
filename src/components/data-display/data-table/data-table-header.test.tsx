@@ -10,7 +10,9 @@ import { DataTableRow } from './data-table-row';
 
 const dataTableHeaderTestId = 'data-table-header-test-id';
 
-const defaultProps: DataTableHeaderProps = {};
+const defaultProps: DataTableHeaderProps = {
+  children: 'Child'
+};
 
 const renderDataTableHeader = (
   props: DataTableHeaderProps = defaultProps,

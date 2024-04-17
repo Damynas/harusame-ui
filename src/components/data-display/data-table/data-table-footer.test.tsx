@@ -10,7 +10,9 @@ import { DataTableRow } from './data-table-row';
 
 const dataTableFooterTestId = 'data-table-footer-test-id';
 
-const defaultProps: DataTableFooterProps = {};
+const defaultProps: DataTableFooterProps = {
+  children: 'Child'
+};
 
 const renderDataTableFooter = (
   props: DataTableFooterProps = defaultProps,

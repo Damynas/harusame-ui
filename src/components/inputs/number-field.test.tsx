@@ -40,8 +40,11 @@ describe('NumberField Tests', () => {
     expect(numberField).toBeDefined();
     if (!(numberField instanceof HTMLInputElement))
       throw new Error('NumberField is not HTMLInputElement.');
-    numberField.value = '-1.2.a';
-    fireEvent.input(numberField);
+    fireEvent.input(numberField, {
+      target: {
+        value: '-1.2.a'
+      }
+    });
     expect(numberField.value).toEqual('12');
   });
 
@@ -55,8 +58,11 @@ describe('NumberField Tests', () => {
     expect(numberField).toBeDefined();
     if (!(numberField instanceof HTMLInputElement))
       throw new Error('NumberField is not HTMLInputElement.');
-    numberField.value = '-1.2';
-    fireEvent.input(numberField);
+    fireEvent.input(numberField, {
+      target: {
+        value: '-1.2-'
+      }
+    });
     expect(numberField.value).toEqual('-12');
   });
 
@@ -70,8 +76,11 @@ describe('NumberField Tests', () => {
     expect(numberField).toBeDefined();
     if (!(numberField instanceof HTMLInputElement))
       throw new Error('NumberField is not HTMLInputElement.');
-    numberField.value = '-1.2';
-    fireEvent.input(numberField);
+    fireEvent.input(numberField, {
+      target: {
+        value: '-1.2.'
+      }
+    });
     expect(numberField.value).toEqual('1.2');
   });
 
