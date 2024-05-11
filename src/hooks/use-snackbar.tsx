@@ -26,8 +26,8 @@ const useSnackbar = () => {
         ...prevState,
         isOpen: true,
         message,
-        variant: variant || prevState.variant,
-        duration: duration || prevState.duration
+        variant: variant ?? prevState.variant,
+        duration: duration ?? prevState.duration
       }));
     },
     []
